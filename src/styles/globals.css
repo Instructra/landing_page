@@ -1,6 +1,50 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --default-font-family: 'Geist';
+  --cards-bg:#f1f1f1;
+  --color-*: initial;
+  --color-primary:#2575F5;
+  /* brake points */
+  --breakpoint-mm:375px;
+  --breakpoint-ml:425px;
+  --breakpoint-tb:768px;
+  --breakpoint-ll:1440px;
+  /* max weights */
+  --max-sm: 300px;
+  --max-tb: 704px;
+  --max-ll: 1200px;
+  /* background colors */
+  --bg-white:#fff;
 }
+@layer base{
+  *{
+    color: #1a1a1a;
+    margin: 0;
+    padding: 0;
+  }
+  html{
+      scroll-behavior: smooth;
+  }
+  body{
+    background-color: var(--bg-white);
+    padding: 0px;
+    margin: 0px;
+  }
+  h1{
+    font-size: 80px;
+    line-height: 88px;
+    letter-spacing: -3px;
+  }
+  .display-xl{
+    font-size: 80px;
+  }
+  .display-l{
+    font-size: 72px;
+  }
+  .card-bg{
+    background-color: var(--cards-bg);
+  }
+  
+}
+

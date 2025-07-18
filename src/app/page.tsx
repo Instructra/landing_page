@@ -1,29 +1,33 @@
-import Link from "next/link";
-
-import { LatestPost } from "~/app/_components/post";
-import { api, HydrateClient } from "~/trpc/server";
-
 export default async function Home() {
-  const hello = await api.post.hello({ text: "Abdulbasit" });
-
-  void api.post.getLatest.prefetch();
-
   return (
-    <HydrateClient>
-      <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
-        <h1 className="text-9xl">Instructra in progress...</h1>
-        <br />
-        <br />
-        <div>
-          <div className="flex flex-col items-center gap-2">
-            <p className="text-2xl text-white">
-              {hello ? hello.greeting : "Loading tRPC query..."}
-            </p>
-          </div>
+    <main>
+      <section
+        id="home"
+        className="flex h-screen items-center justify-center bg-gray-100"
+      >
+        <h1 className="text-5xl font-bold">Home Section</h1>
+      </section>
 
-          <LatestPost />
-        </div>
-      </main>
-    </HydrateClient>
+      <section
+        id="about"
+        className="flex h-screen items-center justify-center bg-white"
+      >
+        <h2 className="text-4xl font-semibold">About </h2>
+      </section>
+
+      <section
+        id="how"
+        className="flex h-screen items-center justify-center bg-gray-100"
+      >
+        <h2 className="text-4xl font-semibold">How it works</h2>
+      </section>
+
+      <section
+        id="contact"
+        className="flex h-screen items-center justify-center bg-white"
+      >
+        <h2 className="text-4xl font-semibold">Contact Section</h2>
+      </section>
+    </main>
   );
 }
