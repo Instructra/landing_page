@@ -4,9 +4,11 @@ export default function Header() {
   return (
     <div className="fixed flex w-screen justify-center bg-(--bg-white) py-[32px]">
       <nav className="card-bg ll:w-[1200px] tb:w-[704px] flex w-[300px] items-center justify-between rounded-[100px] px-4 py-3">
-        <div className="text-primary inline bg-amber-600 px-4 py-3 font-bold">
-          INSTRUCTRA
-        </div>
+        <Link href={"/#home"}>
+          <div className="text-primary bg-amber-600 px-4 py-3 font-bold">
+            INSTRUCTRA
+          </div>
+        </Link>
         <div className="ll:flex hidden gap-4">
           <Link href={"/#home"}>Home</Link>
           <Link href={"/#about"}>About</Link>
