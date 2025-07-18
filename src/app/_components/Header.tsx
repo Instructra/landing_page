@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Navbar from "./NavBar";
 
 export default function Header() {
   return (
