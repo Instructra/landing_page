@@ -8,10 +8,10 @@ export default function Header() {
           INSTRUCTRA
         </div>
         <div className="ll:flex hidden gap-4">
-          <Link href={"/"}>Home</Link>
-          <Link href={"/about"}>About</Link>
-          <Link href={"/how"}>How it works</Link>
-          <Link href={"/contact"}>Contact us</Link>
+          <Link href={"/#home"}>Home</Link>
+          <Link href={"/#about"}>About</Link>
+          <Link href={"/#how"}>How it works</Link>
+          <Link href={"/#contact"}>Contact us</Link>
           <Link href={"/referral"}>Referral programme</Link>
         </div>
         <button className="ll:inline bg-primary hidden rounded-4xl px-6 py-3 text-white">
