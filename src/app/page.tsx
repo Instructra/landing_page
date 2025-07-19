@@ -3,9 +3,11 @@ export default async function Home() {
     <main>
       <section
         id="home"
-        className="flex h-screen items-center justify-center bg-gray-100"
+        className="flex h-screen items-center justify-center bg-white"
       >
-        <h1 className="text-5xl font-bold">Home Section</h1>
+        <div className="max-sm max-tb max-l max-ll bg-primary block">
+          <h1 className="text-5xl font-bold">Home Section</h1>
+        </div>
       </section>
 
       <section
@@ -17,7 +19,7 @@ export default async function Home() {
 
       <section
         id="how"
-        className="flex h-screen items-center justify-center bg-gray-100"
+        className="flex h-screen items-center justify-center bg-white"
       >
         <h2 className="text-4xl font-semibold">How it works</h2>
       </section>
