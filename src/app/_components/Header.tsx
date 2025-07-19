@@ -6,7 +6,7 @@ import { useYieldContext } from "~/contexts/YieldContext";
 
 export default function Header() {
   const ref = useRef<HTMLDivElement>(null);
-  const { setHeaderHeight, toggleSideNav } = useYieldContext();
+  const { setHeaderHeight, toggleSideNav, isSideNavOpen } = useYieldContext();
   useEffect(() => {
     const updateHeight = () => {
       if (ref.current) {
@@ -36,8 +36,18 @@ export default function Header() {
         <button className="l:inline bg-primary hidden rounded-4xl px-6 py-3 text-white">
           Join the wait list
         </button>
-        <button className="l:hidden" onClick={() => toggleSideNav()}>
-          🥞
+        <button className="l:hidden group" onClick={() => toggleSideNav()}>
+          <div className="grid justify-items-center gap-1">
+            <span
+              className={`. h-0.5 w-6 rounded-full bg-black transition ${isSideNavOpen ? "translate-y-1.5 rotate-45" : "translate-y-0 rotate-0"} `}
+            ></span>
+            <span
+              className={`h-0.5 w-6 ${isSideNavOpen? "scale-x-0":""} rounded-full bg-black transition`}
+            ></span>
+            <span
+              className={`. h-0.5 w-6 rounded-full bg-black transition ${isSideNavOpen ? "-translate-y-1.5 -rotate-45" : "translate-y-0 rotate-0"} `}
+            ></span>
+          </div>
         </button>
       </nav>
     </div>

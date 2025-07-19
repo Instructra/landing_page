@@ -9,7 +9,7 @@ export default function SideNav() {
     <aside
       className="l:hidden fixed flex h-dvh w-screen justify-center bg-white pb-12"
       style={{ paddingTop: `${headerHeight}px` }}
->
+    >
       <div className="mm:w-(--max-mm) ml:w-(--max-ml) tb:w-(--max-tb) flex h-full w-(--max-sm) flex-col justify-between">
         <div className="flex flex-col gap-4">
           {[
