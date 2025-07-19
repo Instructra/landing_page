@@ -2,12 +2,15 @@
 
 import { createContext, useContext, useState } from "react";
 
-interface YieldContextType {
+type YieldContextType = {
   headerHeight: number;
-  setHeaderHeight: (height: number) => void;
-}
+  setHeaderHeight: (h: number) => void;
+  isSideNavOpen: boolean;
+  toggleSideNav: () => void;
+  closeSideNav: () => void;
+};
 
-const YieldContext = createContext<YieldContextType | undefined>(undefined);
+const YieldContext = createContext<YieldContextType | null>(null);
 
 export function YieldContextProvider({
   children,
@@ -15,17 +18,29 @@ export function YieldContextProvider({
   children: React.ReactNode;
 }) {
   const [headerHeight, setHeaderHeight] = useState(0);
+  const [isSideNavOpen, setIsSideNavOpen] = useState(false);
+
+  const toggleSideNav = () => setIsSideNavOpen((prev) => !prev);
+  const closeSideNav = () => setIsSideNavOpen(false);
 
   return (
-    <YieldContext.Provider value={{ headerHeight, setHeaderHeight }}>
+    <YieldContext.Provider
+      value={{
+        headerHeight,
+        setHeaderHeight,
+        isSideNavOpen,
+        toggleSideNav,
+        closeSideNav,
+      }}
+    >
       {children}
     </YieldContext.Provider>
   );
 }
 
 export function useYieldContext() {
-  const context = useContext(YieldContext);
-  if (!context)
-    throw new Error("useYieldContext must be used within YieldContextProvider");
-  return context;
+  const ctx = useContext(YieldContext);
+  if (!ctx)
+    throw new Error("YieldContext must be used within YieldContextProvider");
+  return ctx;
 }

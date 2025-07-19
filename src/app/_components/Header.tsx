@@ -6,8 +6,7 @@ import { useYieldContext } from "~/contexts/YieldContext";
 
 export default function Header() {
   const ref = useRef<HTMLDivElement>(null);
-  const { setHeaderHeight } = useYieldContext();
-
+  const { setHeaderHeight, toggleSideNav } = useYieldContext();
   useEffect(() => {
     const updateHeight = () => {
       if (ref.current) {
@@ -37,7 +36,9 @@ export default function Header() {
         <button className="l:inline bg-primary hidden rounded-4xl px-6 py-3 text-white">
           Join the wait list
         </button>
-        <button className="l:hidden">🥞</button>
+        <button className="l:hidden" onClick={() => toggleSideNav()}>
+          🥞
+        </button>
       </nav>
     </div>
   );
