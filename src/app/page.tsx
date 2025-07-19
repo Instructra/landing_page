@@ -5,7 +5,7 @@ export default async function Home() {
         id="home"
         className="flex h-screen items-center justify-center bg-white"
       >
-        <div className="max-sm max-tb max-l max-ll bg-primary block">
+        <div className="max-sm max-tb max-l max-ll block">
           <h1 className="text-5xl font-bold">Home Section</h1>
         </div>
       </section>
