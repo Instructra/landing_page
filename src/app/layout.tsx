@@ -5,6 +5,8 @@ import { Geist } from "next/font/google";
 
 import { TRPCReactProvider } from "~/trpc/react";
 import Header from "./_components/Header";
+import SideNav from "./_components/SideNav";
+import YieldLayoutWrapper from "./_components/YieldLayoutWrapper";
 
 export const metadata: Metadata = {
   title: "Instructra",
@@ -23,8 +25,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${geist.variable}`}>
       <body>
-        <Header />
-        <TRPCReactProvider>{children}</TRPCReactProvider>
+        <YieldLayoutWrapper>
+          <Header />
+          <SideNav />
+          <TRPCReactProvider>{children}</TRPCReactProvider>
+        </YieldLayoutWrapper>
       </body>
       {/* footer */}
     </html>
