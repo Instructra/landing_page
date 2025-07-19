@@ -2,13 +2,7 @@
 
 import Link from "next/link";
 import { useYieldContext } from "~/contexts/YieldContext";
-export default function SideNav({
-  isOpen,
-  onClose,
-}: {
-  isOpen: boolean;
-  onClose: () => void;
-}) {
+export default function SideNav() {
   const { headerHeight } = useYieldContext();
 
   return (
