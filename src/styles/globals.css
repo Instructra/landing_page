@@ -3,18 +3,21 @@
 @theme {
   --default-font-family: 'Geist';
   --cards-bg:#f1f1f1;
-  --color-*: initial;
   --color-primary:#2575F5;
   --color-white:#fff;
   /* brake points */
   --breakpoint-mm:375px;
   --breakpoint-ml:425px;
   --breakpoint-tb:768px;
+  --breakpoint-l:1200px;
   --breakpoint-ll:1440px;
   /* max weights */
-  --max-sm: 300px;
-  --max-tb: 704px;
-  --max-ll: 1200px;
+  --max-sm: 18.75rem;
+  --max-mm: 20.5rem;
+  --max-ml: 25rem;
+  --max-tb: 44rem;
+  --max-l:65rem;
+  --max-ll: 75rem;
   /* background colors */
   --bg-white:#fff;
 }
@@ -32,6 +35,9 @@
     padding: 0px;
     margin: 0px;
   }
+  section{
+    background-color:var(--bg-white) ;
+  }
   h1{
     font-size: 80px;
     line-height: 88px;
@@ -46,6 +52,6 @@
   .card-bg{
     background-color: var(--cards-bg);
   }
-  
+
 }
 
