@@ -20,7 +20,7 @@ export default function Header() {
   return (
     <div
       ref={ref}
-      className="fixed z-30 flex w-screen justify-center bg-white py-[32px]"
+      className="fixed z-50 flex w-screen justify-center bg-white py-[32px]"
     >
       <nav className="card-bg l:w-(--max-l) ll:w-(--max-ll) tb:w-(--max-tb) mm:w-(--max-mm) ml:w-(--max-ml) flex w-(--max-sm) items-center justify-between rounded-[100px] px-4 py-3">
         <Link href={"/#home"}>
