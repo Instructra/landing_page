@@ -1,4 +1,5 @@
 import Image from "next/image";
+import IphoneMockUp from "./_components/IphoneMockUp";
 
 export default async function Home() {
   return (
@@ -27,24 +28,15 @@ export default async function Home() {
               </button>
             </div>
             <div className="tb:row-start-3 tb:row-span-4 l:row-start-1 l:row-span-6 l:col-start-4 l:col-span-2 row-span-3 row-start-4 flex justify-center">
-              <div className="tb:h-[500px] tb:w-[248px] relative h-[340px] w-[180px]">
-                <Image
+              <div className="">
+                {/* <Image
                   src="/assets/images/explore_map_view.png"
-                  alt={"Instructra app photo"}
-                  width="0"
-                  height="0"
-                  className="tb:h-[500px] tb:w-[248px] h-[340px] w-[180px]"
+                  alt="Instructra app photo"
+                  fill
+                  className="object-center"
                   sizes="100vw"
-                />
-
-                <Image
-                  src="/assets/images/Silver.png"
-                  alt={"Instructra app photo"}
-                  width="0"
-                  height="0"
-                  className="tb:h-[500px] tb:w-[248px] h-[340px] w-[180px]"
-                  sizes="100vw"
-                />
+                /> */}
+                <IphoneMockUp />
               </div>
             </div>
           </div>
