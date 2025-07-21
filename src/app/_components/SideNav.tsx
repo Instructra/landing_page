@@ -7,7 +7,7 @@ export default function SideNav() {
   if (!isSideNavOpen) return null;
   return (
     <aside
-      className="l:hidden fixed flex h-dvh w-screen justify-center bg-white pb-12"
+      className="l:hidden fixed z-30 flex h-dvh w-screen justify-center bg-white pb-12"
       style={{ paddingTop: `${headerHeight}px` }}
     >
       <div className="mm:w-(--max-mm) ml:w-(--max-ml) tb:w-(--max-tb) flex h-full w-(--max-sm) flex-col justify-between">
