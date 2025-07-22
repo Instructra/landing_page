@@ -1,5 +1,6 @@
 import Image from "next/image";
 import IphoneMockUp from "./_components/IphoneMockUp";
+import { Buttons, ButtonType } from "./_components/Buttons";
 
 export default async function Home() {
   return (
@@ -20,12 +21,14 @@ export default async function Home() {
               </p>
             </div>
             <div className="tb:flex-row tb:justify-center tb:items-center tb:row-start-2 l:row-start-4 l:row-span-2 l:col-start-1 l:col-span-3 l:justify-start row-span-1 flex flex-col gap-4">
-              <button className="bg-primary rounded-full px-6 py-3 text-white">
-                Join the waitlist
-              </button>
-              <button className="rounded-full border-2 px-6 py-3">
-                What is Instructra
-              </button>
+              <Buttons
+                text={"Join the wait list"}
+                buttonType={ButtonType.Primary}
+              />
+              <Buttons
+                text={"What is Instructra"}
+                buttonType={ButtonType.Secondary}
+              />
             </div>
             <div className="tb:row-start-3 tb:row-span-4 l:row-start-1 l:row-span-6 l:col-start-4 l:col-span-2 row-span-3 row-start-4 flex justify-center">
               <div className="">

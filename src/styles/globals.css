@@ -6,6 +6,8 @@
   --cards-bg:#f1f1f1;
   --color-primary:#2575F5;
   --color-white:#fff;
+  --color-text-primary:#151517;
+  --color-border: #000F2F;
   /* brake points */
   --breakpoint-mm:375px;
   --breakpoint-ml:425px;
@@ -21,6 +23,7 @@
   --max-ll: 75rem;
   /* background colors */
   --bg-white:#fff;
+
 }
 @layer base{
   *{
