@@ -8,6 +8,8 @@ type YieldContextType = {
   isSideNavOpen: boolean;
   toggleSideNav: () => void;
   closeSideNav: () => void;
+  navWidth: number;
+  setNavWidth: (h: number) => void;
 };
 
 const YieldContext = createContext<YieldContextType | null>(null);
@@ -18,6 +20,8 @@ export function YieldContextProvider({
   children: React.ReactNode;
 }) {
   const [headerHeight, setHeaderHeight] = useState(0);
+  const [navWidth, setNavWidth] = useState(0);
+
   const [isSideNavOpen, setIsSideNavOpen] = useState(false);
 
   const toggleSideNav = () => setIsSideNavOpen((prev) => !prev);
@@ -31,6 +35,8 @@ export function YieldContextProvider({
         isSideNavOpen,
         toggleSideNav,
         closeSideNav,
+        navWidth,
+        setNavWidth,
       }}
     >
       {children}
