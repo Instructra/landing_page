@@ -6,12 +6,14 @@ export interface IphoneMockUpProps {
   tabletWidth: string | null;
   height: string | null;
   width: string | null;
+  url: string;
 }
 export default function IphoneMockUp({
   tabletHeight,
   tabletWidth,
   height,
   width,
+  url,
 }: IphoneMockUpProps) {
   return (
     //  component
@@ -37,7 +39,7 @@ export default function IphoneMockUp({
             />
           </svg> */}
           <Image
-            src="/assets/images/explore_map_view.png"
+            src={url}
             alt="Phone frame overlay (overscan)"
             fill
             className="object-center"

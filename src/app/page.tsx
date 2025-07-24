@@ -38,6 +38,7 @@ export default async function Home() {
                   tabletWidth={null}
                   height={null}
                   width={null}
+                  url="/assets/images/location.jpeg"
                 />
               </div>
             </div>
@@ -73,6 +74,7 @@ export default async function Home() {
                     tabletWidth={null}
                     height={"h-[500px]"}
                     width={"w-[240px]"}
+                    url="/assets/images/location.jpeg"
                   />
                 </div>
                 <div className="flex flex-col gap-3">
@@ -93,6 +95,7 @@ export default async function Home() {
                     tabletWidth={null}
                     height={"h-[500px]"}
                     width={"w-[240px]"}
+                    url="/assets/images/booking.jpeg"
                   />
                 </div>
                 <div className="flex flex-col gap-3">
@@ -111,6 +114,7 @@ export default async function Home() {
                     tabletWidth={null}
                     height={"h-[500px]"}
                     width={"w-[240px]"}
+                    url="/assets/images/dairy.jpeg"
                   />
                 </div>
                 <div className="flex flex-col gap-3">
@@ -125,10 +129,10 @@ export default async function Home() {
           </div>
         </MainContainer>
         <MainContainer>
-          <div className="flex flex-col gap-16">
+          <div className="l:flex-row l:gap-20 flex flex-col items-end gap-16">
             <div className="flex flex-col gap-4">
               <h3 className="pb-4 text-xl">About Instructor</h3>
-              <p className="text-2xl font-medium">
+              <p className="l:min-w-[480px] text-2xl font-medium">
                 Instructra was created to simplify and modernize how driving
                 education is delivered.
               </p>

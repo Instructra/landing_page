@@ -7,7 +7,7 @@ export default function Slider() {
 
   return (
     <div
-      className="relative flex w-screen flex-col gap-4"
+      className="relative flex w-screen flex-col gap-8"
       style={
         navWidth
           ? {
@@ -17,15 +17,33 @@ export default function Slider() {
       }
     >
       <p className="text-2xl font-medium">Who Instructra is for </p>
-      <div className="hide-scrollbar .hide-scrollbar flex items-start justify-start gap-4 overflow-scroll">
-        <div className="tb:min-w-[300px] l:min-w-[336px] l:h-[348px] ll:min-w-[390px] ll:h-[450px] tb:h-[348px] h-64 min-w-[220px] rounded-2xl bg-amber-300 transition-transform duration-300">
-          1
+      <div className="hide-scrollbar hide-scrollbar flex items-start justify-start gap-4 overflow-scroll">
+        {/* Instructor */}
+        <div className="tb:min-w-[300px] l:min-w-[336px] l:h-[348px] ll:min-w-[390px] ll:h-[450px] tb:h-[348px] flex h-64 min-w-[220px] items-end justify-center gap-1 rounded-2xl bg-[url('/assets/images/instructor.jpg')] bg-cover bg-center pb-6 transition-transform duration-300">
+          <p className="rounded-full bg-white px-4 py-2 text-[16px]/6 font-normal">
+            1
+          </p>
+          <p className="rounded-full bg-white px-4 py-2 text-[16px]/6 font-normal">
+            Instructors
+          </p>
         </div>
-        <div className="tb:min-w-[300px] l:min-w-[336px] l:h-[348px] ll:min-w-[390px] ll:h-[450px] tb:h-[348px] h-64 min-w-[220px] rounded-2xl bg-amber-300 transition-transform duration-300">
-          2
+        {/* Leaner */}
+        <div className="tb:min-w-[300px] l:min-w-[336px] l:h-[348px] ll:min-w-[390px] ll:h-[450px] tb:h-[348px] flex h-64 min-w-[220px] items-end justify-center gap-1 rounded-2xl bg-[url('/assets/images/learner.jpg')] bg-cover bg-center pb-6 transition-transform duration-300">
+          <p className="rounded-full bg-white px-4 py-2 text-[16px]/6 font-normal">
+            2
+          </p>
+          <p className="rounded-full bg-white px-4 py-2 text-[16px]/6 font-normal">
+            Learners
+          </p>
         </div>
-        <div className="tb:min-w-[300px] l:min-w-[336px] l:h-[348px] ll:min-w-[390px] ll:h-[450px] tb:h-[348px] h-64 min-w-[220px] rounded-2xl bg-amber-300 transition-transform duration-300">
-          3
+        {/* Driving school */}
+        <div className="tb:min-w-[300px] l:min-w-[336px] l:h-[348px] ll:min-w-[390px] ll:h-[450px] tb:h-[348px] flex h-64 min-w-[220px] items-end justify-center gap-1 rounded-2xl bg-[url('/assets/images/driving_school.jpg')] bg-cover bg-center pb-6 transition-transform duration-300">
+          <p className="rounded-full bg-white px-4 py-2 text-[16px]/6 font-normal">
+            3
+          </p>
+          <p className="rounded-full bg-white px-4 py-2 text-[16px]/6 font-normal">
+            Driving Schools
+          </p>
         </div>
       </div>
     </div>

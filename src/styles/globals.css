@@ -70,6 +70,8 @@
     background-color: var(--cards-bg);
   }
 
-
+  section{
+    padding-top: 160px;
+  }
 }
 
