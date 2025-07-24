@@ -1,12 +1,25 @@
 "use client";
 import Image from "next/image";
 
-export default function IphoneMockUp() {
+export interface IphoneMockUpProps {
+  tabletHeight: string | null;
+  tabletWidth: string | null;
+  height: string | null;
+  width: string | null;
+}
+export default function IphoneMockUp({
+  tabletHeight,
+  tabletWidth,
+  height,
+  width,
+}: IphoneMockUpProps) {
   return (
     //  component
     <div className="flex items-center justify-center">
       {/* // iPhone 15 Container */}
-      <div className="tb:h-[500px] tb:w-[248px] relative h-[340px] w-[180px] rounded-4xl border-6 border-zinc-900 shadow-[0_0_2px_2px_rgba(255,255,255,0.1)]">
+      <div
+        className={`${tabletHeight ?? "tb:h-[500px]"} ${tabletWidth ?? "tb:w-[248px]"} relative ${height ?? "h-[350px]"} ${width ?? "w-44"} rounded-4xl border-6 border-zinc-900 shadow-[0_0_2px_2px_rgba(255,255,255,0.1)]`}
+      >
         {/* // Dynamic Island */}
         <div className="absolute top-2 left-1/2 z-20 h-3 w-12 -translate-x-1/2 transform rounded-full bg-zinc-900"></div>
         <div className="border-opacity-40 pointer-events-none absolute -inset-[1px] rounded-[1.8rem] border-[3px] border-zinc-700"></div>
