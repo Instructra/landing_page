@@ -3,6 +3,7 @@ import { Buttons, ButtonType } from "./_components/Buttons";
 import Link from "next/link";
 import MainContainer from "./_components/MainContainer";
 import Slider from "./_components/Slider";
+import Image from "next/image";
 
 export default async function Home() {
   return (
@@ -57,7 +58,7 @@ export default async function Home() {
 
       <section
         id="about"
-        className="flex flex-col items-center justify-center gap-8"
+        className="flex flex-col items-center justify-center gap-8 pb-32"
       >
         <MainContainer>
           <div className="flex flex-col items-center gap-6">
@@ -159,9 +160,195 @@ export default async function Home() {
 
       <section
         id="how"
-        className="flex h-screen items-center justify-center bg-white"
+        className="bg-border flex min-h-screen items-start justify-center pb-20"
       >
-        <h2 className="text-4xl font-semibold">How it works</h2>
+        <MainContainer>
+          <div className="flex flex-col items-start justify-center gap-8">
+            {/* section heading */}
+            <div className="tb:flex-row tb:justify-between flex w-full flex-col justify-center gap-8">
+              <h2 className="text-center text-4xl font-normal text-white">
+                How it works
+              </h2>
+              <Buttons
+                text={"What is Instructra"}
+                buttonType={ButtonType.Secondary}
+                iconText={"arrow_right"}
+              />
+            </div>
+
+            {/* how it works grid */}
+            <div className="tb:grid-cols-2 tb:grid-row-5 grid w-full grid-cols-1 gap-6">
+              {/* search nearby instructor */}
+              <div className="tb:col-span-2 tb:row-span-2 flex w-full flex-col gap-8 rounded-3xl bg-white px-6 pt-8">
+                <div className="flex flex-col gap-4">
+                  <div className="relative h-7 w-full">
+                    <div className="absolute top-0 left-[96px] h-8 w-8 rounded-full bg-[url('/assets/images/user_4.jpeg')] bg-cover"></div>
+                    <div className="absolute top-0 left-[72px] h-8 w-8 rounded-full bg-white p-0.5">
+                      <div className="h-full w-full overflow-clip rounded-full bg-[url('/assets/images/user_3.jpeg')] bg-cover"></div>
+                    </div>
+                    <div className="absolute top-0 left-12 h-8 w-8 rounded-full bg-white p-0.5">
+                      <div className="h-full w-full overflow-clip rounded-full bg-[url('/assets/images/user_2.jpeg')] bg-cover"></div>
+                    </div>
+                    <div className="absolute top-0 left-6 h-8 w-8 rounded-full bg-white p-0.5">
+                      <div className="h-full w-full overflow-clip rounded-full bg-[url('/assets/images/user_1.jpeg')] bg-cover"></div>
+                    </div>
+                    <div className="r absolute top-0 left-0 h-8 w-8 rounded-full">
+                      <div className="h-full w-full overflow-clip rounded-full bg-[url('/assets/images/user_icon.png')] bg-cover"></div>
+                    </div>
+                  </div>
+                  <div className="flex flex-col gap-3">
+                    <h3 className="text-2xl font-medium">
+                      Search nearby Instructors
+                    </h3>
+                    <p className="text-text-secondary">
+                      Quickly find certified driving instructors near you. Just
+                      enter your location, and we’ll show you trusted
+                      professionals available in your area, ready to help you
+                      hit the road confidently.
+                    </p>
+                  </div>
+                </div>
+                <div className="relative h-72 w-full overflow-clip">
+                  <div className="absolute top-[12px] right-[50%] translate-x-1/2">
+                    <IphoneMockUp
+                      tabletHeight={null}
+                      tabletWidth={null}
+                      height={"h-[400px]"}
+                      width={"w-[200px]"}
+                      url="/assets/images/explore_view.jpg"
+                    />
+                  </div>
+                  {/* chat bubble */}
+                  <div className="absolute top-[58px] right-2 flex items-center gap-1.5 rounded-[10px] bg-white px-2 py-1.5">
+                    <div className="relative h-7 w-7 rounded-full bg-[url('/assets/images/happy_female.jpg')] bg-cover">
+                      <div className="absolute right-[-4px] bottom-0 flex h-4 w-4 items-center justify-center rounded-full bg-white p-0.5">
+                        <div className="bg-primary relative flex h-full w-full items-center justify-center rounded-full">
+                          <div className="h-full w-full bg-[url('/assets/images/female_icon.png')] bg-cover text-[4px]"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="flex flex-col">
+                      <p className="text-[8px]">Reina Diana</p>
+                      <p className="text-text-secondary text-[6px]">
+                        Driving Instructor
+                      </p>
+                    </div>
+                  </div>
+                  {/* male chat bubble */}
+                  <div className="absolute bottom-[58px] left-2 flex items-center gap-1.5 rounded-[10px] bg-white px-2 py-1.5">
+                    <div className="relative h-7 w-7 rounded-full bg-[url('/assets/images/user_1.jpeg')] bg-cover">
+                      <div className="absolute right-[-4px] bottom-0 flex h-4 w-4 items-center justify-center rounded-full bg-white p-0.5">
+                        <div className="bg-primary relative flex h-full w-full items-center justify-center rounded-full">
+                          <div className="h-full w-full bg-[url('/assets/images/male_icon.png')] bg-cover text-[4px]"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="flex flex-col">
+                      <p className="text-[8px]">Franseco Jonas</p>
+                      <p className="text-text-secondary text-[6px]">
+                        Driving Instructor
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {/* check availability */}
+              <div className="tb:row-start-3 tb:row-span-1 flex w-full flex-col gap-8 rounded-3xl bg-white px-6 pt-8">
+                <div className="flex flex-col gap-4">
+                  <div className="flex flex-col gap-3">
+                    <h3 className="text-2xl font-medium">Check availability</h3>
+                    <p className="text-text-secondary">
+                      Receive instant bookings, manage lessons, and grow your
+                      client base seamlessly.
+                    </p>
+                  </div>
+                </div>
+                <div className="relative h-72 w-full overflow-clip">
+                  <div className="absolute top-[12px] right-[50%] translate-x-1/2">
+                    <IphoneMockUp
+                      tabletHeight={null}
+                      tabletWidth={null}
+                      height={"h-[400px]"}
+                      width={"w-[200px]"}
+                      url="/assets/images/availability.png"
+                    />
+                  </div>
+                </div>
+              </div>
+              {/* book and take lessons */}
+              <div className="tb:row-start-3 tb:row-span-1 tb:col-start-2 flex w-full flex-col gap-8 rounded-3xl bg-white px-6 pt-8">
+                <div className="flex flex-col gap-4">
+                  <div className="flex flex-col gap-3">
+                    <h3 className="text-2xl font-medium">
+                      Book and take lessons
+                    </h3>
+                    <p className="text-text-secondary">
+                      Share your schedule and let learners book only when
+                      you&apos;re actually available.
+                    </p>
+                  </div>
+                </div>
+                <div className="relative h-[224px] w-full overflow-clip">
+                  {/* booking dialog phone */}
+                  <div className="absolute top-[12px] left-[4px]">
+                    <IphoneMockUp
+                      tabletHeight={null}
+                      tabletWidth={null}
+                      height={"h-[300px]"}
+                      width={"w-[160px]"}
+                      url="/assets/images/take_lessons.jpg"
+                    />
+                  </div>
+                  {/* bookings phone */}
+                  <div className="absolute top-[60px] right-[4px]">
+                    <IphoneMockUp
+                      tabletHeight={null}
+                      tabletWidth={null}
+                      height={"h-[300px]"}
+                      width={"w-[160px]"}
+                      url="/assets/images/bookings.png"
+                    />
+                  </div>
+                </div>
+              </div>
+              {/* tracking progress */}
+              <div className="tb:col-span-2 tb:row-span-2 flex w-full flex-col gap-8 rounded-3xl bg-white px-6 pt-8">
+                <div className="flex flex-col gap-4">
+                  <div className="flex flex-col gap-3">
+                    <h3 className="text-2xl font-medium">Track progress </h3>
+                    <p className="text-text-secondary">
+                      Stay on top of your learning journey. Track completed
+                      lessons, upcoming bookings, and skill milestones—all in
+                      one place, so you always know how far you’ve come.
+                    </p>
+                  </div>
+                </div>
+                <div className="relative h-[280px] w-full overflow-clip">
+                  {/* insights phone */}
+                  <div className="absolute top-[12px] right-[4px]">
+                    <IphoneMockUp
+                      tabletHeight={null}
+                      tabletWidth={null}
+                      height={"h-[310px]"}
+                      width={"w-[150px]"}
+                      url="/assets/images/insights.png"
+                    />
+                  </div>
+                  {/* diary phone */}
+                  <div className="] absolute top-[110px] left-[4px]">
+                    <IphoneMockUp
+                      tabletHeight={null}
+                      tabletWidth={null}
+                      height={"h-[310px]"}
+                      width={"w-[150px]"}
+                      url="/assets/images/diary.jpg"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </MainContainer>
       </section>
 
       <section
