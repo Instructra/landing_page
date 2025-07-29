@@ -186,7 +186,7 @@ export default async function Home() {
                 </div>
                 <div className="l:h-[400] relative h-72 w-full">
                   <div className="absolute top-[12px] right-[50%] translate-x-1/2">
-                    <div className="l:h-[500px] l:w-[490px] h-[404px] w-[200px]">
+                    <div className="l:h-[570px] l:w-[280px] h-[404px] w-[200px]">
                       <IphoneMockUp url="/assets/images/explore_view.jpg" />
                     </div>
                   </div>
@@ -235,7 +235,7 @@ export default async function Home() {
                   </div>
                 </div>
                 <div className="relative  w-full h-[300px] ">
-                  <div className="absolute top-[12px] tb:top-10 right-[50%] translate-x-1/2 l:h-[500px] l:w-[480px] h-[424px] w-[210px] ">
+                  <div className="absolute top-[12px] tb:top-10 right-[50%] translate-x-1/2 l:h-[570px] l:w-[280px] h-[424px] w-[210px] ">
                       <IphoneMockUp url="/assets/images/availability.png" />
                   </div>
                 </div>
@@ -256,13 +256,13 @@ export default async function Home() {
                 <div className="relative h-[300px] l:h-[400] w-full overflow-clip">
                   {/* booking dialog phone */}
                   <div className="ml:left-[24px]  absolute top-6 left-[4px]">
-                    <div className="l:h-[500] l:w-[260] h-[340px] w-[170px]">
+                    <div className="l:h-[495px] l:w-[244px] h-[340px] w-[170px]">
                       <IphoneMockUp url="/assets/images/take_lessons.jpg" />
                     </div>
                   </div>
                   {/* bookings phone */}
                   <div className="ml:right-[24px] absolute top-20 l:top-24 right-[4px]">
-                    <div className="l:h-[500] l:w-[260] h-[340px] w-[170px]">
+                    <div className="l:h-[495px] l:w-[244px] h-[340px] w-[170px]">
                       <IphoneMockUp url="/assets/images/bookings.png" />
                     </div>
                   </div>
@@ -285,13 +285,13 @@ export default async function Home() {
                 <div className="l:h-[400] relative  w-full h-[300px] overflow-clip ">
                   {/* insights phone */}
                   <div className="ml:right-[40px] l:right-14 tb:right-[168px] absolute top-[24px] right-[4px] ">
-                    <div className="l:h-[480px] l:w-[288px] h-[340px] w-[170px]">
-                      <IphoneMockUp url="/assets/images/insights.png" />
+                    <div className="l:h-[495px] l:w-[244px] h-[340px] w-[170px]">
+                      <IphoneMockUp url="/assets/images/insight.png" />
                     </div>
                   </div>
                   {/* diary phone */}
-                  <div className="ml:left-[40px] tb:left-[168px] absolute top-[110px] left-[4px] ">
-                    <div className="l:h-[480px] l:w-[288px] h-[340px] w-[170px]">
+                  <div className="ml:left-[40px] tb:left-[168px] l:left-[200px] absolute top-[110px] left-[4px] ">
+                    <div className="l:h-[495px] l:w-[244px] h-[340px] w-[170px]">
                       <IphoneMockUp url="/assets/images/diary.jpg" />
                     </div>
                   </div>
