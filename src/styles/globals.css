@@ -3,76 +3,88 @@
 
 @theme {
   --default-font-family: 'Geist';
-  --cards-bg:#f1f1f1;
-  --color-primary:#2575F5;
-  --color-white:#fff;
-  --color-text-primary:#151517;
+  --cards-bg: #f1f1f1;
+  --color-primary: #2575F5;
+  --color-white: #fff;
+  --color-text-primary: #151517;
   --color-text-secondary: #4d4d4d;
   --color-border: #000F2F;
   --color-card: #f1f1f1;
   /* brake points */
-  --breakpoint-mm:375px;
-  --breakpoint-ml:425px;
-  --breakpoint-tb:768px;
-  --breakpoint-l:1200px;
-  --breakpoint-ll:1440px;
+  --breakpoint-mm: 375px;
+  --breakpoint-ml: 425px;
+  --breakpoint-tb: 768px;
+  --breakpoint-l: 1200px;
+  --breakpoint-ll: 1440px;
   /* max weights */
   --max-sm: 18.75rem;
   --max-mm: 20.5rem;
   --max-ml: 25rem;
   --max-tb: 44rem;
-  --max-l:65rem;
+  --max-l: 65rem;
   --max-ll: 75rem;
   /* background colors */
-  --bg-white:#fff;
+  --bg-white: #fff;
 
 }
-@layer base{
-  *{
+
+@layer base {
+  * {
     color: #1a1a1a;
     margin: 0;
     padding: 0;
   }
-  html{
-      scroll-behavior: smooth;
+
+  html {
+    scroll-behavior: smooth;
   }
-  body{
+
+  .h-inherit {
+    height: inherit !important;
+  }
+
+  body {
     background-color: var(--bg-white);
     padding: 0px;
     margin: 0px;
   }
-  section{
-    background-color:var(--bg-white) ;
+
+  section {
+    background-color: var(--bg-white);
   }
-    /* hide-scrollbar.css */
-    .hide-scrollbar {
-      scrollbar-width: none;
-      /* Firefox */
-      -ms-overflow-style: none;
-      /* IE 10+ */
-    }
-  
-    .hide-scrollbar::-webkit-scrollbar {
-      display: none;
-      /* Chrome, Safari, Opera */
-    }
-  h1{
+
+  /* hide-scrollbar.css */
+  .hide-scrollbar {
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE 10+ */
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+    /* Chrome, Safari, Opera */
+  }
+
+  h1 {
     font-size: 80px;
     line-height: 88px;
     letter-spacing: -3px;
   }
-  .display-xl{
+
+  .display-xl {
     font-size: 80px;
   }
-  .display-l{
+
+  .display-l {
     font-size: 72px;
   }
-  .card-bg{
+
+  .card-bg {
     background-color: var(--cards-bg);
   }
 
-  section{
+  section {
     padding-top: 160px;
   }
 }
-

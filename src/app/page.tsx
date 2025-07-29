@@ -3,16 +3,16 @@ import { Buttons, ButtonType } from "./_components/Buttons";
 import Link from "next/link";
 import MainContainer from "./_components/MainContainer";
 import Slider from "./_components/Slider";
-import Image from "next/image";
 
 export default async function Home() {
   return (
     <main>
       <section id="home" className="flex flex-col items-center bg-white">
-        <div className="mm:w(--max-mm) ml:w-(--max-ml) tb:w-(--max-tb) tb:justify-center l:w-(--max-l) ll:w-(--max-ll) flex w-(--max-sm) flex-col pb-8">
-          <div className="l:grid-cols-5 tb:grid-rows-6 l:grid-rows-4 tb:gap-6 grid grid-cols-1 grid-rows-4">
-            <div className="tb:items-center tb:max-w-full tb:justify-center tb:row-span-1 l:col-span-3 l:col-start-1 l:row-span-4 l:row-end-4 l:items-start row-span-1 flex max-w-[620px] flex-col gap-4">
-              <h1 className="tb:text-center l:text-left l:text-7xl ll:text-8xl text-5xl">
+        <MainContainer>
+          <div className="l:grid-cols-5 tb:grid-rows-6 l:grid-rows-5 tb:gap-6 grid grid-cols-1 gap-6">
+            {/* top */}
+            <div className="tb:items-center tb:max-w-full tb:justify-center tb:row-span-2 tb:row-start-1 l:col-span-3 l:col-start-1 l:row-span-3 l:items-start row-span-1 flex max-w-[620px] flex-col gap-4">
+              <h1 className="tb:text-center l:text-left l:text-7xl ll:text-8xl tb:text-7xl tb:w-[620px] text-[44px]/12">
                 Book driving lessons instantly
               </h1>
               <p className="tb:text-center l:text-start max-w-[400px]">
@@ -20,7 +20,7 @@ export default async function Home() {
                 and verified instructors.
               </p>
             </div>
-            <div className="tb:flex-row tb:justify-center tb:items-center tb:row-start-2 l:row-start-4 l:row-span-2 l:col-start-1 l:col-span-3 l:justify-start tb:row-span-1 row-span-1 flex flex-col gap-4">
+            <div className="tb:flex-row tb:justify-center tb:items-center tb:row-start-3 l:row-start-4 l:row-span-1 l:col-start-1 l:col-span-3 l:justify-start tb:row-span-1 row-span-1 flex flex-col gap-4">
               <Buttons
                 text={"Join the wait list"}
                 buttonType={ButtonType.Primary}
@@ -32,28 +32,22 @@ export default async function Home() {
                 iconText={"arrow_right"}
               />
             </div>
-            <div className="tb:row-start-3 tb:row-span-4 l:row-start-1 l:row-span-6 l:col-start-4 l:col-span-2 row-span-3 row-start-3 flex justify-center">
-              <div className="">
-                <IphoneMockUp
-                  tabletHeight={null}
-                  tabletWidth={null}
-                  height={null}
-                  width={null}
-                  url="/assets/images/location.jpeg"
-                />
+            <div className="tb:row-start-4 tb:row-span-3 l:row-start-1 l:row-span-5 l:col-start-4 l:col-span-2 row-span-3 row-start-3 flex justify-center">
+              <div className="tb:h-[500px] tb:w-[300px] h-[340px] w-[170px]">
+                <IphoneMockUp url="/assets/images/location.jpeg" />
               </div>
             </div>
+            <div className="tb:flex l:justify-start l:items-end hidden justify-center">
+              <Link
+                href={"/#about"}
+                className="text-text-primary bg-card flex items-center justify-center rounded-full px-3 py-[4px]"
+              >
+                <span className="material-icons">keyboard_arrow_down</span>{" "}
+                Scroll down
+              </Link>
+            </div>
           </div>
-          <div className="tb:flex l:justify-start row-span-1 hidden justify-center">
-            <Link
-              href={"/#about"}
-              className="text-text-primary bg-card py-[4px flex items-center justify-center rounded-full px-3"
-            >
-              <span className="material-icons">keyboard_arrow_down</span> Scroll
-              down
-            </Link>
-          </div>
-        </div>
+        </MainContainer>
       </section>
 
       <section
@@ -70,13 +64,9 @@ export default async function Home() {
               {/* location */}
               <div className="bg-card tb:w-[340px] ll:w-[384px] l:w-[330px] relative flex h-[500px] w-[300px] flex-col items-center justify-start overflow-clip rounded-3xl p-8">
                 <div className="absolute top-[50%] right-[50%] h-[500px] w-[244px] translate-x-1/2">
-                  <IphoneMockUp
-                    tabletHeight={null}
-                    tabletWidth={null}
-                    height={"h-[500px]"}
-                    width={"w-[240px]"}
-                    url="/assets/images/location.jpeg"
-                  />
+                  <div className="h-[340px] w-[170px]">
+                    <IphoneMockUp url="/assets/images/location.jpeg" />
+                  </div>
                 </div>
                 <div className="flex flex-col gap-3">
                   <h2 className="text-2xl">
@@ -91,13 +81,9 @@ export default async function Home() {
               {/* realtime */}
               <div className="bg-card tb:w-[340px] ll:w-[384px] l:w-[330px] relative flex h-[500px] w-[300px] flex-col items-center justify-end overflow-clip rounded-3xl p-8">
                 <div className="absolute right-[50%] bottom-[50%] h-[500px] w-[244px] translate-x-1/2">
-                  <IphoneMockUp
-                    tabletHeight={null}
-                    tabletWidth={null}
-                    height={"h-[500px]"}
-                    width={"w-[240px]"}
-                    url="/assets/images/booking.jpeg"
-                  />
+                  <div className="h-[340px] w-[170px]">
+                    <IphoneMockUp url="/assets/images/booking.jpeg" />
+                  </div>
                 </div>
                 <div className="flex flex-col gap-3">
                   <h2 className="text-2xl">Real time calendar booking</h2>
@@ -110,13 +96,9 @@ export default async function Home() {
               {/* progress */}
               <div className="bg-card tb:w-[340px] ll:w-[384px] l:w-[330px] relative flex h-[500px] w-[300px] flex-col items-center justify-start overflow-clip rounded-3xl p-8">
                 <div className="absolute top-[50%] right-[50%] h-[500px] w-[244px] translate-x-1/2">
-                  <IphoneMockUp
-                    tabletHeight={null}
-                    tabletWidth={null}
-                    height={"h-[500px]"}
-                    width={"w-[240px]"}
-                    url="/assets/images/dairy.jpeg"
-                  />
+                  <div className="h-[340px] w-[170px]">
+                    <IphoneMockUp url="/assets/images/dairy.jpeg" />
+                  </div>
                 </div>
                 <div className="flex flex-col gap-3">
                   <h2 className="text-2xl">Visual driving progress tracker</h2>
@@ -210,16 +192,12 @@ export default async function Home() {
                 </div>
                 <div className="relative h-72 w-full overflow-clip">
                   <div className="absolute top-[12px] right-[50%] translate-x-1/2">
-                    <IphoneMockUp
-                      tabletHeight={null}
-                      tabletWidth={null}
-                      height={"h-[400px]"}
-                      width={"w-[200px]"}
-                      url="/assets/images/explore_view.jpg"
-                    />
+                    <div className="h-[345px] w-[170px]">
+                      <IphoneMockUp url="/assets/images/explore_view.jpg" />
+                    </div>
                   </div>
                   {/* chat bubble */}
-                  <div className="absolute top-[58px] right-2 flex items-center gap-1.5 rounded-[10px] bg-white px-2 py-1.5">
+                  <div className="tb:right-1/4 tb:top-[80px] absolute top-[58px] right-2 flex items-center gap-1.5 rounded-[10px] bg-white px-2 py-1.5">
                     <div className="relative h-7 w-7 rounded-full bg-[url('/assets/images/happy_female.jpg')] bg-cover">
                       <div className="absolute right-[-4px] bottom-0 flex h-4 w-4 items-center justify-center rounded-full bg-white p-0.5">
                         <div className="bg-primary relative flex h-full w-full items-center justify-center rounded-full">
@@ -235,7 +213,7 @@ export default async function Home() {
                     </div>
                   </div>
                   {/* male chat bubble */}
-                  <div className="absolute bottom-[58px] left-2 flex items-center gap-1.5 rounded-[10px] bg-white px-2 py-1.5">
+                  <div className="tb:left-1/4 tb:bottom-[80px] absolute bottom-[58px] left-2 flex items-center gap-1.5 rounded-[10px] bg-white px-2 py-1.5">
                     <div className="relative h-7 w-7 rounded-full bg-[url('/assets/images/user_1.jpeg')] bg-cover">
                       <div className="absolute right-[-4px] bottom-0 flex h-4 w-4 items-center justify-center rounded-full bg-white p-0.5">
                         <div className="bg-primary relative flex h-full w-full items-center justify-center rounded-full">
@@ -263,15 +241,11 @@ export default async function Home() {
                     </p>
                   </div>
                 </div>
-                <div className="relative h-72 w-full overflow-clip">
+                <div className="relative h-[320px] w-full overflow-clip">
                   <div className="absolute top-[12px] right-[50%] translate-x-1/2">
-                    <IphoneMockUp
-                      tabletHeight={null}
-                      tabletWidth={null}
-                      height={"h-[400px]"}
-                      width={"w-[200px]"}
-                      url="/assets/images/availability.png"
-                    />
+                    <div className="h-[340px] w-[170px]">
+                      <IphoneMockUp url="/assets/images/availability.png" />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -288,26 +262,18 @@ export default async function Home() {
                     </p>
                   </div>
                 </div>
-                <div className="relative h-[224px] w-full overflow-clip">
+                <div className="relative h-[320px] w-full overflow-clip">
                   {/* booking dialog phone */}
-                  <div className="absolute top-[12px] left-[4px]">
-                    <IphoneMockUp
-                      tabletHeight={null}
-                      tabletWidth={null}
-                      height={"h-[300px]"}
-                      width={"w-[160px]"}
-                      url="/assets/images/take_lessons.jpg"
-                    />
+                  <div className="ml:left-[24px] absolute top-[12px] left-[4px]">
+                    <div className="h-[340px] w-[170px]">
+                      <IphoneMockUp url="/assets/images/take_lessons.jpg" />
+                    </div>
                   </div>
                   {/* bookings phone */}
-                  <div className="absolute top-[60px] right-[4px]">
-                    <IphoneMockUp
-                      tabletHeight={null}
-                      tabletWidth={null}
-                      height={"h-[300px]"}
-                      width={"w-[160px]"}
-                      url="/assets/images/bookings.png"
-                    />
+                  <div className="ml:right-[24px] absolute top-[60px] right-[4px]">
+                    <div className="h-[340px] w-[170px]">
+                      <IphoneMockUp url="/assets/images/bookings.png" />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -325,24 +291,16 @@ export default async function Home() {
                 </div>
                 <div className="relative h-[280px] w-full overflow-clip">
                   {/* insights phone */}
-                  <div className="absolute top-[12px] right-[4px]">
-                    <IphoneMockUp
-                      tabletHeight={null}
-                      tabletWidth={null}
-                      height={"h-[310px]"}
-                      width={"w-[150px]"}
-                      url="/assets/images/insights.png"
-                    />
+                  <div className="ml:right-[40px] absolute top-[24px] right-[4px]">
+                    <div className="h-[340px] w-[170px]">
+                      <IphoneMockUp url="/assets/images/insights.png" />
+                    </div>
                   </div>
                   {/* diary phone */}
-                  <div className="] absolute top-[110px] left-[4px]">
-                    <IphoneMockUp
-                      tabletHeight={null}
-                      tabletWidth={null}
-                      height={"h-[310px]"}
-                      width={"w-[150px]"}
-                      url="/assets/images/diary.jpg"
-                    />
+                  <div className="ml:left-[40px] absolute top-[110px] left-[4px]">
+                    <div className="h-[340px] w-[170px]">
+                      <IphoneMockUp url="/assets/images/diary.jpg" />
+                    </div>
                   </div>
                 </div>
               </div>
