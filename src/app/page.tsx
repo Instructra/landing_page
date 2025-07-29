@@ -63,10 +63,8 @@ export default async function Home() {
               {/* cards */}
               {/* location */}
               <div className="bg-card tb:w-[340px] ll:w-[384px] l:w-[330px] relative flex h-[500px] w-[300px] flex-col items-center justify-start overflow-clip rounded-3xl p-8">
-                <div className="absolute top-[50%] right-[50%] h-[500px] w-[244px] translate-x-1/2">
-                  <div className="h-[340px] w-[170px]">
-                    <IphoneMockUp url="/assets/images/location.jpeg" />
-                  </div>
+                <div className="absolute top-[50%] right-[50%] h-[480px] w-[250px] translate-x-1/2">
+                  <IphoneMockUp url="/assets/images/location.jpeg" />
                 </div>
                 <div className="flex flex-col gap-3">
                   <h2 className="text-2xl">
@@ -80,10 +78,8 @@ export default async function Home() {
               </div>
               {/* realtime */}
               <div className="bg-card tb:w-[340px] ll:w-[384px] l:w-[330px] relative flex h-[500px] w-[300px] flex-col items-center justify-end overflow-clip rounded-3xl p-8">
-                <div className="absolute right-[50%] bottom-[50%] h-[500px] w-[244px] translate-x-1/2">
-                  <div className="h-[340px] w-[170px]">
-                    <IphoneMockUp url="/assets/images/booking.jpeg" />
-                  </div>
+                <div className="absolute right-[50%] bottom-[50%] h-[480px] w-[250px] translate-x-1/2">
+                  <IphoneMockUp url="/assets/images/booking.jpeg" />
                 </div>
                 <div className="flex flex-col gap-3">
                   <h2 className="text-2xl">Real time calendar booking</h2>
@@ -95,10 +91,8 @@ export default async function Home() {
               </div>
               {/* progress */}
               <div className="bg-card tb:w-[340px] ll:w-[384px] l:w-[330px] relative flex h-[500px] w-[300px] flex-col items-center justify-start overflow-clip rounded-3xl p-8">
-                <div className="absolute top-[50%] right-[50%] h-[500px] w-[244px] translate-x-1/2">
-                  <div className="h-[340px] w-[170px]">
-                    <IphoneMockUp url="/assets/images/dairy.jpeg" />
-                  </div>
+                <div className="absolute top-[50%] right-[50%] h-[480px] w-[250px] translate-x-1/2">
+                  <IphoneMockUp url="/assets/images/dairy.jpeg" />
                 </div>
                 <div className="flex flex-col gap-3">
                   <h2 className="text-2xl">Visual driving progress tracker</h2>
