@@ -286,7 +286,7 @@ export default async function Home() {
                   {/* insights phone */}
                   <div className="ml:right-[40px] l:right-14 tb:right-[168px] absolute top-[24px] right-[4px] ">
                     <div className="l:h-[495px] l:w-[244px] h-[340px] w-[170px]">
-                      <IphoneMockUp url="/assets/images/insight.png" />
+                      <IphoneMockUp url="/assets/images/Insights_view.png" />
                     </div>
                   </div>
                   {/* diary phone */}
