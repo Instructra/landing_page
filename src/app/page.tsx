@@ -33,7 +33,7 @@ export default async function Home() {
               />
             </div>
             <div className="tb:row-start-4 tb:row-span-3 l:row-start-1 l:row-span-5 l:col-start-4 l:col-span-2 row-span-3 row-start-3 flex justify-center">
-              <div className="tb:h-[500px] tb:w-[300px] h-[340px] w-[170px]">
+              <div className="tb:h-[480px] tb:w-[350px] h-[340px] w-[180px]">
                 <IphoneMockUp url="/assets/images/location.jpeg" />
               </div>
             </div>
@@ -155,25 +155,25 @@ export default async function Home() {
             {/* how it works grid */}
             <div className="tb:grid-cols-2 tb:grid-row-5 grid w-full grid-cols-1 gap-6">
               {/* search nearby instructor */}
-              <div className="tb:col-span-2 tb:row-span-2 flex w-full flex-col gap-8 rounded-3xl bg-white px-6 pt-8">
-                <div className="flex flex-col gap-4">
-                  <div className="relative h-7 w-full">
-                    <div className="absolute top-0 left-[96px] h-8 w-8 rounded-full bg-[url('/assets/images/user_4.jpeg')] bg-cover"></div>
-                    <div className="absolute top-0 left-[72px] h-8 w-8 rounded-full bg-white p-0.5">
+              <div className="tb:col-span-2 tb:row-span-2 l:flex-row tb:px-16 flex w-full flex-col gap-8 overflow-clip rounded-3xl bg-white px-6 pt-8">
+                <div className="l:gap-6 flex flex-col gap-4">
+                  <div className="l:h-12 relative h-8 w-full">
+                    <div className="l:h-12 l:w-12 absolute top-0 left-[96px] h-8 w-8 rounded-full bg-[url('/assets/images/user_4.jpeg')] bg-cover"></div>
+                    <div className="l:h-12 l:w-12 absolute top-0 left-[72px] h-8 w-8 rounded-full bg-white p-0.5">
                       <div className="h-full w-full overflow-clip rounded-full bg-[url('/assets/images/user_3.jpeg')] bg-cover"></div>
                     </div>
-                    <div className="absolute top-0 left-12 h-8 w-8 rounded-full bg-white p-0.5">
+                    <div className="l:h-12 l:w-12 absolute top-0 left-12 h-8 w-8 rounded-full bg-white p-0.5">
                       <div className="h-full w-full overflow-clip rounded-full bg-[url('/assets/images/user_2.jpeg')] bg-cover"></div>
                     </div>
-                    <div className="absolute top-0 left-6 h-8 w-8 rounded-full bg-white p-0.5">
+                    <div className="l:h-12 l:w-12 absolute top-0 left-6 h-8 w-8 rounded-full bg-white p-0.5">
                       <div className="h-full w-full overflow-clip rounded-full bg-[url('/assets/images/user_1.jpeg')] bg-cover"></div>
                     </div>
-                    <div className="r absolute top-0 left-0 h-8 w-8 rounded-full">
+                    <div className="l:h-12 l:w-12 absolute top-0 left-0 h-8 w-8 rounded-full">
                       <div className="h-full w-full overflow-clip rounded-full bg-[url('/assets/images/user_icon.png')] bg-cover"></div>
                     </div>
                   </div>
-                  <div className="flex flex-col gap-3">
-                    <h3 className="text-2xl font-medium">
+                  <div className="l:w-[340px] flex flex-col gap-3">
+                    <h3 className="l:text-3xl text-2xl font-medium">
                       Search nearby Instructors
                     </h3>
                     <p className="text-text-secondary">
@@ -184,9 +184,9 @@ export default async function Home() {
                     </p>
                   </div>
                 </div>
-                <div className="relative h-72 w-full overflow-clip">
+                <div className="l:h-[400] relative h-72 w-full">
                   <div className="absolute top-[12px] right-[50%] translate-x-1/2">
-                    <div className="h-[345px] w-[170px]">
+                    <div className="l:h-[500px] l:w-[490px] h-[404px] w-[200px]">
                       <IphoneMockUp url="/assets/images/explore_view.jpg" />
                     </div>
                   </div>
@@ -225,26 +225,23 @@ export default async function Home() {
                 </div>
               </div>
               {/* check availability */}
-              <div className="tb:row-start-3 tb:row-span-1 flex w-full flex-col gap-8 rounded-3xl bg-white px-6 pt-8">
+              <div className="tb:row-start-3 tb:row-span-1 l:px-16 flex w-full flex-col gap-8 rounded-3xl bg-white px-6 pt-8 overflow-clip">
                 <div className="flex flex-col gap-4">
                   <div className="flex flex-col gap-3">
                     <h3 className="text-2xl font-medium">Check availability</h3>
                     <p className="text-text-secondary">
-                      Receive instant bookings, manage lessons, and grow your
-                      client base seamlessly.
+                      Receive instant bookings, manage lessons, and grow your client base seamlessly.
                     </p>
                   </div>
                 </div>
-                <div className="relative h-[320px] w-full overflow-clip">
-                  <div className="absolute top-[12px] right-[50%] translate-x-1/2">
-                    <div className="h-[340px] w-[170px]">
+                <div className="relative  w-full h-[300px] ">
+                  <div className="absolute top-[12px] tb:top-10 right-[50%] translate-x-1/2 l:h-[500px] l:w-[480px] h-[424px] w-[210px] ">
                       <IphoneMockUp url="/assets/images/availability.png" />
-                    </div>
                   </div>
                 </div>
               </div>
               {/* book and take lessons */}
-              <div className="tb:row-start-3 tb:row-span-1 tb:col-start-2 flex w-full flex-col gap-8 rounded-3xl bg-white px-6 pt-8">
+              <div className="tb:row-start-3 tb:row-span-1 tb:col-start-2 l:px-16 flex w-full flex-col gap-8 rounded-3xl bg-white px-6 pt-8">
                 <div className="flex flex-col gap-4">
                   <div className="flex flex-col gap-3">
                     <h3 className="text-2xl font-medium">
@@ -256,26 +253,28 @@ export default async function Home() {
                     </p>
                   </div>
                 </div>
-                <div className="relative h-[320px] w-full overflow-clip">
+                <div className="relative h-[300px] l:h-[400] w-full overflow-clip">
                   {/* booking dialog phone */}
-                  <div className="ml:left-[24px] absolute top-[12px] left-[4px]">
-                    <div className="h-[340px] w-[170px]">
+                  <div className="ml:left-[24px]  absolute top-6 left-[4px]">
+                    <div className="l:h-[500] l:w-[260] h-[340px] w-[170px]">
                       <IphoneMockUp url="/assets/images/take_lessons.jpg" />
                     </div>
                   </div>
                   {/* bookings phone */}
-                  <div className="ml:right-[24px] absolute top-[60px] right-[4px]">
-                    <div className="h-[340px] w-[170px]">
+                  <div className="ml:right-[24px] absolute top-20 l:top-24 right-[4px]">
+                    <div className="l:h-[500] l:w-[260] h-[340px] w-[170px]">
                       <IphoneMockUp url="/assets/images/bookings.png" />
                     </div>
                   </div>
                 </div>
               </div>
               {/* tracking progress */}
-              <div className="tb:col-span-2 tb:row-span-2 flex w-full flex-col gap-8 rounded-3xl bg-white px-6 pt-8">
-                <div className="flex flex-col gap-4">
+              <div className="tb:col-span-2 tb:row-span-2 l:flex-row tb:px-16 flex w-full flex-col gap-8 rounded-3xl bg-white px-6 pt-8">
+                <div className="l:w-[400] l:justify-center flex flex-col gap-4 ll:w-[500]">
                   <div className="flex flex-col gap-3">
-                    <h3 className="text-2xl font-medium">Track progress </h3>
+                    <h3 className="l:text-3xl text-2xl font-medium">
+                      Track progress{" "}
+                    </h3>
                     <p className="text-text-secondary">
                       Stay on top of your learning journey. Track completed
                       lessons, upcoming bookings, and skill milestones—all in
@@ -283,16 +282,16 @@ export default async function Home() {
                     </p>
                   </div>
                 </div>
-                <div className="relative h-[280px] w-full overflow-clip">
+                <div className="l:h-[400] relative  w-full h-[300px] overflow-clip ">
                   {/* insights phone */}
-                  <div className="ml:right-[40px] absolute top-[24px] right-[4px]">
-                    <div className="h-[340px] w-[170px]">
+                  <div className="ml:right-[40px] l:right-14 tb:right-[168px] absolute top-[24px] right-[4px] ">
+                    <div className="l:h-[480px] l:w-[288px] h-[340px] w-[170px]">
                       <IphoneMockUp url="/assets/images/insights.png" />
                     </div>
                   </div>
                   {/* diary phone */}
-                  <div className="ml:left-[40px] absolute top-[110px] left-[4px]">
-                    <div className="h-[340px] w-[170px]">
+                  <div className="ml:left-[40px] tb:left-[168px] absolute top-[110px] left-[4px] ">
+                    <div className="l:h-[480px] l:w-[288px] h-[340px] w-[170px]">
                       <IphoneMockUp url="/assets/images/diary.jpg" />
                     </div>
                   </div>
