@@ -3,7 +3,6 @@ import { Buttons, ButtonType } from "./_components/Buttons";
 import Link from "next/link";
 import MainContainer from "./_components/MainContainer";
 import Slider from "./_components/Slider";
-import Image from "next/image";
 import HandMockUp from "./_components/HandMockUP";
 export default async function Home() {
   return (
