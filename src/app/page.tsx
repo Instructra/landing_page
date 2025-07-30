@@ -3,7 +3,8 @@ import { Buttons, ButtonType } from "./_components/Buttons";
 import Link from "next/link";
 import MainContainer from "./_components/MainContainer";
 import Slider from "./_components/Slider";
-
+import Image from "next/image";
+import HandMockUp from "./_components/HandMockUP";
 export default async function Home() {
   return (
     <main>
@@ -158,14 +159,14 @@ export default async function Home() {
               <div className="tb:col-span-2 tb:row-span-2 l:flex-row tb:px-16 flex w-full flex-col gap-8 overflow-clip rounded-3xl bg-white px-6 pt-8">
                 <div className="l:gap-6 flex flex-col gap-4">
                   <div className="l:h-12 relative h-8 w-full">
-                    <div className="l:h-12 l:w-12 absolute top-0 left-[96px] h-8 w-8 rounded-full bg-[url('/assets/images/user_4.jpeg')] bg-cover"></div>
-                    <div className="l:h-12 l:w-12 absolute top-0 left-[72px] h-8 w-8 rounded-full bg-white p-0.5">
+                    <div className="l:h-12 l:w-12 l:left-[160] absolute top-0 left-[96px] h-8 w-8 rounded-full bg-[url('/assets/images/user_4.jpeg')] bg-cover"></div>
+                    <div className="l:h-12 l:w-12 l:left-[120] absolute top-0 left-[72px] h-8 w-8 rounded-full bg-white p-0.5">
                       <div className="h-full w-full overflow-clip rounded-full bg-[url('/assets/images/user_3.jpeg')] bg-cover"></div>
                     </div>
-                    <div className="l:h-12 l:w-12 absolute top-0 left-12 h-8 w-8 rounded-full bg-white p-0.5">
+                    <div className="l:h-12 l:w-12 l:left-[80] absolute top-0 left-[48px] h-8 w-8 rounded-full bg-white p-0.5">
                       <div className="h-full w-full overflow-clip rounded-full bg-[url('/assets/images/user_2.jpeg')] bg-cover"></div>
                     </div>
-                    <div className="l:h-12 l:w-12 absolute top-0 left-6 h-8 w-8 rounded-full bg-white p-0.5">
+                    <div className="l:h-12 l:w-12 l:left-[40] absolute top-0 left-6 h-8 w-8 rounded-full bg-white p-0.5">
                       <div className="h-full w-full overflow-clip rounded-full bg-[url('/assets/images/user_1.jpeg')] bg-cover"></div>
                     </div>
                     <div className="l:h-12 l:w-12 absolute top-0 left-0 h-8 w-8 rounded-full">
@@ -225,18 +226,19 @@ export default async function Home() {
                 </div>
               </div>
               {/* check availability */}
-              <div className="tb:row-start-3 tb:row-span-1 l:px-16 flex w-full flex-col gap-8 rounded-3xl bg-white px-6 pt-8 overflow-clip">
+              <div className="tb:row-start-3 tb:row-span-1 l:px-16 flex w-full flex-col gap-8 overflow-clip rounded-3xl bg-white px-6 pt-8">
                 <div className="flex flex-col gap-4">
                   <div className="flex flex-col gap-3">
                     <h3 className="text-2xl font-medium">Check availability</h3>
                     <p className="text-text-secondary">
-                      Receive instant bookings, manage lessons, and grow your client base seamlessly.
+                      Receive instant bookings, manage lessons, and grow your
+                      client base seamlessly.
                     </p>
                   </div>
                 </div>
-                <div className="relative  w-full h-[300px] ">
-                  <div className="absolute top-[12px] tb:top-10 right-[50%] translate-x-1/2 l:h-[570px] l:w-[280px] h-[424px] w-[210px] ">
-                      <IphoneMockUp url="/assets/images/availability.png" />
+                <div className="relative h-[300px] w-full">
+                  <div className="tb:top-10 l:h-[570px] l:w-[280px] absolute top-[12px] right-[50%] h-[424px] w-[210px] translate-x-1/2">
+                    <IphoneMockUp url="/assets/images/availability.png" />
                   </div>
                 </div>
               </div>
@@ -253,15 +255,15 @@ export default async function Home() {
                     </p>
                   </div>
                 </div>
-                <div className="relative h-[300px] l:h-[400] w-full overflow-clip">
+                <div className="l:h-[400] relative h-[300px] w-full overflow-clip">
                   {/* booking dialog phone */}
-                  <div className="ml:left-[24px]  absolute top-6 left-[4px]">
+                  <div className="ml:left-[24px] absolute top-6 left-[4px]">
                     <div className="l:h-[495px] l:w-[244px] h-[340px] w-[170px]">
                       <IphoneMockUp url="/assets/images/take_lessons.jpg" />
                     </div>
                   </div>
                   {/* bookings phone */}
-                  <div className="ml:right-[24px] absolute top-20 l:top-24 right-[4px]">
+                  <div className="ml:right-[24px] l:top-24 absolute top-20 right-[4px]">
                     <div className="l:h-[495px] l:w-[244px] h-[340px] w-[170px]">
                       <IphoneMockUp url="/assets/images/bookings.png" />
                     </div>
@@ -270,7 +272,7 @@ export default async function Home() {
               </div>
               {/* tracking progress */}
               <div className="tb:col-span-2 tb:row-span-2 l:flex-row tb:px-16 flex w-full flex-col gap-8 rounded-3xl bg-white px-6 pt-8">
-                <div className="l:w-[400] l:justify-center flex flex-col gap-4 ll:w-[500]">
+                <div className="l:w-[400] l:justify-center ll:w-[500] flex flex-col gap-4">
                   <div className="flex flex-col gap-3">
                     <h3 className="l:text-3xl text-2xl font-medium">
                       Track progress{" "}
@@ -282,15 +284,15 @@ export default async function Home() {
                     </p>
                   </div>
                 </div>
-                <div className="l:h-[400] relative  w-full h-[300px] overflow-clip ">
+                <div className="l:h-[400] relative h-[300px] w-full overflow-clip">
                   {/* insights phone */}
-                  <div className="ml:right-[40px] l:right-14 tb:right-[168px] absolute top-[24px] right-[4px] ">
+                  <div className="ml:right-[40px] l:right-14 tb:right-[168px] absolute top-[24px] right-[4px]">
                     <div className="l:h-[495px] l:w-[244px] h-[340px] w-[170px]">
                       <IphoneMockUp url="/assets/images/Insights_view.png" />
                     </div>
                   </div>
                   {/* diary phone */}
-                  <div className="ml:left-[40px] tb:left-[168px] l:left-[200px] absolute top-[110px] left-[4px] ">
+                  <div className="ml:left-[40px] tb:left-[168px] l:left-[200px] absolute top-[110px] left-[4px]">
                     <div className="l:h-[495px] l:w-[244px] h-[340px] w-[170px]">
                       <IphoneMockUp url="/assets/images/diary.jpg" />
                     </div>
@@ -303,10 +305,53 @@ export default async function Home() {
       </section>
 
       <section
-        id="contact"
-        className="flex h-screen items-center justify-center bg-white"
+        id="join_wait_list"
+        className="bg-card flex min-h-screen justify-center"
       >
-        <h2 className="text-4xl font-semibold">Contact Section</h2>
+        <MainContainer>
+          <div className="l:flex-row l:px-20 l:p-0 l:justify-between flex flex-col items-center overflow-clip rounded-3xl bg-white px-6 pt-12">
+            {/* text area */}
+            <div className="l:w-[556] flex flex-col gap-6">
+              <div className="tb:items-center l:items-start flex flex-col gap-3">
+                <h2 className="tb:font-medium tb:text-6xl l:text-start text-center text-4xl font-semibold">
+                  Get in line for early access.
+                </h2>
+                <p className="text-text-secondary tb:w-[530] tb:text-center tb:text-[20px]/7 l:text-start text-sm font-light">
+                  Be among the first to experience the future of driving
+                  lessons, join the waitlist to reserve your spot today!
+                </p>
+              </div>
+              <div className="tb:flex-row tb:justify-center l:justify-start l:items-center flex flex-col gap-6">
+                {/* list of icons */}
+                <div className="l:h-9 l:w-[180] relative flex h-12 w-[240px] justify-center">
+                  <div className="l:w-9 l:h-9 absolute left-0 h-12 w-12 rounded-full bg-[url('/assets/images/wait_1.jpg')] bg-cover"></div>
+                  <div className="l:w-9 l:h-9 l:left-[32] absolute left-[44] h-12 w-12 rounded-full  bg-[url('/assets/images/wait_2.jpg')] bg-cover"></div>
+                  <div className="l:w-9 l:h-9 l:left-[64] absolute left-[88] h-12 w-12 rounded-full  bg-[url('/assets/images/wait_3.jpg')] bg-cover"></div>
+                  <div className="l:w-9 l:h-9 l:left-[96] absolute left-[132] h-12 w-12 rounded-full bg-[url('/assets/images/wait_4.jpg')] bg-cover"></div>
+                  <div className="l:w-9 l:h-9 l:left-[128] absolute left-[176] h-12 w-12 rounded-full  bg-[url('/assets/images/wait_5.jpg')] bg-cover"></div>
+                </div>
+                <Buttons
+                  text={"Join the wait-list"}
+                  buttonType={ButtonType.Primary}
+                  iconText={null}
+                ></Buttons>
+              </div>
+            </div>
+            {/* image area */}
+            <div className="tb-[540px] tb:w-[345px] relative h-[360px] w-[230px]">
+              <div className="h-inherit w-inherit l:top-0 absolute top-16">
+                <HandMockUp />
+              </div>
+            </div>
+          </div>
+        </MainContainer>
+      </section>
+      <section id="contact" className="flex h-screen justify-center bg-white">
+        <MainContainer>
+          <h2 className="text-center text-4xl font-semibold">
+            Contact Section
+          </h2>
+        </MainContainer>
       </section>
     </main>
   );

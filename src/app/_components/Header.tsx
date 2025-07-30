@@ -61,7 +61,8 @@ export default function Header() {
           <Link href={"/#about"}>About</Link>
           <Link href={"/#how"}>How it works</Link>
           <Link href={"/#contact"}>Contact us</Link>
-          <Link href={"/referral"}>Referral programme</Link>
+          {/* //Todo referral program will be added. */}
+          {/* <Link href={"/referral"}>Referral programme</Link> */}
         </div>
 
         <button className="l:inline bg-primary hidden rounded-4xl px-6 py-3 text-white">

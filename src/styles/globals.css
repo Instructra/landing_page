@@ -42,6 +42,9 @@
   .h-inherit {
     height: inherit !important;
   }
+  .w-inherit {
+    width: inherit !important;
+  }
 
   body {
     background-color: var(--bg-white);
