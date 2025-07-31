@@ -11,6 +11,8 @@
   --color-border: #000F2F;
   --color-card: #f1f1f1;
   --color-dark-bg: #151517;
+  --color-dart-input-bg: #363636;
+  --color-placeholder: #AFAFAF;
   /* brake points */
   --breakpoint-mm: 375px;
   --breakpoint-ml: 425px;
@@ -43,6 +45,7 @@
   .h-inherit {
     height: inherit !important;
   }
+
   .w-inherit {
     width: inherit !important;
   }

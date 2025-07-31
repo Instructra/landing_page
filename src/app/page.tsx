@@ -25,11 +25,13 @@ export default async function Home() {
                 text={"Join the wait list"}
                 buttonType={ButtonType.Primary}
                 iconText={null}
+                classNames={null}
               />
               <Buttons
                 text={"What is Instructra"}
                 buttonType={ButtonType.Secondary}
                 iconText={"arrow_right"}
+                classNames={null}
               />
             </div>
             <div className="tb:row-start-4 tb:row-span-3 l:row-start-1 l:row-span-5 l:col-start-4 l:col-span-2 row-span-3 row-start-3 flex justify-center">
@@ -149,6 +151,7 @@ export default async function Home() {
                 text={"What is Instructra"}
                 buttonType={ButtonType.Secondary}
                 iconText={"arrow_right"}
+                classNames={null}
               />
             </div>
 
@@ -324,15 +327,16 @@ export default async function Home() {
                 {/* list of icons */}
                 <div className="l:h-9 l:w-[180] relative flex h-12 w-[240px] justify-center">
                   <div className="l:w-9 l:h-9 absolute left-0 h-12 w-12 rounded-full bg-[url('/assets/images/wait_1.jpg')] bg-cover"></div>
-                  <div className="l:w-9 l:h-9 l:left-[32] absolute left-[44] h-12 w-12 rounded-full  bg-[url('/assets/images/wait_2.jpg')] bg-cover"></div>
-                  <div className="l:w-9 l:h-9 l:left-[64] absolute left-[88] h-12 w-12 rounded-full  bg-[url('/assets/images/wait_3.jpg')] bg-cover"></div>
+                  <div className="l:w-9 l:h-9 l:left-[32] absolute left-[44] h-12 w-12 rounded-full bg-[url('/assets/images/wait_2.jpg')] bg-cover"></div>
+                  <div className="l:w-9 l:h-9 l:left-[64] absolute left-[88] h-12 w-12 rounded-full bg-[url('/assets/images/wait_3.jpg')] bg-cover"></div>
                   <div className="l:w-9 l:h-9 l:left-[96] absolute left-[132] h-12 w-12 rounded-full bg-[url('/assets/images/wait_4.jpg')] bg-cover"></div>
-                  <div className="l:w-9 l:h-9 l:left-[128] absolute left-[176] h-12 w-12 rounded-full  bg-[url('/assets/images/wait_5.jpg')] bg-cover"></div>
+                  <div className="l:w-9 l:h-9 l:left-[128] absolute left-[176] h-12 w-12 rounded-full bg-[url('/assets/images/wait_5.jpg')] bg-cover"></div>
                 </div>
                 <Buttons
                   text={"Join the wait-list"}
                   buttonType={ButtonType.Primary}
                   iconText={null}
+                  classNames={null}
                 ></Buttons>
               </div>
             </div>
@@ -345,7 +349,6 @@ export default async function Home() {
           </div>
         </MainContainer>
       </section>
-   
     </main>
   );
 }

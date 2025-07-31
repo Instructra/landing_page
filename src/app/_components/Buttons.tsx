@@ -8,9 +8,15 @@ export interface IButtonProps {
   text: string | null;
   buttonType: ButtonType;
   iconText: string | null;
+  classNames: string | null;
 }
 
-export function Buttons({ text, buttonType, iconText }: IButtonProps) {
+export function Buttons({
+  text,
+  buttonType,
+  iconText,
+  classNames,
+}: IButtonProps) {
   let variantClasses = "";
 
   switch (buttonType) {
@@ -29,7 +35,7 @@ export function Buttons({ text, buttonType, iconText }: IButtonProps) {
 
   return (
     <button
-      className={`${variantClasses} flex justify-center rounded-full px-6 py-3`}
+      className={`${variantClasses} flex justify-center rounded-full px-6 py-3 ${classNames}`}
     >
       {buttonType == ButtonType.Secondary || buttonType == ButtonType.Other ? (
         <span className="material-icons">{iconText}</span>
