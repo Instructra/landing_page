@@ -37,12 +37,8 @@ export default function RootLayout({
           <SideNav />
           <TRPCReactProvider>{children}</TRPCReactProvider>
         </YieldLayoutWrapper>
-         <footer>
         <Footer />
-      </footer>
       </body>
-      {/* footer */}
-     
     </html>
   );
 }
