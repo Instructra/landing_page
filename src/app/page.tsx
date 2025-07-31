@@ -345,13 +345,7 @@ export default async function Home() {
           </div>
         </MainContainer>
       </section>
-      <section id="contact" className="flex h-screen justify-center bg-white">
-        <MainContainer>
-          <h2 className="text-center text-4xl font-semibold">
-            Contact Section
-          </h2>
-        </MainContainer>
-      </section>
+   
     </main>
   );
 }
