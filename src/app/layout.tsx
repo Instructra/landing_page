@@ -36,8 +36,8 @@ export default function RootLayout({
           <Header />
           <SideNav />
           <TRPCReactProvider>{children}</TRPCReactProvider>
+          <Footer />
         </YieldLayoutWrapper>
-        <Footer />
       </body>
     </html>
   );
