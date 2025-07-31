@@ -7,6 +7,7 @@ import { TRPCReactProvider } from "~/trpc/react";
 import Header from "./_components/Header";
 import SideNav from "./_components/SideNav";
 import YieldLayoutWrapper from "./_components/YieldLayoutWrapper";
+import Footer from "./_components/Footer";
 
 export const metadata: Metadata = {
   title: "Instructra",
@@ -36,8 +37,12 @@ export default function RootLayout({
           <SideNav />
           <TRPCReactProvider>{children}</TRPCReactProvider>
         </YieldLayoutWrapper>
+         <footer>
+        <Footer />
+      </footer>
       </body>
       {/* footer */}
+     
     </html>
   );
 }
