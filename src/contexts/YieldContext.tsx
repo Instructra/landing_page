@@ -1,42 +1,56 @@
 "use client";
 
-import { createContext, useContext, useState } from "react";
+import {
+  createContext,
+  useContext,
+  useState,
+  type ReactNode,
+  type Dispatch,
+  type SetStateAction,
+} from "react";
 
 type YieldContextType = {
   headerHeight: number;
-  setHeaderHeight: (h: number) => void;
+  setHeaderHeight: Dispatch<SetStateAction<number>>;
+  navWidth: number;
+  setNavWidth: Dispatch<SetStateAction<number>>;
   isSideNavOpen: boolean;
   toggleSideNav: () => void;
   closeSideNav: () => void;
-  navWidth: number;
-  setNavWidth: (h: number) => void;
+
+  videoUrl: string | null;
+  openVideo: (url: string) => void;
+  closeVideo: () => void;
 };
 
 const YieldContext = createContext<YieldContextType | null>(null);
 
-export function YieldContextProvider({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export function YieldContextProvider({ children }: { children: ReactNode }) {
   const [headerHeight, setHeaderHeight] = useState(0);
   const [navWidth, setNavWidth] = useState(0);
-
   const [isSideNavOpen, setIsSideNavOpen] = useState(false);
+  const [videoUrl, setVideoUrl] = useState<string | null>(null);
 
   const toggleSideNav = () => setIsSideNavOpen((prev) => !prev);
   const closeSideNav = () => setIsSideNavOpen(false);
+
+  // ✅ Simple video control
+  const openVideo = (url: string) => setVideoUrl(url);
+  const closeVideo = () => setVideoUrl(null);
 
   return (
     <YieldContext.Provider
       value={{
         headerHeight,
         setHeaderHeight,
+        navWidth,
+        setNavWidth,
         isSideNavOpen,
         toggleSideNav,
         closeSideNav,
-        navWidth,
-        setNavWidth,
+        videoUrl,
+        openVideo,
+        closeVideo,
       }}
     >
       {children}
@@ -45,8 +59,8 @@ export function YieldContextProvider({
 }
 
 export function useYieldContext() {
-  const ctx = useContext(YieldContext);
-  if (!ctx)
-    throw new Error("YieldContext must be used within YieldContextProvider");
-  return ctx;
+  const context = useContext(YieldContext);
+  if (!context)
+    throw new Error("useYieldContext must be used inside YieldContextProvider");
+  return context;
 }
