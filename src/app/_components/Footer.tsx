@@ -113,11 +113,6 @@ export default function Footer() {
             {/* banner group */}
           </div>
         </MainContainer>
-        <div>
-          <p className="tb:pt-14 tb:text-[150px]/[170px] l:text-[246px] pt-4 text-center text-7xl text-white">
-            Instructra
-          </p>
-        </div>
       </section>
     </footer>
   );
