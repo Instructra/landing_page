@@ -1,3 +1,5 @@
+import type { MouseEventHandler } from "react";
+
 export enum ButtonType {
   Primary = "PRIMARY",
   Secondary = "SECONDARY",
@@ -5,10 +7,11 @@ export enum ButtonType {
 }
 
 export interface IButtonProps {
-  text: string | null;
+  text?: string | null;
   buttonType: ButtonType;
-  iconText: string | null;
-  classNames: string | null;
+  iconText?: string | null;
+  classNames?: string | null;
+  clickEvent?: MouseEventHandler<HTMLButtonElement> | null;
 }
 
 export function Buttons({
@@ -16,6 +19,7 @@ export function Buttons({
   buttonType,
   iconText,
   classNames,
+  clickEvent,
 }: IButtonProps) {
   let variantClasses = "";
 
@@ -35,13 +39,13 @@ export function Buttons({
 
   return (
     <button
-      className={`${variantClasses} flex justify-center rounded-full px-6 py-3 ${classNames}`}
+      className={`${variantClasses} flex items-center justify-center rounded-full px-6 py-3 ${classNames ?? ""}`}
+      onClick={clickEvent ?? undefined}
     >
-      {buttonType == ButtonType.Secondary || buttonType == ButtonType.Other ? (
-        <span className="material-icons">{iconText}</span>
-      ) : null}
-
-      {text}
+      {(buttonType === ButtonType.Secondary ||
+        buttonType === ButtonType.Other) &&
+        !!iconText && <span className="material-icons mr-2">{iconText}</span>}
+      {!!text && text}
     </button>
   );
 }
