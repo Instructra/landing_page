@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+@plugin "@iconify/tailwind4";
 
 @theme {
   --default-font-family: 'Geist';
