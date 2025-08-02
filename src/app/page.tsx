@@ -4,7 +4,8 @@ import Link from "next/link";
 import MainContainer from "./_components/MainContainer";
 import Slider from "./_components/Slider";
 import HandMockUp from "./_components/HandMockUP";
-export default async function Home() {
+import HomeCallToAction from "./_components/HomeCallToAction";
+export default function Home() {
   return (
     <main>
       <section id="home" className="flex flex-col items-center bg-white">
@@ -20,20 +21,7 @@ export default async function Home() {
                 and verified instructors.
               </p>
             </div>
-            <div className="tb:flex-row tb:justify-center tb:items-center tb:row-start-3 l:row-start-4 l:row-span-1 l:col-start-1 l:col-span-3 l:justify-start tb:row-span-1 row-span-1 flex flex-col gap-4">
-              <Buttons
-                text={"Join the wait list"}
-                buttonType={ButtonType.Primary}
-                iconText={null}
-                classNames={null}
-              />
-              <Buttons
-                text={"What is Instructra"}
-                buttonType={ButtonType.Secondary}
-                iconText={"arrow_right"}
-                classNames={null}
-              />
-            </div>
+            <HomeCallToAction />
             <div className="tb:row-start-4 tb:row-span-3 l:row-start-1 l:row-span-5 l:col-start-4 l:col-span-2 row-span-3 row-start-3 flex justify-center">
               <div className="tb:h-[490px] tb:w-[240px] h-[345px] w-[170px]">
                 <IphoneMockUp url="/assets/images/location.jpeg" />
@@ -152,6 +140,7 @@ export default async function Home() {
                 buttonType={ButtonType.Secondary}
                 iconText={"arrow_right"}
                 classNames={null}
+                clickEvent={null}
               />
             </div>
 
@@ -337,6 +326,7 @@ export default async function Home() {
                   buttonType={ButtonType.Primary}
                   iconText={null}
                   classNames={null}
+                  clickEvent={null}
                 ></Buttons>
               </div>
             </div>
