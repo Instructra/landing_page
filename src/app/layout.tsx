@@ -8,6 +8,7 @@ import Header from "./_components/Header";
 import SideNav from "./_components/SideNav";
 import YieldLayoutWrapper from "./_components/YieldLayoutWrapper";
 import Footer from "./_components/Footer";
+import VideoPlayer from "./_components/VideoPlayer";
 
 export const metadata: Metadata = {
   title: "Instructra",
@@ -33,6 +34,8 @@ export default function RootLayout({
       </head>
       <body>
         <YieldLayoutWrapper>
+          <VideoPlayer />
+
           <Header />
           <SideNav />
           <TRPCReactProvider>{children}</TRPCReactProvider>
