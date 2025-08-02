@@ -5,6 +5,7 @@ import MainContainer from "./_components/MainContainer";
 import Slider from "./_components/Slider";
 import HandMockUp from "./_components/HandMockUP";
 import HomeCallToAction from "./_components/HomeCallToAction";
+import HowItWorksCallToAction from "./_components/HowItWorksCallToAction";
 export default function Home() {
   return (
     <main>
@@ -135,13 +136,7 @@ export default function Home() {
               <h2 className="text-center text-4xl font-normal text-white">
                 How it works
               </h2>
-              <Buttons
-                text={"What is Instructra"}
-                buttonType={ButtonType.Secondary}
-                iconText={"arrow_right"}
-                classNames={null}
-                clickEvent={null}
-              />
+              <HowItWorksCallToAction />
             </div>
 
             {/* how it works grid */}
