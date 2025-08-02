@@ -105,8 +105,9 @@ export default function Footer() {
                 <Buttons
                   text={"Submit message"}
                   buttonType={ButtonType.Primary}
-                  iconText={null}
+                  iconText={""}
                   classNames={"w-full"}
+                  clickEvent={null}
                 />
               </div>
             </form>
