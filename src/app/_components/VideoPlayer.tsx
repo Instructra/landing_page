@@ -9,10 +9,10 @@ export default function VideoPlayer() {
 
   return (
     <div className="fixed inset-0 z-70 flex items-center justify-center bg-white/10 backdrop-blur-sm">
-      <div className="relative w-11/12 max-w-4xl shadow-lg">
+      <div className="relative w-11/12 max-w-4xl overflow-clip shadow-lg">
         <video
           controls
-          className="h-auto w-full rounded-2xl"
+          className="h-auto w-full rounded-4xl"
           src={videoUrl}
           autoPlay
         >
