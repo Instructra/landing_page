@@ -15,10 +15,10 @@ export function EmailTemplate({
 }: EmailTemplateProps) {
   return (
     <div>
-      <h1>Hello, {senderName}!</h1>
-      <p>from: {email} </p>
-      <p>message: {message}</p>
-      <p>user type: {userType}</p>
+      <h1>Greetings from {senderName}!</h1>
+      <p>📧 email: {email} </p>
+      <p>💬 Message: {message}</p>
+      <p>👤 User type: {userType}</p>
     </div>
   );
 }
