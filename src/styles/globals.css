@@ -11,8 +11,11 @@
   --color-border: #000F2F;
   --color-card: #f1f1f1;
   --color-dark-bg: #151517;
-  --color-dart-input-bg: #363636;
+  --color-dark-input-bg: #363636;
   --color-placeholder: #AFAFAF;
+  --color-error: #B3261E;
+  --color-success: #2EA970;
+
   /* brake points */
   --breakpoint-mm: 375px;
   --breakpoint-ml: 425px;
