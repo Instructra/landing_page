@@ -1,19 +1,36 @@
 "use client";
-import { useActionState } from "react";
+import { useActionState, useCallback } from "react";
 import { Buttons, ButtonType } from "./Buttons";
 import { SendEmail } from "../_services/SendEmail";
 import { FormSubmissionStatus, type FormState } from "../_enums/FormEnums";
+import { useReCaptcha } from "next-recaptcha-v3";
 export function ContactForm() {
   const initialFormState: FormState = {
     status: FormSubmissionStatus.IDLE,
     message: "",
   };
+  const { executeRecaptcha } = useReCaptcha();
+
   const [state, formAction, pending] = useActionState(
     SendEmail,
     initialFormState,
   );
+  const enhancedAction = useCallback(
+    async (formData: FormData) => {
+      if (!executeRecaptcha) {
+        console.error("reCAPTCHA is not yet loaded");
+        return formAction(formData);
+      }
+
+      const token = await executeRecaptcha("contact_form");
+      formData.set("recaptcha", token);
+
+      formAction(formData);
+    },
+    [executeRecaptcha, formAction],
+  );
   return (
-    <form action={formAction} className="flex flex-1 flex-col gap-8">
+    <form action={enhancedAction} className="flex flex-1 flex-col gap-8">
       <div className="flex flex-col gap-6">
         <input
           name="name"

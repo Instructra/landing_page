@@ -37,7 +37,6 @@ export async function SendEmail(
     _prevState: FormState,
     formData: FormData,
 ): Promise<FormState> {
-    const resend = new Resend(RESEND_API_KEY);
 
     const emailProp: EmailTemplateProps = {
         email: formData.get("email") as string,
