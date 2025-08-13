@@ -1,5 +1,5 @@
 "use client";
-import { useActionState, useCallback } from "react";
+import { startTransition, useActionState, useCallback } from "react";
 import { Buttons, ButtonType } from "./Buttons";
 import { SendEmail } from "../_services/SendEmail";
 import { FormSubmissionStatus, type FormState } from "../_enums/FormEnums";
@@ -19,13 +19,18 @@ export function ContactForm() {
     async (formData: FormData) => {
       if (!executeRecaptcha) {
         console.error("reCAPTCHA is not yet loaded");
-        return formAction(formData);
+        startTransition(() => {
+          formAction(formData);
+        });
+        return;
       }
 
       const token = await executeRecaptcha("contact_form");
       formData.set("recaptcha", token);
 
-      formAction(formData);
+      startTransition(() => {
+        formAction(formData);
+      });
     },
     [executeRecaptcha, formAction],
   );

@@ -1,4 +1,3 @@
-"use client";
 import { ReCaptchaProvider } from "next-recaptcha-v3";
 import type React from "react";
 
