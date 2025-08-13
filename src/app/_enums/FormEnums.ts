@@ -1,6 +1,5 @@
 export enum FormSubmissionStatus {
     IDLE = "idle",
-    SENDING = "sending",
     SUCCESS = "success",
     FAILED = "failed",
 }
