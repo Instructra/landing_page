@@ -9,6 +9,7 @@ import SideNav from "./_components/SideNav";
 import YieldLayoutWrapper from "./_components/YieldLayoutWrapper";
 import Footer from "./_components/Footer";
 import VideoPlayer from "./_components/VideoPlayer";
+import CaptchaProvider from "./_providers/CaptachaProvider";
 
 export const metadata: Metadata = {
   title: "Instructra",
@@ -33,14 +34,15 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <YieldLayoutWrapper>
-          <VideoPlayer />
-
-          <Header />
-          <SideNav />
-          <TRPCReactProvider>{children}</TRPCReactProvider>
-          <Footer />
-        </YieldLayoutWrapper>
+        <CaptchaProvider>
+          <YieldLayoutWrapper>
+            <VideoPlayer />
+            <Header />
+            <SideNav />
+            <TRPCReactProvider>{children}</TRPCReactProvider>
+            <Footer />
+          </YieldLayoutWrapper>
+        </CaptchaProvider>
       </body>
     </html>
   );
