@@ -27,6 +27,7 @@
     "@trpc/client": "^11.0.0",
     "@trpc/react-query": "^11.0.0",
     "@trpc/server": "^11.0.0",
+    "google-auth-library": "^10.2.1",
     "next": "^15.2.3",
     "next-recaptcha-v3": "^1.5.2",
     "react": "^19.0.0",
