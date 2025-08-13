@@ -34,15 +34,15 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <CaptchaProvider>
-          <YieldLayoutWrapper>
+        <YieldLayoutWrapper>
+          <CaptchaProvider>
             <VideoPlayer />
             <Header />
             <SideNav />
             <TRPCReactProvider>{children}</TRPCReactProvider>
             <Footer />
-          </YieldLayoutWrapper>
-        </CaptchaProvider>
+          </CaptchaProvider>
+        </YieldLayoutWrapper>
       </body>
     </html>
   );
