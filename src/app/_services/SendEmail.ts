@@ -3,34 +3,87 @@
 import { Resend } from "resend";
 import { EmailTemplate, type EmailTemplateProps } from "../_components/emailTemplate";
 import { type FormState, FormSubmissionStatus } from "../_enums/FormEnums";
+import { GoogleAuth } from "google-auth-library";
+
 
 
 const RESEND_API_KEY = process.env.RESEND;
 
-const RECAPTCHA_SECRET_KEY = process.env.RECAPTCHA_SECRET_KEY;
 
 const RECAPTCHA_MIN_SCORE = 0.5;
 
-async function verifyRecaptcha(token: string) {
-    const params = new URLSearchParams();
-    params.set("secrete", `${RECAPTCHA_SECRET_KEY}`);
-    params.set("response", `${token}`);
+interface GoogleServiceAccount {
+    type: "service_account";
+    project_id: string;
+    private_key_id: string;
+    private_key: string;
+    client_email: string;
+    client_id: string;
+    auth_uri: string;
+    token_uri: string;
+    auth_provider_x509_cert_url: string;
+    client_x509_cert_url: string;
+    universe_domain?: string;
+}
 
-    const response = await fetch("https://www.google.com/recaptcha/api/siteverify", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: params,
-        // ensure no caching
-        cache: "no-store",
+function getGoogleCredentials(): GoogleServiceAccount {
+    const base64 = process.env.GOOGLE_SERVICE_ACCOUNT_BASE64;
+    if (!base64) {
+        throw new Error("Missing GOOGLE_SERVICE_ACCOUNT_BASE64");
+    }
+
+    const jsonString = Buffer.from(base64, "base64").toString("utf8");
+    return JSON.parse(jsonString) as GoogleServiceAccount;
+}
+
+async function verifyRecaptchaEnterprise(
+    projectId: string,
+    token: string,
+    siteKey: string,
+    expectedAction: string,
+    userIp?: string,
+    userAgent?: string
+) {
+
+    const credentials = getGoogleCredentials();
+    console.log(credentials.project_id);
+
+    // Create an OAuth2 client from service account
+    const auth = new GoogleAuth({
+        credentials,
+        scopes: "https://www.googleapis.com/auth/cloud-platform",
     });
-    if (!response.ok) throw new Error(`reCAPTCHA verify HTTP ${response.status}`);
-    return response.json() as Promise<{
-        success: boolean;
-        score?: number;
-        action?: string;
-        "error-codes"?: string[];
-        hostname?: string;
-    }>;
+    const client = await auth.getClient();
+
+    const url = `https://recaptchaenterprise.googleapis.com/v1/projects/${projectId}/assessments`;
+    const payload = {
+        event: {
+            token,
+            siteKey,
+            expectedAction,
+            userIpAddress: userIp,
+            userAgent,
+        },
+    };
+
+    const res = await client.request({
+        url,
+        method: "POST",
+        data: payload,
+    });
+
+    return res.data as {
+        tokenProperties?: {
+            valid: boolean;
+            action?: string;
+            createTime?: string;
+        };
+        riskAnalysis?: {
+            score?: number;
+            reasons?: string[];
+        };
+        event?: unknown;
+    };
 }
 
 export async function SendEmail(
@@ -55,11 +108,17 @@ export async function SendEmail(
 
     // 1) verify reCAPTCHA v3
     try {
-        const verify = await verifyRecaptcha(`${emailProp.token}`);
+        const verify = await verifyRecaptchaEnterprise(
+            process.env.PROJECT_ID!,
+            emailProp.token,
+            process.env.RECAPTCHA_SITE_KEY!,
+            "contact_form"
+        );
+
         const ok =
-            verify.success === true &&
-            (verify.score ?? 0) >= RECAPTCHA_MIN_SCORE &&
-            (!verify.action || verify.action === "contact_form");
+            verify.tokenProperties?.valid === true &&
+            (verify.riskAnalysis?.score ?? 0) >= Number(RECAPTCHA_MIN_SCORE) &&
+            (!verify.tokenProperties?.action || verify.tokenProperties?.action === "contact_form");
 
         if (!ok) {
             console.error("reCAPTCHA failed", verify);
