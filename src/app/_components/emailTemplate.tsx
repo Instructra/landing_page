@@ -5,6 +5,7 @@ export interface EmailTemplateProps {
   email: string;
   message: string;
   userType: string;
+  token: string;
 }
 
 export function EmailTemplate({
