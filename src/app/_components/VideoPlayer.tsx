@@ -22,7 +22,7 @@ export default function VideoPlayer() {
           onClick={closeVideo}
           className="absolute right-1/2 -bottom-16 flex h-10 w-10 translate-x-1/2 items-center justify-center rounded-full bg-[#1F1F1F] shadow-md"
         >
-          <span className="icon-[material-symbols--close] text-2xl text-white"></span>{" "}
+          <span className="icon-[material-symbols--close] text-2xl text-white"></span>
         </button>
       </div>
     </div>

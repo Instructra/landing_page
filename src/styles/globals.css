@@ -15,6 +15,7 @@
   --color-placeholder: #AFAFAF;
   --color-error: #B3261E;
   --color-success: #2EA970;
+  --color-dialog-bg: #F5F5F5;
 
   /* brake points */
   --breakpoint-mm: 375px;
