@@ -1,4 +1,12 @@
+"use client";
+import { useWaitListStore } from "~/store/WaitListStore";
+
 export function WaitListDialog() {
+  const waitListDialogState = useWaitListStore((state) => state);
+
+  if (waitListDialogState.state.isActive === false) {
+    return null;
+  }
   return (
     <div className="fixed inset-0 z-70 flex items-center justify-center bg-white/10 backdrop-blur-sm">
       <div className="bg-dialog-bg tb:w-[704px] tb:p-8 relative flex w-[280px] flex-col gap-8 rounded-3xl p-4 shadow-lg">
@@ -6,7 +14,7 @@ export function WaitListDialog() {
         <div className="">
           <div className="flex justify-between">
             <h2 className="text-2xl">Join the waitlist</h2>
-            <button>
+            <button onClick={waitListDialogState.toggleDialog}>
               <span className="icon-[material-symbols--close] text-2xl"></span>
             </button>
           </div>

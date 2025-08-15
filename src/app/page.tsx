@@ -1,11 +1,11 @@
 import IphoneMockUp from "./_components/IphoneMockUp";
-import { Buttons, ButtonType } from "./_components/Buttons";
 import Link from "next/link";
 import MainContainer from "./_components/MainContainer";
 import Slider from "./_components/Slider";
 import HandMockUp from "./_components/HandMockUP";
 import HomeCallToAction from "./_components/HomeCallToAction";
 import HowItWorksCallToAction from "./_components/HowItWorksCallToAction";
+import { JoinWaitListButton } from "./_components/JoinWaitListButton";
 export default function Home() {
   return (
     <main>
@@ -316,13 +316,7 @@ export default function Home() {
                   <div className="l:w-9 l:h-9 l:left-[96] absolute left-[132] h-12 w-12 rounded-full bg-[url('/assets/images/wait_4.jpg')] bg-cover"></div>
                   <div className="l:w-9 l:h-9 l:left-[128] absolute left-[176] h-12 w-12 rounded-full bg-[url('/assets/images/wait_5.jpg')] bg-cover"></div>
                 </div>
-                <Buttons
-                  text={"Join the wait-list"}
-                  buttonType={ButtonType.Primary}
-                  iconText={null}
-                  classNames={null}
-                  clickEvent={null}
-                ></Buttons>
+                <JoinWaitListButton />
               </div>
             </div>
             {/* image area */}
