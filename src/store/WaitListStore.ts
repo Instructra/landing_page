@@ -1,17 +1,17 @@
 import { create } from 'zustand'
 
-enum WaitListStages {
+export enum WaitListStages {
     SELECTION = 'selection',
     EMAIL_COLLECTION = 'email collection',
 
 }
 
-enum SelectedUserType {
+export enum SelectedUserType {
     INSTRUCTOR = "instructor",
     LEARNER = 'learner'
 }
 
-type WaitListDialogState = {
+export type WaitListDialogState = {
     isActive: boolean,
     dialogStage: WaitListStages,
     selectedUserType: SelectedUserType,
@@ -21,7 +21,7 @@ const DEFAULT_STATE: WaitListDialogState = {
     dialogStage: WaitListStages.SELECTION,
     selectedUserType: SelectedUserType.INSTRUCTOR,
 }
-interface WaitListStore {
+export interface WaitListStore {
     state: WaitListDialogState;
     toggleDialog: () => void;
     nextStage: (selectedUserType: SelectedUserType) => void;
@@ -47,5 +47,3 @@ export const useWaitListStore = create<WaitListStore>((set, get, store) => ({
     })),
     reset: () => set(store.getInitialState()),
 }));
-
-
