@@ -5,6 +5,10 @@ import { JoinWaitList } from "../_services/FormHandlers";
 import { Buttons, ButtonType } from "./Buttons";
 
 export function WaitListForm() {
+    //Todo
+    // we need pay for the resend
+    // we also need work on the form UI UX
+    // 
   const initialFormState: FormState = {
     status: FormSubmissionStatus.IDLE,
     message: "",

@@ -229,7 +229,7 @@ export async function JoinWaitList(
             console.error("Resend error", error);
             return {
                 status: FormSubmissionStatus.FAILED,
-                message: "Failed to add to wait list. Please try again.",
+                message: error.message,
             };
         }
         return { status: FormSubmissionStatus.SUCCESS, message: "You have been successfully added to the wait list" };
