@@ -80,8 +80,8 @@ function SubmissionForm(waitListDialogStore: WaitListStore) {
       <h2 className="max-w-[246px] text-center text-[32px] font-[500]">
         {waitListDialogStore.state.selectedUserType ===
         SelectedUserType.INSTRUCTOR
-          ? "Join the WaitList as an Instructor"
-          : "Join the WaitList as a Learner"}
+          ? "Join the waitlist as an Instructor"
+          : "Join the waitlist as a Learner"}
       </h2>
       {/* list of icons */}
       <div className="l:h-9 l:w-[180] relative flex h-12 w-[240px] justify-center">

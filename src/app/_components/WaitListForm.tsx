@@ -35,6 +35,24 @@ export function WaitListForm() {
     },
     [executeRecaptcha, formAction],
   );
+
+  if (state.message) {
+    return (
+      <p
+        className={
+          state.status === FormSubmissionStatus.SUCCESS
+            ? "text-success text-2xl"
+            : "text-error text-2xl"
+        }
+      >
+        {state.message}
+      </p>
+    );
+  }
+
+  if (pending) {
+    return <p>Adding you to the waitlist...</p>;
+  }
   return (
     <form
       className="flex w-[500px] justify-between rounded-full bg-white px-4 py-3"
@@ -55,7 +73,6 @@ export function WaitListForm() {
           classNames={null}
         />
       }
-      {state.status == FormSubmissionStatus.FAILED && <p>{state.message}</p>}
     </form>
   );
 }
