@@ -86,6 +86,8 @@ async function verifyRecaptchaEnterprise(
     };
 }
 
+
+
 export async function SendEmail(
     _prevState: FormState,
     formData: FormData,
@@ -155,6 +157,85 @@ export async function SendEmail(
         }
 
         return { status: FormSubmissionStatus.SUCCESS, message: "Message sent successfully!" };
+    } catch (err) {
+        console.error("Unexpected send error", err);
+        return { status: FormSubmissionStatus.FAILED, message: "Unexpected error. Please try again." };
+    }
+}
+
+interface JoinWaitListProps {
+    token: string,
+    email: string,
+}
+export async function JoinWaitList(
+    _prevState: FormState,
+    formData: FormData,
+): Promise<FormState> {
+    const waitListPros: JoinWaitListProps = {
+        token: formData.get("recaptcha") as string,
+        email: formData.get("email") as string,
+    }
+    console.log("token: " + waitListPros.token + " email: " + waitListPros.email)
+    if (!waitListPros.email) {
+        return { status: FormSubmissionStatus.FAILED, message: "All fields are required." };
+    }
+    if (!waitListPros.token) {
+        console.log("token: " + waitListPros.token)
+
+        return { status: FormSubmissionStatus.FAILED, message: "Security check failed. Try again." };
+    }
+
+
+    try {
+        const verify = await verifyRecaptchaEnterprise(
+            process.env.PROJECT_ID!,
+            waitListPros.token,
+            process.env.RECAPTCHA_SITE_KEY!,
+            "wait_list_form"
+        );
+
+        const ok =
+            verify.tokenProperties?.valid === true &&
+            (verify.riskAnalysis?.score ?? 0) >= Number(RECAPTCHA_MIN_SCORE) &&
+            (!verify.tokenProperties?.action || verify.tokenProperties?.action === "wait_list_form");
+
+        if (!ok) {
+            console.error("reCAPTCHA failed", verify);
+            return {
+                status: FormSubmissionStatus.FAILED,
+                message: "reCAPTCHA verification failed. Please retry.",
+            };
+        }
+    } catch (e) {
+        console.error("reCAPTCHA error", e);
+        return {
+            status: FormSubmissionStatus.FAILED,
+            message: "Security service unavailable. Please try again.",
+        };
+    }
+
+    // add to wait list
+    try {
+        const resend = new Resend(RESEND_API_KEY);
+
+        const { error } = await resend.contacts.create({
+            email: waitListPros.email,
+            firstName: 'Steve',
+            lastName: 'Wozniak',
+            unsubscribed: false,
+            audienceId: '145e28c9-3db7-4a19-90bc-b6688212f0f2',
+        });
+        if (error) {
+            console.error("Resend error", error);
+            return {
+                status: FormSubmissionStatus.FAILED,
+                message: "Failed to add to wait list. Please try again.",
+            };
+        }
+        return { status: FormSubmissionStatus.SUCCESS, message: "You have been successfully added to the wait list" };
+
+
+
     } catch (err) {
         console.error("Unexpected send error", err);
         return { status: FormSubmissionStatus.FAILED, message: "Unexpected error. Please try again." };
