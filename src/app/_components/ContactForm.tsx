@@ -1,7 +1,7 @@
 "use client";
 import { startTransition, useActionState, useCallback } from "react";
 import { Buttons, ButtonType } from "./Buttons";
-import { SendEmail } from "../_services/SendEmail";
+import { SendEmail } from "../_services/FormHandlers";
 import { FormSubmissionStatus, type FormState } from "../_enums/FormEnums";
 import { useReCaptcha } from "next-recaptcha-v3";
 export function ContactForm() {
@@ -15,6 +15,7 @@ export function ContactForm() {
     SendEmail,
     initialFormState,
   );
+
   const enhancedAction = useCallback(
     async (formData: FormData) => {
       if (!executeRecaptcha) {
@@ -90,7 +91,7 @@ export function ContactForm() {
               : "text-error text-2xl"
           }
         >
-          {state.message} {pending}
+          {state.message}
         </p>
       )}
     </form>
