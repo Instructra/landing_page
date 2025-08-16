@@ -1,0 +1,82 @@
+import { useReCaptcha } from "next-recaptcha-v3";
+import { useActionState, useCallback, startTransition } from "react";
+import { type FormState, FormSubmissionStatus } from "../_enums/FormEnums";
+import { JoinWaitList } from "../_services/FormHandlers";
+import { Buttons, ButtonType } from "./Buttons";
+
+export function WaitListForm() {
+    //Todo
+    // we need pay for the resend
+    // we also need work on the form UI UX
+    // 
+  const initialFormState: FormState = {
+    status: FormSubmissionStatus.IDLE,
+    message: "",
+  };
+  const { executeRecaptcha } = useReCaptcha();
+
+  const [state, formAction, pending] = useActionState(
+    JoinWaitList,
+    initialFormState,
+  );
+
+  const enhancedAction = useCallback(
+    async (formData: FormData) => {
+      if (!executeRecaptcha) {
+        console.error("reCAPTCHA is not yet loaded");
+        startTransition(() => {
+          formAction(formData);
+        });
+        return;
+      }
+
+      const token = await executeRecaptcha("wait_list_form");
+      formData.set("recaptcha", token);
+
+      startTransition(() => {
+        formAction(formData);
+      });
+    },
+    [executeRecaptcha, formAction],
+  );
+
+  if (state.message) {
+    return (
+      <p
+        className={
+          state.status === FormSubmissionStatus.SUCCESS
+            ? "text-success text-2xl"
+            : "text-error text-2xl"
+        }
+      >
+        {state.message}
+      </p>
+    );
+  }
+
+  if (pending) {
+    return <p>Adding you to the waitlist...</p>;
+  }
+  return (
+    <form
+      className="flex w-[500px] justify-between rounded-full bg-white px-4 py-3"
+      action={enhancedAction}
+    >
+      <input
+        name="email"
+        type="email"
+        placeholder="Enter your email address"
+        className="w-full text-[#545454] focus:outline-none"
+        required
+      />
+      {
+        <Buttons
+          text={"Submit"}
+          buttonType={ButtonType.Primary}
+          iconText={"arrow_right"}
+          classNames={null}
+        />
+      }
+    </form>
+  );
+}
