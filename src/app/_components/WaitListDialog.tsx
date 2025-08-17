@@ -5,6 +5,7 @@ import {
   WaitListStages,
   type WaitListStore,
 } from "~/store/WaitListStore";
+import Image from "next/image";
 
 import { WaitListForm } from "./WaitListForm";
 
@@ -53,7 +54,14 @@ function UserTypeSelector(waitListDialogStore: WaitListStore) {
           waitListDialogStore.nextStage(SelectedUserType.INSTRUCTOR)
         }
       >
-        <div className="tb:h-[160px] h-[80] w-full bg-amber-200"></div>
+        <div className="tb:h-[160px] relative h-[80px] w-full">
+          <Image
+            src="/assets/images/instructor_join.png"
+            alt="instructor join image"
+            fill
+            className="h-full w-full object-contain"
+          />
+        </div>
         <div>
           <p className="text-xl">Join as an Instructor</p>
           <p>Join the waitlist as an instructor</p>
@@ -64,7 +72,14 @@ function UserTypeSelector(waitListDialogStore: WaitListStore) {
         className="tb:w-[312px] hover:border-primary flex w-full flex-col gap-8 rounded-3xl bg-white px-3 py-6 transition-all duration-300 ease-in-out hover:border-2"
         onClick={() => waitListDialogStore.nextStage(SelectedUserType.LEARNER)}
       >
-        <div className="tb:h-[160px] h-[80] w-full bg-amber-200"></div>
+        <div className="tb:h-[160px] relative h-[80px] w-full">
+          <Image
+            src="/assets/images/learner_join.png"
+            alt="learner join image"
+            fill
+            className="h-full w-full object-contain"
+          />
+        </div>
         <div>
           <p className="text-xl">Join as an Learner</p>
           <p>Join the waitlist as an Learner</p>
