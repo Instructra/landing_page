@@ -28,13 +28,15 @@ export default function Home() {
                 <IphoneMockUp url="/assets/images/location.jpeg" />
               </div>
             </div>
-            <div className="tb:flex l:justify-start l:items-end hidden justify-center">
+            <div className="tb:flex l:justify-start l:items-end hidden justify-center p-1">
               <Link
                 href={"/#about"}
-                className="text-text-primary bg-card flex items-center justify-center rounded-full px-3 py-[4px]"
+                className="text-text-primary bg-card flex items-center justify-center gap-2 rounded-full px-3 py-[4px]"
               >
-                <span className="material-icons">keyboard_arrow_down</span>{" "}
-                Scroll down
+                <span className="icon-[grommet-icons--link-down]">
+                  keyboard_arrow_down
+                </span>{" "}
+                <p>Scroll down</p>
               </Link>
             </div>
           </div>
