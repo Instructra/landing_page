@@ -22,12 +22,12 @@ export default function WhatsAppButton({
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="font-mediumshadow fixed right-[10%] bottom-10 z-30 inline-flex items-center gap-2 rounded-full px-4 py-2 transition-colors"
+      className="font-mediumshadow fixed right-0 bottom-0 z-30 inline-flex items-center gap-2 rounded-full px-4 py-2 transition-colors"
     >
-      <div className="relative h-16 w-16 overflow-visible">
-        <div className="absolute top-1 right-0 h-2 w-2 rounded-full bg-red-500"></div>
+      <div className="relative flex h-22 w-22 items-center justify-center overflow-visible rounded-full bg-[#25D366]">
+        <div className="absolute top-4 right-1 h-2 w-2 rounded-full bg-red-500"></div>
         <Image
-          src="/assets/images/whatsapp.png" // put this file inside /public
+          src="/assets/images/whatsapp_logo.png" // put this file inside /public
           alt="WhatsApp"
           width={size}
           height={size}
