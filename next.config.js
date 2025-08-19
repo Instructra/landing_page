@@ -7,6 +7,13 @@ import "./src/env.js";
 /** @type {import("next").NextConfig} */
 const config = {
     allowedDevOrigins: ['local-origin.dev', '*.local-origin.dev', '127.0.0.1'],
+    images: {
+        remotePatterns: [{
+            protocol: "https",
+            hostname: "faq.whatsapp.com",
+            pathname: "/images/**",
+        },]
+    }
 
 };
 

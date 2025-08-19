@@ -11,6 +11,7 @@ import Footer from "./_components/Footer";
 import VideoPlayer from "./_components/VideoPlayer";
 import CaptchaProvider from "./_providers/CaptachaProvider";
 import { WaitListDialog } from "./_components/WaitListDialog";
+import WhatsAppButton from "./_components/WhatsAppChat";
 
 export const metadata: Metadata = {
   title: "Instructra",
@@ -41,6 +42,7 @@ export default function RootLayout({
             <WaitListDialog />
             <Header />
             <SideNav />
+            <WhatsAppButton phone={"09131526398"}></WhatsAppButton>
             <TRPCReactProvider>{children}</TRPCReactProvider>
             <Footer />
           </CaptchaProvider>
