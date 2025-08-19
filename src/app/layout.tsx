@@ -42,7 +42,7 @@ export default function RootLayout({
             <WaitListDialog />
             <Header />
             <SideNav />
-            <WhatsAppButton phone={"09131526398"}></WhatsAppButton>
+            <WhatsAppButton phone={"+31627549932"}></WhatsAppButton>
             <TRPCReactProvider>{children}</TRPCReactProvider>
             <Footer />
           </CaptchaProvider>
