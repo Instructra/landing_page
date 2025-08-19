@@ -29,6 +29,7 @@
     "@trpc/server": "^11.0.0",
     "google-auth-library": "^10.2.1",
     "iconify": "^1.4.0",
+    "lightningcss": "^1.30.1",
     "next": "^15.2.3",
     "next-recaptcha-v3": "^1.5.2",
     "react": "^19.0.0",
