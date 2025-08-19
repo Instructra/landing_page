@@ -17,8 +17,6 @@ export default function SideNav() {
             { href: "/#about", label: "About" },
             { href: "/#how", label: "How it works" },
             { href: "/#contact", label: "Contact us" },
-            // TODO add referral program
-            // { href: "/referral", label: "Referral programme" },
           ].map(({ href, label }) => (
             <Link
               key={href}
