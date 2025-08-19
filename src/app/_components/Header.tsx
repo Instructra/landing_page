@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useRef, useEffect } from "react";
 import { useYieldContext } from "~/contexts/YieldContext";
+import { JoinWaitListButton } from "./JoinWaitListButton";
 
 export default function Header() {
   const headerRef = useRef<HTMLDivElement>(null);
@@ -65,9 +66,7 @@ export default function Header() {
           {/* <Link href={"/referral"}>Referral programme</Link> */}
         </div>
 
-        <button className="l:inline bg-primary hidden rounded-4xl px-6 py-3 text-white">
-          Join the wait list
-        </button>
+        <JoinWaitListButton />
 
         <button className="l:hidden group" onClick={() => toggleSideNav()}>
           <div className="grid justify-items-center gap-1">

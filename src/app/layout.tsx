@@ -10,6 +10,7 @@ import YieldLayoutWrapper from "./_components/YieldLayoutWrapper";
 import Footer from "./_components/Footer";
 import VideoPlayer from "./_components/VideoPlayer";
 import CaptchaProvider from "./_providers/CaptachaProvider";
+import { WaitListDialog } from "./_components/WaitListDialog";
 
 export const metadata: Metadata = {
   title: "Instructra",
@@ -28,15 +29,16 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${geist.variable}`}>
       <head>
-        <link
+        {/* <link
           href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet"
-        />
+        /> */}
       </head>
       <body>
         <YieldLayoutWrapper>
           <CaptchaProvider>
             <VideoPlayer />
+            <WaitListDialog />
             <Header />
             <SideNav />
             <TRPCReactProvider>{children}</TRPCReactProvider>
