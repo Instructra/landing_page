@@ -22,14 +22,10 @@ export default function Footer() {
               </p>
               <div className="flex flex-col gap-4">
                 <p className="flex gap-4 text-[16px]/6 text-white">
-                  📞 +44 123 456 7890
+                  ✉️ info@instructra.com
                 </p>
                 <p className="flex gap-4 text-[16px]/6 text-white">
-                  ✉️ hello@instructra.com
-                </p>
-                <p className="flex gap-4 text-[16px]/6 text-white">
-                  📍 5th Floor, 123 Maplewood Drive, Manchester, M14 6AQ, United
-                  Kingdom
+                  📍 7 Ludgate Hill, London, England, EC4M 7JN
                 </p>
               </div>
             </div>
