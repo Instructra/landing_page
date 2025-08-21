@@ -1,23 +1,22 @@
 "use client";
 
 import Link from "next/link";
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect } from "react";
 import { useYieldContext } from "~/contexts/YieldContext";
 import { JoinWaitListButton } from "./JoinWaitListButton";
 import { useNavLinks } from "../_services/NavigatorManager";
 
-type NavLink = {
-  id: string;
-  label: string;
-  href: string;
-  active: boolean;
-};
 export default function Header() {
   const headerRef = useRef<HTMLDivElement>(null);
   const navRef = useRef<HTMLElement>(null);
 
-  const { setHeaderHeight, setNavWidth, toggleSideNav, isSideNavOpen } =
-    useYieldContext();
+  const {
+    setHeaderHeight,
+    setNavWidth,
+    toggleSideNav,
+    isSideNavOpen,
+    closeSideNav,
+  } = useYieldContext();
 
   // Initial nav items
   const { links, setActive } = useNavLinks([
@@ -71,12 +70,15 @@ export default function Header() {
         <Link
           key={links[0]?.id}
           href={links[0]?.href ?? ""}
-          onClick={() => setActive(links[0]?.id ?? "")}
+          onClick={() => {
+            setActive(links[0]?.id ?? "");
+            closeSideNav();
+          }}
         >
           <div className="text-primary px-4 py-3 font-bold">INSTRUCTRA</div>
         </Link>
 
-        <div className="flex gap-4">
+        <div className="l:flex hidden gap-4">
           {links.map((link) => (
             <Link
               key={link.id}
