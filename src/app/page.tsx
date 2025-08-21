@@ -25,7 +25,9 @@ export default function Home() {
             <HomeCallToAction />
             <div className="tb:row-start-4 tb:row-span-3 l:row-start-1 l:row-span-5 l:col-start-4 l:col-span-2 row-span-3 row-start-3 flex justify-center">
               <div className="tb:h-[490px] tb:w-[240px] h-[345px] w-[170px]">
-                <IphoneMockUp url="/assets/images/location.jpeg" />
+                <IphoneMockUp url="/assets/images/location.jpeg">
+                  <div className="h-full w-full bg-pink-50"></div>
+                </IphoneMockUp>
               </div>
             </div>
             <div className="tb:flex l:justify-start l:items-end hidden justify-center p-1">
@@ -57,7 +59,9 @@ export default function Home() {
               {/* location */}
               <div className="bg-card tb:w-[340px] ll:w-[384px] l:w-[330px] relative flex h-[500px] w-[300px] flex-col items-center justify-start overflow-clip rounded-3xl p-8">
                 <div className="absolute top-[50%] right-[50%] h-[480px] w-[250px] translate-x-1/2">
-                  <IphoneMockUp url="/assets/images/location.jpeg" />
+                  <IphoneMockUp url="/assets/images/location.jpeg">
+                    {null}
+                  </IphoneMockUp>
                 </div>
                 <div className="flex flex-col gap-3">
                   <h2 className="text-2xl">
@@ -72,7 +76,9 @@ export default function Home() {
               {/* realtime */}
               <div className="bg-card tb:w-[340px] ll:w-[384px] l:w-[330px] relative flex h-[500px] w-[300px] flex-col items-center justify-end overflow-clip rounded-3xl p-8">
                 <div className="absolute right-[50%] bottom-[50%] h-[480px] w-[250px] translate-x-1/2">
-                  <IphoneMockUp url="/assets/images/booking.jpeg" />
+                  <IphoneMockUp url="/assets/images/booking.jpeg">
+                    {null}
+                  </IphoneMockUp>
                 </div>
                 <div className="flex flex-col gap-3">
                   <h2 className="text-2xl">Real time calendar booking</h2>
@@ -85,7 +91,9 @@ export default function Home() {
               {/* progress */}
               <div className="bg-card tb:w-[340px] ll:w-[384px] l:w-[330px] relative flex h-[500px] w-[300px] flex-col items-center justify-start overflow-clip rounded-3xl p-8">
                 <div className="absolute top-[50%] right-[50%] h-[480px] w-[250px] translate-x-1/2">
-                  <IphoneMockUp url="/assets/images/dairy.jpeg" />
+                  <IphoneMockUp url="/assets/images/dairy.jpeg">
+                    {null}
+                  </IphoneMockUp>
                 </div>
                 <div className="flex flex-col gap-3">
                   <h2 className="text-2xl">Visual driving progress tracker</h2>
@@ -176,7 +184,9 @@ export default function Home() {
                 <div className="l:h-[400] relative h-72 w-full">
                   <div className="absolute top-[12px] right-[50%] translate-x-1/2">
                     <div className="l:h-[570px] l:w-[280px] h-[404px] w-[200px]">
-                      <IphoneMockUp url="/assets/images/explore_view.jpg" />
+                      <IphoneMockUp url="/assets/images/explore_view.jpg">
+                        {null}
+                      </IphoneMockUp>
                     </div>
                   </div>
                   {/* chat bubble */}
@@ -226,7 +236,9 @@ export default function Home() {
                 </div>
                 <div className="relative h-[300px] w-full">
                   <div className="tb:top-10 l:h-[570px] l:w-[280px] absolute top-[12px] right-[50%] h-[424px] w-[210px] translate-x-1/2">
-                    <IphoneMockUp url="/assets/images/availability.png" />
+                    <IphoneMockUp url="/assets/images/availability.png">
+                      {null}
+                    </IphoneMockUp>
                   </div>
                 </div>
               </div>
@@ -247,13 +259,17 @@ export default function Home() {
                   {/* booking dialog phone */}
                   <div className="ml:left-[24px] absolute top-6 left-[4px]">
                     <div className="l:h-[495px] l:w-[244px] h-[340px] w-[170px]">
-                      <IphoneMockUp url="/assets/images/take_lessons.jpg" />
+                      <IphoneMockUp url="/assets/images/take_lessons.jpg">
+                        {null}
+                      </IphoneMockUp>
                     </div>
                   </div>
                   {/* bookings phone */}
                   <div className="ml:right-[24px] l:top-24 absolute top-20 right-[4px]">
                     <div className="l:h-[495px] l:w-[244px] h-[340px] w-[170px]">
-                      <IphoneMockUp url="/assets/images/bookings.png" />
+                      <IphoneMockUp url="/assets/images/bookings.png">
+                        {null}
+                      </IphoneMockUp>
                     </div>
                   </div>
                 </div>
@@ -276,13 +292,17 @@ export default function Home() {
                   {/* insights phone */}
                   <div className="ml:right-[40px] l:right-14 tb:right-[168px] absolute top-[24px] right-[4px]">
                     <div className="l:h-[495px] l:w-[244px] h-[340px] w-[170px]">
-                      <IphoneMockUp url="/assets/images/Insights_view.png" />
+                      <IphoneMockUp url="/assets/images/Insights_view.png">
+                        {null}
+                      </IphoneMockUp>
                     </div>
                   </div>
                   {/* diary phone */}
                   <div className="ml:left-[40px] tb:left-[168px] l:left-[200px] absolute top-[110px] left-[4px]">
                     <div className="l:h-[495px] l:w-[244px] h-[340px] w-[170px]">
-                      <IphoneMockUp url="/assets/images/diary.jpg" />
+                      <IphoneMockUp url="/assets/images/diary.jpg">
+                        {null}
+                      </IphoneMockUp>
                     </div>
                   </div>
                 </div>

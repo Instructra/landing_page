@@ -4,14 +4,28 @@ import Link from "next/link";
 import { useRef, useEffect } from "react";
 import { useYieldContext } from "~/contexts/YieldContext";
 import { JoinWaitListButton } from "./JoinWaitListButton";
+import { useNavLinks } from "../_services/NavigatorManager";
 
 export default function Header() {
   const headerRef = useRef<HTMLDivElement>(null);
   const navRef = useRef<HTMLElement>(null);
 
-  const { setHeaderHeight, setNavWidth, toggleSideNav, isSideNavOpen } =
-    useYieldContext();
+  const {
+    setHeaderHeight,
+    setNavWidth,
+    toggleSideNav,
+    isSideNavOpen,
+    closeSideNav,
+  } = useYieldContext();
 
+  // Initial nav items
+  const { links, setActive } = useNavLinks([
+    { id: "home", label: "Home", href: "/#home" },
+    { id: "about", label: "About", href: "/#about" },
+    { id: "how", label: "How it works", href: "/#how" },
+    { id: "contact", label: "Contact", href: "/#contact" },
+  ]);
+  //
   useEffect(() => {
     // Force measurement after first paint
     const measure = () => {
@@ -53,17 +67,35 @@ export default function Header() {
         ref={navRef}
         className="card-bg l:w-(--max-l) ll:w-(--max-ll) tb:w-(--max-tb) mm:w-(--max-mm) ml:w-(--max-ml) flex w-(--max-sm) items-center justify-between rounded-[100px] px-4 py-3"
       >
-        <Link href={"/#home"}>
+        <Link
+          key={links[0]?.id}
+          href={links[0]?.href ?? ""}
+          onClick={() => {
+            setActive(links[0]?.id ?? "");
+            closeSideNav();
+          }}
+        >
           <div className="text-primary px-4 py-3 font-bold">INSTRUCTRA</div>
         </Link>
 
         <div className="l:flex hidden gap-4">
-          <Link href={"/#home"}>Home</Link>
-          <Link href={"/#about"}>About</Link>
-          <Link href={"/#how"}>How it works</Link>
-          <Link href={"/#contact"}>Contact us</Link>
-          {/* //Todo referral program will be added. */}
-          {/* <Link href={"/referral"}>Referral programme</Link> */}
+          {links.map((link) => (
+            <Link
+              key={link.id}
+              href={link.href}
+              onClick={() => setActive(link.id)}
+              className={`relative transform pb-1 transition-colors ${
+                link.active ? "border-b-1 text-black" : "text-link"
+              }`}
+            >
+              {link.label}
+              <span
+                className={`absolute bottom-0 left-0 h-[1px] w-full origin-left transform bg-black transition-all duration-300 ${
+                  link.active ? "scale-x-100" : "scale-x-0"
+                }`}
+              />
+            </Link>
+          ))}
         </div>
 
         <JoinWaitListButton />
