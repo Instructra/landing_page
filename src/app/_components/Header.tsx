@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRef, useEffect, useState } from "react";
 import { useYieldContext } from "~/contexts/YieldContext";
 import { JoinWaitListButton } from "./JoinWaitListButton";
+import { useNavLinks } from "../_services/NavigatorManager";
 
 type NavLink = {
   id: string;
@@ -19,51 +20,13 @@ export default function Header() {
     useYieldContext();
 
   // Initial nav items
-  const [links, setLinks] = useState<NavLink[]>([
-    {
-      id: "home",
-      label: "Home",
-      href: "/#home",
-      active: false,
-    },
-    {
-      id: "about",
-      label: "About",
-      href: "/#about",
-      active: false,
-    },
-    {
-      id: "how",
-      label: "How it works",
-      href: "/#how",
-      active: false,
-    },
-    {
-      id: "contact",
-      label: "Contact",
-      href: "/#contact",
-      active: false,
-    },
+  const { links, setActive } = useNavLinks([
+    { id: "home", label: "Home", href: "/#home" },
+    { id: "about", label: "About", href: "/#about" },
+    { id: "how", label: "How it works", href: "/#how" },
+    { id: "contact", label: "Contact", href: "/#contact" },
   ]);
-
-  const setActive = (id: string) => {
-    setLinks((prev) =>
-      prev.map((link) =>
-        link.id === id ? { ...link, active: true } : { ...link, active: false },
-      ),
-    );
-  };
-  useEffect(() => {
-    const currentHash = window.location.hash || "#home"; // fallback to home
-    setLinks((prev) =>
-      prev.map((link) =>
-        link.href.endsWith(currentHash)
-          ? { ...link, active: true }
-          : { ...link, active: false },
-      ),
-    );
-  }, []);
-
+  //
   useEffect(() => {
     // Force measurement after first paint
     const measure = () => {
