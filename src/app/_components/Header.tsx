@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRef, useEffect } from "react";
 import { useYieldContext } from "~/contexts/YieldContext";
 import { JoinWaitListButton } from "./JoinWaitListButton";
+import Nav from "./Nav";
 
 export default function Header() {
   const headerRef = useRef<HTMLDivElement>(null);
@@ -57,14 +58,7 @@ export default function Header() {
           <div className="text-primary px-4 py-3 font-bold">INSTRUCTRA</div>
         </Link>
 
-        <div className="l:flex hidden gap-4">
-          <Link href={"/#home"}>Home</Link>
-          <Link href={"/#about"}>About</Link>
-          <Link href={"/#how"}>How it works</Link>
-          <Link href={"/#contact"}>Contact us</Link>
-          {/* //Todo referral program will be added. */}
-          {/* <Link href={"/referral"}>Referral programme</Link> */}
-        </div>
+        <Nav></Nav>
 
         <JoinWaitListButton />
 

@@ -21,7 +21,7 @@ export default function SideNav() {
             <Link
               key={href}
               href={href}
-              className="text-4xl"
+              className="text-link text-4xl"
               onClick={closeSideNav}
             >
               {label}
