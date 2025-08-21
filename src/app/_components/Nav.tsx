@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 
 type NavLink = {
@@ -11,7 +11,6 @@ type NavLink = {
 };
 
 export default function Nav() {
-
   // Initial nav items
   const [links, setLinks] = useState<NavLink[]>([
     {
@@ -48,6 +47,17 @@ export default function Nav() {
       ),
     );
   };
+
+  useEffect(() => {
+    const currentHash = window.location.hash || "#home"; // fallback to home
+    setLinks((prev) =>
+      prev.map((link) =>
+        link.href.endsWith(currentHash)
+          ? { ...link, active: true }
+          : { ...link, active: false },
+      ),
+    );
+  }, []);
 
   return (
     <div className="flex gap-4">
