@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useRef, useEffect, useState } from "react";
 import { useYieldContext } from "~/contexts/YieldContext";
 import { JoinWaitListButton } from "./JoinWaitListButton";
-import Nav from "./Nav";
 
 type NavLink = {
   id: string;
@@ -106,7 +105,11 @@ export default function Header() {
         ref={navRef}
         className="card-bg l:w-(--max-l) ll:w-(--max-ll) tb:w-(--max-tb) mm:w-(--max-mm) ml:w-(--max-ml) flex w-(--max-sm) items-center justify-between rounded-[100px] px-4 py-3"
       >
-        <Link key={links[0]?.id} href={links[0]?.href??""} onClick={() => setActive(links[0]?.id??"")}>
+        <Link
+          key={links[0]?.id}
+          href={links[0]?.href ?? ""}
+          onClick={() => setActive(links[0]?.id ?? "")}
+        >
           <div className="text-primary px-4 py-3 font-bold">INSTRUCTRA</div>
         </Link>
 
