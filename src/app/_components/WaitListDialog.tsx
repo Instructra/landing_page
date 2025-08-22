@@ -109,7 +109,16 @@ function SubmissionForm(waitListDialogStore: WaitListStore) {
 
       <WaitListForm />
 
-      <p>Enter your email above to join our early access.</p>
+      <button
+        onClick={
+          waitListDialogStore.prevStage as React.MouseEventHandler<HTMLButtonElement>
+        }
+      >
+        <p className="text-primary flex items-center gap-2">
+          <span className="icon-[material-symbols--arrow-back] text-primary text-center"></span>
+          Go back
+        </p>
+      </button>
     </div>
   );
 }
