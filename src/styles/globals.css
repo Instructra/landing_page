@@ -13,10 +13,13 @@
   --color-dark-bg: #151517;
   --color-dark-input-bg: #363636;
   --color-placeholder: #AFAFAF;
-  --color-error: #B3261E;
+  --color-error-600: #DC2626;
   --color-success: #2EA970;
   --color-dialog-bg: #F5F5F5;
   --color-link: #666666;
+  --color-disabled-primary: #BED6FC;
+  --color-error-100: #FEE2E2;
+  --color-error-50: #FEF2F2;
 
   /* brake points */
   --breakpoint-mm: 375px;
