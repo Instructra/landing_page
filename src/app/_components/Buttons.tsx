@@ -12,6 +12,7 @@ export interface IButtonProps {
   iconText?: string | null;
   classNames?: string | null;
   clickEvent?: MouseEventHandler<HTMLButtonElement> | null;
+  disabled: boolean;
 }
 
 export function Buttons({
@@ -19,13 +20,17 @@ export function Buttons({
   buttonType,
   iconText,
   classNames,
+  disabled,
   clickEvent,
 }: IButtonProps) {
   let variantClasses = "";
 
   switch (buttonType) {
     case ButtonType.Primary:
-      variantClasses = "bg-primary text-white";
+      variantClasses =
+        disabled == false
+          ? "bg-primary text-white"
+          : "bg-disabled-primary text-white";
       break;
     case ButtonType.Secondary:
       variantClasses = "text-text-primary border-border border-2 bg-white";
@@ -41,6 +46,7 @@ export function Buttons({
     <button
       className={`${variantClasses} flex items-center justify-center rounded-full px-6 py-3 ${classNames ?? ""}`}
       onClick={clickEvent ?? undefined}
+      disabled={disabled}
     >
       {(buttonType === ButtonType.Secondary ||
         buttonType === ButtonType.Other) &&
