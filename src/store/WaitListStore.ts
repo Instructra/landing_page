@@ -25,6 +25,7 @@ export interface WaitListStore {
     state: WaitListDialogState;
     toggleDialog: () => void;
     nextStage: (selectedUserType: SelectedUserType) => void;
+    prevStage: () => void;
     reset: () => void;
 }
 
@@ -45,5 +46,14 @@ export const useWaitListStore = create<WaitListStore>((set, get, store) => ({
             selectedUserType: state.state.selectedUserType = selectedUserType,
         },
     })),
+    prevStage: function () {
+        return set(state => ({
+            state: {
+                ...state.state,
+                dialogStage: state.state.dialogStage = WaitListStages.SELECTION,
+            },
+        }));
+    },
     reset: () => set(store.getInitialState()),
+
 }));
