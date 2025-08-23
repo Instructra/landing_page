@@ -9,9 +9,9 @@ import { JoinWaitListButton } from "./_components/JoinWaitListButton";
 export default function Home() {
   return (
     <main>
-      <section id="home" className="flex flex-col items-center bg-white">
+      <section id="home" className="z-1 flex flex-col items-center bg-white">
         <MainContainer>
-          <div className="l:grid-cols-5 tb:grid-rows-6 l:grid-rows-5 tb:gap-6 grid grid-cols-1 gap-6">
+          <div className="l:grid-cols-5 tb:grid-rows-6 l:grid-rows-5 tb:gap-6 z-1 grid grid-cols-1 gap-6">
             {/* top */}
             <div className="tb:items-center tb:max-w-full tb:justify-center tb:row-span-2 tb:row-start-1 l:col-span-3 l:col-start-1 l:row-span-3 l:items-start row-span-1 flex max-w-[620px] flex-col gap-4">
               <h1 className="tb:text-center l:text-left l:text-7xl ll:text-8xl tb:text-7xl tb:w-[620px] text-[44px]/12">
@@ -50,7 +50,7 @@ export default function Home() {
         className="flex flex-col items-center justify-center gap-8 pb-32"
       >
         <MainContainer>
-          <div className="flex flex-col items-center gap-6">
+          <div className="z-1 flex flex-col items-center gap-6">
             <h2 className="w-72 text-center text-3xl font-semibold">
               What makes Instructra different
             </h2>
@@ -140,7 +140,7 @@ export default function Home() {
         className="bg-border flex min-h-screen items-start justify-center pb-20"
       >
         <MainContainer>
-          <div className="flex flex-col items-start justify-center gap-8">
+          <div className="z-1 flex flex-col items-start justify-center gap-8">
             {/* section heading */}
             <div className="tb:flex-row tb:justify-between flex w-full flex-col justify-center gap-8">
               <h2 className="text-center text-4xl font-normal text-white">
@@ -312,7 +312,7 @@ export default function Home() {
         className="bg-card flex min-h-screen justify-center"
       >
         <MainContainer>
-          <div className="l:flex-row l:px-20 l:p-0 l:justify-between flex flex-col items-center overflow-clip rounded-3xl bg-white px-6 pt-12">
+          <div className="l:flex-row l:px-20 l:p-0 l:justify-between z-1 flex flex-col items-center overflow-clip rounded-3xl bg-white px-6 pt-12">
             {/* text area */}
             <div className="l:w-[556] flex flex-col gap-6">
               <div className="tb:items-center l:items-start flex flex-col gap-3">

@@ -7,7 +7,7 @@ export default function Slider() {
 
   return (
     <div
-      className="relative flex w-screen flex-col gap-8"
+      className="relative z-1 flex w-screen flex-col gap-8"
       style={
         navWidth
           ? {

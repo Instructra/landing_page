@@ -2,6 +2,7 @@
 // Footer.tsx
 import MainContainer from "./MainContainer";
 import { ContactForm } from "./ContactForm";
+import StarParticles from "./StartParticles";
 
 export default function Footer() {
   return (
@@ -10,8 +11,9 @@ export default function Footer() {
         id="contact"
         className="bg-dark-bg flex flex-col items-center justify-center pb-20"
       >
+        <StarParticles></StarParticles>
         <MainContainer>
-          <div className="l:flex-row flex w-full flex-col gap-16">
+          <div className="l:flex-row z-1 flex w-full flex-col gap-16">
             {/* Left: Contact info */}
             <div className="flex flex-1 flex-col gap-8">
               <h2 className="text-start text-4xl font-semibold text-white">
