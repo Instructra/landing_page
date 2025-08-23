@@ -18,7 +18,7 @@ export function WaitListDialog() {
   }
   return (
     <div className="fixed inset-0 z-70 flex items-center justify-center bg-white/10 backdrop-blur-sm">
-      <div className="bg-dialog-bg tb:w-[704px] tb:p-8 relative flex w-[280px] flex-col gap-8 rounded-3xl p-4 shadow-lg">
+      <div className="bg-dialog-bg tb:w-[704px] tb:p-12 relative flex w-[80%] flex-col gap-8 rounded-2xl p-12 shadow-lg">
         {/* header */}
         <div className="">
           <div className="flex justify-between">
@@ -51,7 +51,7 @@ function UserTypeSelector(waitListDialogStore: WaitListStore) {
       <div
         className="tb:w-[312px] hover:border-primary flex w-full flex-col gap-8 rounded-3xl bg-white px-3 py-6 transition-all duration-300 ease-in-out hover:border-2"
         onClick={() =>
-          waitListDialogStore.nextStage(SelectedUserType.INSTRUCTOR)
+          waitListDialogStore.nextStage(SelectedUserType.INSTRUCTOR, undefined)
         }
       >
         <div className="tb:h-[160px] relative h-[80px] w-full">
@@ -70,7 +70,9 @@ function UserTypeSelector(waitListDialogStore: WaitListStore) {
       {/* Learner */}
       <div
         className="tb:w-[312px] hover:border-primary flex w-full flex-col gap-8 rounded-3xl bg-white px-3 py-6 transition-all duration-300 ease-in-out hover:border-2"
-        onClick={() => waitListDialogStore.nextStage(SelectedUserType.LEARNER)}
+        onClick={() =>
+          waitListDialogStore.nextStage(SelectedUserType.LEARNER, undefined)
+        }
       >
         <div className="tb:h-[160px] relative h-[80px] w-full">
           <Image
@@ -92,12 +94,15 @@ function UserTypeSelector(waitListDialogStore: WaitListStore) {
 function SubmissionForm(waitListDialogStore: WaitListStore) {
   return (
     <div className="flex flex-col items-center gap-8">
-      <h2 className="max-w-[246px] text-center text-[32px] font-[500]">
+      <h2 className="tb:text-3xl tb:w-[246px] w-[176px] text-2xl font-medium">
         {waitListDialogStore.state.selectedUserType ===
         SelectedUserType.INSTRUCTOR
           ? "Join the waitlist as an Instructor"
           : "Join the waitlist as a Learner"}
       </h2>
+      <p className="text-text-secondary text-sm font-[400]">
+        Fill the form below to join our early access.
+      </p>
       {/* list of icons */}
       <div className="l:h-9 l:w-[180] relative flex h-12 w-[240px] justify-center">
         <div className="l:w-9 l:h-9 absolute left-0 h-12 w-12 rounded-full bg-[url('/assets/images/wait_1.jpg')] bg-cover"></div>
@@ -108,17 +113,6 @@ function SubmissionForm(waitListDialogStore: WaitListStore) {
       </div>
 
       <WaitListForm />
-
-      <button
-        onClick={
-          waitListDialogStore.prevStage as React.MouseEventHandler<HTMLButtonElement>
-        }
-      >
-        <p className="text-primary flex items-center gap-2">
-          <span className="icon-[material-symbols--arrow-back] text-primary text-center"></span>
-          Go back
-        </p>
-      </button>
     </div>
   );
 }

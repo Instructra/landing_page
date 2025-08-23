@@ -1,6 +1,7 @@
 "use client";
 
 import { useReCaptcha } from "next-recaptcha-v3";
+
 import {
   useActionState,
   useCallback,
@@ -12,6 +13,8 @@ import { type FormState, FormSubmissionStatus } from "../_enums/FormEnums";
 import { JoinWaitList } from "../_services/FormHandlers";
 import { Buttons, ButtonType } from "./Buttons";
 import { ErrorLabel } from "./ErrorLabel";
+import { useWaitListStore } from "~/store/WaitListStore";
+import Confetti from "react-confetti";
 
 export function WaitListForm() {
   const initialFormState: FormState = {
@@ -38,6 +41,7 @@ export function WaitListForm() {
   // Track errors
   const [errors, setErrors] = useState<{ name?: string; email?: string }>({});
   const [isFormValid, setIsFormValid] = useState(false);
+  const waitListDialogStore = useWaitListStore((state) => state);
 
   // Validate on every input change
   useEffect(() => {
@@ -57,7 +61,7 @@ export function WaitListForm() {
 
     setErrors(newErrors);
     setIsFormValid(Object.keys(newErrors).length === 0);
-  }, [name, email]);
+  }, [name, email, waitListDialogStore]);
 
   const enhancedAction = useCallback(
     async (formData: FormData) => {
@@ -83,20 +87,30 @@ export function WaitListForm() {
 
   if (state.message) {
     return (
-      <p
-        className={
-          state.status === FormSubmissionStatus.SUCCESS
-            ? "text-success text-2xl"
-            : "text-error text-2xl"
-        }
-      >
-        {state.message}
-      </p>
+      <div className="flex flex-col items-center">
+        <div className="absolute bottom-0 h-[60%] w-full overflow-clip rounded-2xl">
+          <Confetti className="h-full w-full" />
+        </div>
+        <span className="icon-[bitcoin-icons--verify-filled] text-success-500 text-7xl"></span>
+        <p
+          className={
+            state.status === FormSubmissionStatus.SUCCESS
+              ? "text-2xl"
+              : "text-error text-2xl font-medium"
+          }
+        >
+          You’re now subscribed!
+        </p>
+      </div>
     );
   }
 
   if (pending) {
-    return <p>Adding you to the waitlist...</p>;
+    return (
+      <p>
+        <span className="icon-[eos-icons--three-dots-loading] text-9xl"></span>
+      </p>
+    );
   }
 
   return (
@@ -135,14 +149,32 @@ export function WaitListForm() {
 
       <br />
       <div className="flex justify-center">
-        <Buttons
-          text={"Submit"}
-          buttonType={ButtonType.Primary}
-          iconText={"arrow_right"}
-          classNames={``}
-          disabled={!isFormValid || pending} // 🔥 disabled if invalid or submitting
-        />
+        {
+          <Buttons
+            text={"Submit"}
+            buttonType={ButtonType.Primary}
+            iconText={"arrow_right"}
+            classNames={``}
+            disabled={!isFormValid || pending}
+          />
+        }
       </div>
+      <br />
+
+      {
+        <div className="flex justify-center">
+          <button
+            onClick={
+              waitListDialogStore.prevStage as React.MouseEventHandler<HTMLButtonElement>
+            }
+          >
+            <p className="text-primary flex items-center gap-2">
+              <span className="icon-[material-symbols--arrow-back] text-primary text-center"></span>
+              Go back
+            </p>
+          </button>
+        </div>
+      }
     </form>
   );
 }
