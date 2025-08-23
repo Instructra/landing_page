@@ -4,7 +4,7 @@ import MainContainer from "./_components/MainContainer";
 import Slider from "./_components/Slider";
 import HandMockUp from "./_components/HandMockUP";
 import HomeCallToAction from "./_components/HomeCallToAction";
-import HowItWorksCallToAction from "./_components/HowItWorksCallToAction";
+import PlayVideoButton from "./_components/PlayVideoButton";
 import { JoinWaitListButton } from "./_components/JoinWaitListButton";
 export default function Home() {
   return (
@@ -25,8 +25,8 @@ export default function Home() {
             <HomeCallToAction />
             <div className="tb:row-start-4 tb:row-span-3 l:row-start-1 l:row-span-5 l:col-start-4 l:col-span-2 row-span-3 row-start-3 flex justify-center">
               <div className="tb:h-[490px] tb:w-[240px] h-[345px] w-[170px]">
-                <IphoneMockUp url="/assets/images/location.jpeg">
-                  <div className="h-full w-full bg-pink-50"></div>
+                <IphoneMockUp url="/assets/images/location.png">
+                  {null}
                 </IphoneMockUp>
               </div>
             </div>
@@ -146,7 +146,10 @@ export default function Home() {
               <h2 className="text-center text-4xl font-normal text-white">
                 How it works
               </h2>
-              <HowItWorksCallToAction />
+              <PlayVideoButton
+                text="Watch how it works"
+                url="https://hncbsyyhcafzhkqlolkd.supabase.co/storage/v1/object/public/landingpage/9301_3.mp4"
+              />
             </div>
 
             {/* how it works grid */}

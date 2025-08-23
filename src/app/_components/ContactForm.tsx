@@ -80,6 +80,7 @@ export function ContactForm() {
             buttonType={ButtonType.Primary}
             iconText=""
             classNames="w-full"
+            disabled={false}
           />
         )}
       </div>
