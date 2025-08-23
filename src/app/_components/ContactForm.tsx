@@ -12,7 +12,7 @@ import {
   emailFormat,
 } from "../_services/FormValidator";
 export function ContactForm() {
-  const { values, setValue, touched, setFieldTouched, errors, isFormValid } =
+  const { setValue, touched, setFieldTouched, errors, isFormValid } =
     useFormValidation({
       name: { value: "", rules: [required(), minLength(2)] },
       email: { value: "", rules: [required(), emailFormat()] },
