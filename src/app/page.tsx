@@ -157,20 +157,12 @@ export default function Home() {
               {/* search nearby instructor */}
               <div className="tb:col-span-2 tb:row-span-2 l:flex-row tb:px-16 flex w-full flex-col gap-8 overflow-clip rounded-3xl bg-white px-6 pt-8">
                 <div className="l:gap-6 flex flex-col gap-4">
-                  <div className="l:h-12 relative h-8 w-full">
-                    <div className="l:h-12 l:w-12 l:left-[160] absolute top-0 left-[96px] h-8 w-8 rounded-full bg-[url('/assets/images/user_4.jpeg')] bg-cover"></div>
-                    <div className="l:h-12 l:w-12 l:left-[120] absolute top-0 left-[72px] h-8 w-8 rounded-full bg-white p-0.5">
-                      <div className="h-full w-full overflow-clip rounded-full bg-[url('/assets/images/user_3.jpeg')] bg-cover"></div>
-                    </div>
-                    <div className="l:h-12 l:w-12 l:left-[80] absolute top-0 left-[48px] h-8 w-8 rounded-full bg-white p-0.5">
-                      <div className="h-full w-full overflow-clip rounded-full bg-[url('/assets/images/user_2.jpeg')] bg-cover"></div>
-                    </div>
-                    <div className="l:h-12 l:w-12 l:left-[40] absolute top-0 left-6 h-8 w-8 rounded-full bg-white p-0.5">
-                      <div className="h-full w-full overflow-clip rounded-full bg-[url('/assets/images/user_1.jpeg')] bg-cover"></div>
-                    </div>
-                    <div className="l:h-12 l:w-12 absolute top-0 left-0 h-8 w-8 rounded-full">
-                      <div className="h-full w-full overflow-clip rounded-full bg-[url('/assets/images/user_icon.png')] bg-cover"></div>
-                    </div>
+                  <div className="l:h-9 l:w-[180] relative flex h-12 w-[240px] justify-center">
+                    <div className="l:w-9 l:h-9 absolute left-0 h-12 w-12 rounded-full bg-[url('/assets/images/wait_1.jpg')] bg-cover"></div>
+                    <div className="l:w-9 l:h-9 l:left-[32] absolute left-[44] h-12 w-12 rounded-full bg-[url('/assets/images/wait_2.jpg')] bg-cover"></div>
+                    <div className="l:w-9 l:h-9 l:left-[64] absolute left-[88] h-12 w-12 rounded-full bg-[url('/assets/images/wait_3.jpg')] bg-cover"></div>
+                    <div className="l:w-9 l:h-9 l:left-[96] absolute left-[132] h-12 w-12 rounded-full bg-[url('/assets/images/wait_4.jpg')] bg-cover"></div>
+                    <div className="l:w-9 l:h-9 l:left-[128] absolute left-[176] h-12 w-12 rounded-full bg-[url('/assets/images/wait_5.jpg')] bg-cover"></div>
                   </div>
                   <div className="l:w-[340px] flex flex-col gap-3">
                     <h3 className="l:text-3xl text-2xl font-medium">
