@@ -59,7 +59,7 @@ export default function Home() {
               {/* location */}
               <div className="bg-card tb:w-[340px] ll:w-[384px] l:w-[330px] relative flex h-[500px] w-[300px] flex-col items-center justify-start overflow-clip rounded-3xl p-8">
                 <div className="absolute top-[50%] right-[50%] h-[480px] w-[250px] translate-x-1/2">
-                  <IphoneMockUp url="/assets/images/location.jpeg">
+                  <IphoneMockUp url="/assets/images/location.png">
                     {null}
                   </IphoneMockUp>
                 </div>
