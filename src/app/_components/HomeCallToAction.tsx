@@ -15,7 +15,7 @@ export default function HomeCallToAction() {
         Join the wait list
       </button>
       <PlayVideoButton
-        url="https://hncbsyyhcafzhkqlolkd.supabase.co/storage/v1/object/public/landingpage/_9301.mp4"
+        url="https://hncbsyyhcafzhkqlolkd.supabase.co/storage/v1/object/public/landingpage/9301_3.mp4"
         text="What is Instructra"
       />
     </div>

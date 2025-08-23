@@ -148,7 +148,7 @@ export default function Home() {
               </h2>
               <PlayVideoButton
                 text="Watch how it works"
-                url="https://hncbsyyhcafzhkqlolkd.supabase.co/storage/v1/object/public/landingpage/9301_3.mp4"
+        url="https://hncbsyyhcafzhkqlolkd.supabase.co/storage/v1/object/public/landingpage/_9301.mp4"
               />
             </div>
 
