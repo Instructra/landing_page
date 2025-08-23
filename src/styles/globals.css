@@ -20,7 +20,7 @@
   --color-disabled-primary: #BED6FC;
   --color-error-100: #FEE2E2;
   --color-error-50: #FEF2F2;
-
+  --color-success-500: #49D06C;
   /* brake points */
   --breakpoint-mm: 375px;
   --breakpoint-ml: 425px;
@@ -41,7 +41,7 @@
 
 @layer base {
   * {
-    color: #1a1a1a;
+    color: #0A0A0A;
     margin: 0;
     padding: 0;
   }
