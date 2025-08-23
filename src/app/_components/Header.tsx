@@ -5,6 +5,7 @@ import { useRef, useEffect } from "react";
 import { useYieldContext } from "~/contexts/YieldContext";
 import { JoinWaitListButton } from "./JoinWaitListButton";
 import { useNavLinks } from "../_services/NavigatorManager";
+import { Logo } from "./Logo";
 
 export default function Header() {
   const headerRef = useRef<HTMLDivElement>(null);
@@ -75,7 +76,7 @@ export default function Header() {
             closeSideNav();
           }}
         >
-          <div className="text-primary px-4 py-3 font-bold">INSTRUCTRA</div>
+          <Logo></Logo>
         </Link>
 
         <div className="l:flex hidden gap-4">

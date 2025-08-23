@@ -8,6 +8,7 @@ import {
 import Image from "next/image";
 
 import { WaitListForm } from "./WaitListForm";
+import { Logo } from "./Logo";
 
 export function WaitListDialog() {
   const waitListDialogStore = useWaitListStore((state) => state);
@@ -26,7 +27,7 @@ export function WaitListDialog() {
               <h2 className="text-2xl">Join the wait list</h2>
             )}
             {waitListState.dialogStage == WaitListStages.EMAIL_COLLECTION && (
-              <div className="text-primary font-bold">INSTRUCTRA</div>
+              <Logo></Logo>
             )}
             <button onClick={waitListDialogStore.toggleDialog}>
               <span className="icon-[material-symbols--close] text-2xl"></span>
@@ -94,7 +95,7 @@ function UserTypeSelector(waitListDialogStore: WaitListStore) {
 function SubmissionForm(waitListDialogStore: WaitListStore) {
   return (
     <div className="flex flex-col items-center gap-8">
-      <h2 className="tb:text-3xl tb:w-[246px] w-[176px] text-2xl font-medium">
+      <h2 className="tb:text-3xl tb:w-[246px] text-2xl font-medium">
         {waitListDialogStore.state.selectedUserType ===
         SelectedUserType.INSTRUCTOR
           ? "Join the waitlist as an Instructor"
