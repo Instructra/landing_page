@@ -46,7 +46,7 @@ export function WaitListDialog() {
 }
 function UserTypeSelector(waitListDialogStore: WaitListStore) {
   return (
-    <div className="flex w-full flex-wrap justify-center gap-4">
+    <div className="tb:flex-row flex w-full flex-col justify-center gap-4">
       {/* Instructor */}
       <div
         className="tb:w-[312px] hover:border-primary flex w-full flex-col gap-8 rounded-3xl bg-white px-3 py-6 transition-all duration-300 ease-in-out hover:border-2"
