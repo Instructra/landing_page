@@ -146,7 +146,10 @@ export default function Home() {
               <h2 className="text-center text-4xl font-normal text-white">
                 How it works
               </h2>
-              <PlayVideoButton />
+              <PlayVideoButton
+                text="Watch how it works"
+                url="https://hncbsyyhcafzhkqlolkd.supabase.co/storage/v1/object/public/landingpage/9301_3.mp4"
+              />
             </div>
 
             {/* how it works grid */}

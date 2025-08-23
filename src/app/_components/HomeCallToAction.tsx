@@ -14,7 +14,10 @@ export default function HomeCallToAction() {
       >
         Join the wait list
       </button>
-      <PlayVideoButton />
+      <PlayVideoButton
+        url="https://hncbsyyhcafzhkqlolkd.supabase.co/storage/v1/object/public/landingpage/_9301.mp4"
+        text="What is Instructra"
+      />
     </div>
   );
 }
