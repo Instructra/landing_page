@@ -8,13 +8,18 @@ export default function StarParticles() {
   const [initialized, setInitialized] = useState(false);
 
   useEffect(() => {
-    // Let ESLint know you know what you’re doing
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-    initParticlesEngine(async (engine: Engine) => {
+    (
+      initParticlesEngine as (
+        cb: (engine: Engine) => Promise<void>,
+      ) => Promise<void>
+    )(async (engine: Engine) => {
       await loadSlim(engine);
       await loadStarShape(engine);
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    }).then(() => setInitialized(true));
+    })
+      .then(() => setInitialized(true))
+      .catch((err) => {
+        console.error("Failed to initialize particles engine:", err);
+      });
   }, []);
 
   const options = useMemo(() => {
