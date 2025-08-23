@@ -2,19 +2,19 @@
 
 import { useReCaptcha } from "next-recaptcha-v3";
 
-import {
-  useActionState,
-  useCallback,
-  startTransition,
-  useState,
-  useEffect,
-} from "react";
+import { useActionState, useCallback, startTransition } from "react";
 import { type FormState, FormSubmissionStatus } from "../_enums/FormEnums";
 import { JoinWaitList } from "../_services/FormHandlers";
 import { Buttons, ButtonType } from "./Buttons";
 import { ErrorLabel } from "./ErrorLabel";
 import { useWaitListStore } from "~/store/WaitListStore";
 import Confetti from "react-confetti";
+import {
+  useFormValidation,
+  required,
+  minLength,
+  emailFormat,
+} from "../_services/FormValidator";
 
 export function WaitListForm() {
   const initialFormState: FormState = {
@@ -28,40 +28,19 @@ export function WaitListForm() {
     initialFormState,
   );
 
-  // Track field values
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  // // Track field values
+  // const [name] = useState("");
+  // const [email] = useState("");
 
   // Track touched fields
-  const [touched, setTouched] = useState<{ name: boolean; email: boolean }>({
-    name: false,
-    email: false,
-  });
 
-  // Track errors
-  const [errors, setErrors] = useState<{ name?: string; email?: string }>({});
-  const [isFormValid, setIsFormValid] = useState(false);
+  const { setValue, touched, setFieldTouched, errors, isFormValid } =
+    useFormValidation({
+      name: { value: "", rules: [required(), minLength(2)] },
+      email: { value: "", rules: [required(), emailFormat()] },
+    });
+
   const waitListDialogStore = useWaitListStore((state) => state);
-
-  // Validate on every input change
-  useEffect(() => {
-    const newErrors: { name?: string; email?: string } = {};
-
-    if (!name.trim()) {
-      newErrors.name = "Name is required";
-    } else if (name.trim().length < 2) {
-      newErrors.name = "Name must be at least 2 characters";
-    }
-
-    if (!email.trim()) {
-      newErrors.email = "Email is required";
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) {
-      newErrors.email = "Invalid email address";
-    }
-
-    setErrors(newErrors);
-    setIsFormValid(Object.keys(newErrors).length === 0);
-  }, [name, email, waitListDialogStore]);
 
   const enhancedAction = useCallback(
     async (formData: FormData) => {
@@ -108,7 +87,7 @@ export function WaitListForm() {
   if (pending) {
     return (
       <p>
-        <span className="icon-[eos-icons--three-dots-loading] text-9xl"></span>
+        <span className="icon-[eos-icons--three-dots-loading] text-primary text-9xl"></span>
       </p>
     );
   }
@@ -123,10 +102,11 @@ export function WaitListForm() {
           name="name"
           type="text"
           placeholder="Your full name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          onBlur={() => setTouched((t) => ({ ...t, name: true }))}
-          className={`w-full rounded-full ${touched.name && errors.name ? "bg-error-50 border-error-600 border-1" : "bg-white"} px-4 py-3 text-[#545454] focus:outline-none`}
+          onChange={(e) => setValue("name", e.target.value)}
+          onBlur={() => setFieldTouched("name")}
+          className={`w-full rounded-full bg-white p-4 ${
+            touched.name && errors.name ? "border-error-600 border" : ""
+          }`}
         />
         {touched.name && errors.name && (
           <div className="flex justify-center">{ErrorLabel(errors.name)}</div>
@@ -137,10 +117,11 @@ export function WaitListForm() {
           name="email"
           type="email"
           placeholder="Your email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          onBlur={() => setTouched((t) => ({ ...t, email: true }))} // track blur
-          className={`w-full rounded-full ${touched.email && errors.email ? "bg-error-50 border-error-600 border-1" : "bg-white"} px-4 py-3 text-[#545454] focus:outline-none`}
+          onChange={(e) => setValue("email", e.target.value)}
+          onBlur={() => setFieldTouched("email")}
+          className={`w-full rounded-full bg-white p-4 ${
+            touched.email && errors.email ? "border-error-600 border" : ""
+          }`}
         />
         {touched.email && errors.email && (
           <div className="flex justify-center">{ErrorLabel(errors.email)}</div>

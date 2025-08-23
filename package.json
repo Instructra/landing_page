@@ -28,6 +28,9 @@
     "@trpc/client": "^11.0.0",
     "@trpc/react-query": "^11.0.0",
     "@trpc/server": "^11.0.0",
+    "@tsparticles/engine": "^3.9.1",
+    "@tsparticles/react": "^3.0.0",
+    "@tsparticles/shape-star": "^3.9.1",
     "google-auth-library": "^10.2.1",
     "iconify": "^1.4.0",
     "lightningcss": "^1.30.1",
@@ -40,6 +43,7 @@
     "resend": "^4.8.0",
     "server-only": "^0.0.1",
     "superjson": "^2.2.1",
+    "tsparticles": "^3.9.1",
     "zod": "^3.24.2",
     "zustand": "^5.0.7"
   },

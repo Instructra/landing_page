@@ -9,9 +9,9 @@ import { JoinWaitListButton } from "./_components/JoinWaitListButton";
 export default function Home() {
   return (
     <main>
-      <section id="home" className="flex flex-col items-center bg-white">
+      <section id="home" className="z-1 flex flex-col items-center bg-white">
         <MainContainer>
-          <div className="l:grid-cols-5 tb:grid-rows-6 l:grid-rows-5 tb:gap-6 grid grid-cols-1 gap-6">
+          <div className="l:grid-cols-5 tb:grid-rows-6 l:grid-rows-5 tb:gap-6 z-1 grid grid-cols-1 gap-6">
             {/* top */}
             <div className="tb:items-center tb:max-w-full tb:justify-center tb:row-span-2 tb:row-start-1 l:col-span-3 l:col-start-1 l:row-span-3 l:items-start row-span-1 flex max-w-[620px] flex-col gap-4">
               <h1 className="tb:text-center l:text-left l:text-7xl ll:text-8xl tb:text-7xl tb:w-[620px] text-[44px]/12">
@@ -50,7 +50,7 @@ export default function Home() {
         className="flex flex-col items-center justify-center gap-8 pb-32"
       >
         <MainContainer>
-          <div className="flex flex-col items-center gap-6">
+          <div className="z-1 flex flex-col items-center gap-6">
             <h2 className="w-72 text-center text-3xl font-semibold">
               What makes Instructra different
             </h2>
@@ -59,7 +59,7 @@ export default function Home() {
               {/* location */}
               <div className="bg-card tb:w-[340px] ll:w-[384px] l:w-[330px] relative flex h-[500px] w-[300px] flex-col items-center justify-start overflow-clip rounded-3xl p-8">
                 <div className="absolute top-[50%] right-[50%] h-[480px] w-[250px] translate-x-1/2">
-                  <IphoneMockUp url="/assets/images/location.jpeg">
+                  <IphoneMockUp url="/assets/images/location.png">
                     {null}
                   </IphoneMockUp>
                 </div>
@@ -140,7 +140,7 @@ export default function Home() {
         className="bg-border flex min-h-screen items-start justify-center pb-20"
       >
         <MainContainer>
-          <div className="flex flex-col items-start justify-center gap-8">
+          <div className="z-1 flex flex-col items-start justify-center gap-8">
             {/* section heading */}
             <div className="tb:flex-row tb:justify-between flex w-full flex-col justify-center gap-8">
               <h2 className="text-center text-4xl font-normal text-white">
@@ -157,20 +157,12 @@ export default function Home() {
               {/* search nearby instructor */}
               <div className="tb:col-span-2 tb:row-span-2 l:flex-row tb:px-16 flex w-full flex-col gap-8 overflow-clip rounded-3xl bg-white px-6 pt-8">
                 <div className="l:gap-6 flex flex-col gap-4">
-                  <div className="l:h-12 relative h-8 w-full">
-                    <div className="l:h-12 l:w-12 l:left-[160] absolute top-0 left-[96px] h-8 w-8 rounded-full bg-[url('/assets/images/user_4.jpeg')] bg-cover"></div>
-                    <div className="l:h-12 l:w-12 l:left-[120] absolute top-0 left-[72px] h-8 w-8 rounded-full bg-white p-0.5">
-                      <div className="h-full w-full overflow-clip rounded-full bg-[url('/assets/images/user_3.jpeg')] bg-cover"></div>
-                    </div>
-                    <div className="l:h-12 l:w-12 l:left-[80] absolute top-0 left-[48px] h-8 w-8 rounded-full bg-white p-0.5">
-                      <div className="h-full w-full overflow-clip rounded-full bg-[url('/assets/images/user_2.jpeg')] bg-cover"></div>
-                    </div>
-                    <div className="l:h-12 l:w-12 l:left-[40] absolute top-0 left-6 h-8 w-8 rounded-full bg-white p-0.5">
-                      <div className="h-full w-full overflow-clip rounded-full bg-[url('/assets/images/user_1.jpeg')] bg-cover"></div>
-                    </div>
-                    <div className="l:h-12 l:w-12 absolute top-0 left-0 h-8 w-8 rounded-full">
-                      <div className="h-full w-full overflow-clip rounded-full bg-[url('/assets/images/user_icon.png')] bg-cover"></div>
-                    </div>
+                  <div className="l:h-9 l:w-[180] relative flex h-12 w-[240px] justify-center">
+                    <div className="l:w-9 l:h-9 absolute left-0 h-12 w-12 rounded-full bg-[url('/assets/images/wait_1.jpg')] bg-cover"></div>
+                    <div className="l:w-9 l:h-9 l:left-[32] absolute left-[44] h-12 w-12 rounded-full bg-[url('/assets/images/wait_2.jpg')] bg-cover"></div>
+                    <div className="l:w-9 l:h-9 l:left-[64] absolute left-[88] h-12 w-12 rounded-full bg-[url('/assets/images/wait_3.jpg')] bg-cover"></div>
+                    <div className="l:w-9 l:h-9 l:left-[96] absolute left-[132] h-12 w-12 rounded-full bg-[url('/assets/images/wait_4.jpg')] bg-cover"></div>
+                    <div className="l:w-9 l:h-9 l:left-[128] absolute left-[176] h-12 w-12 rounded-full bg-[url('/assets/images/wait_5.jpg')] bg-cover"></div>
                   </div>
                   <div className="l:w-[340px] flex flex-col gap-3">
                     <h3 className="l:text-3xl text-2xl font-medium">
@@ -320,7 +312,7 @@ export default function Home() {
         className="bg-card flex min-h-screen justify-center"
       >
         <MainContainer>
-          <div className="l:flex-row l:px-20 l:p-0 l:justify-between flex flex-col items-center overflow-clip rounded-3xl bg-white px-6 pt-12">
+          <div className="l:flex-row l:px-20 l:p-0 l:justify-between z-1 flex flex-col items-center overflow-clip rounded-3xl bg-white px-6 pt-12">
             {/* text area */}
             <div className="l:w-[556] flex flex-col gap-6">
               <div className="tb:items-center l:items-start flex flex-col gap-3">
