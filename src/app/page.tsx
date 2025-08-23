@@ -25,8 +25,8 @@ export default function Home() {
             <HomeCallToAction />
             <div className="tb:row-start-4 tb:row-span-3 l:row-start-1 l:row-span-5 l:col-start-4 l:col-span-2 row-span-3 row-start-3 flex justify-center">
               <div className="tb:h-[490px] tb:w-[240px] h-[345px] w-[170px]">
-                <IphoneMockUp url="/assets/images/location.jpeg">
-                  <div className="h-full w-full bg-pink-50"></div>
+                <IphoneMockUp url="/assets/images/location.png">
+                  {null}
                 </IphoneMockUp>
               </div>
             </div>
