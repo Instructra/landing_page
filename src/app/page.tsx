@@ -4,7 +4,7 @@ import MainContainer from "./_components/MainContainer";
 import Slider from "./_components/Slider";
 import HandMockUp from "./_components/HandMockUP";
 import HomeCallToAction from "./_components/HomeCallToAction";
-import HowItWorksCallToAction from "./_components/HowItWorksCallToAction";
+import PlayVideoButton from "./_components/PlayVideoButton";
 import { JoinWaitListButton } from "./_components/JoinWaitListButton";
 export default function Home() {
   return (
@@ -146,7 +146,7 @@ export default function Home() {
               <h2 className="text-center text-4xl font-normal text-white">
                 How it works
               </h2>
-              <HowItWorksCallToAction />
+              <PlayVideoButton />
             </div>
 
             {/* how it works grid */}

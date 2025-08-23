@@ -1,7 +1,7 @@
 "use client";
 
 import { useWaitListStore } from "~/store/WaitListStore";
-import HowItWorksCallToAction from "./HowItWorksCallToAction";
+import PlayVideoButton from "./PlayVideoButton";
 
 export default function HomeCallToAction() {
   const toggleDialog = useWaitListStore((state) => state).toggleDialog;
@@ -14,7 +14,7 @@ export default function HomeCallToAction() {
       >
         Join the wait list
       </button>
-      <HowItWorksCallToAction />
+      <PlayVideoButton />
     </div>
   );
 }

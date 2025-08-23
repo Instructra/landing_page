@@ -2,7 +2,7 @@
 
 import { useYieldContext } from "~/contexts/YieldContext";
 
-export default function HowItWorksCallToAction() {
+export default function PlayVideoButton() {
   const { openVideo } = useYieldContext();
 
   return (
