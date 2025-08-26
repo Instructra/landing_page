@@ -11,9 +11,9 @@ export default function Home() {
     <main>
       <section id="home" className="z-1 flex flex-col items-center bg-white">
         <MainContainer>
-          <div className="l:grid-cols-5 tb:grid-rows-6 l:grid-rows-5 tb:gap-6 z-1 grid grid-cols-1 gap-6">
+          <div className="l:grid-cols-5 tb:auto-rows-auto l:grid-rows-5 z-1 grid grid-cols-1 gap-6">
             {/* top */}
-            <div className="tb:items-center tb:max-w-full tb:justify-center tb:row-span-2 tb:row-start-1 l:col-span-3 l:col-start-1 l:row-span-3 l:items-start row-span-1 flex max-w-[620px] flex-col gap-4">
+            <div className="tb:items-center tb:max-w-full tb:justify-center tb:row-span-2 tb:row-start-1 l:col-span-3 l:col-start-1 l:row-span-3 l:items-start row-span-1 flex h-[fit-content] max-w-[620px] flex-col gap-4">
               <h1 className="tb:text-center l:text-left l:text-7xl ll:text-8xl tb:text-7xl tb:w-[620px] text-[44px]/12">
                 Book driving lessons instantly
               </h1>
@@ -23,7 +23,7 @@ export default function Home() {
               </p>
             </div>
             <HomeCallToAction />
-            <div className="tb:row-start-4 tb:row-span-3 l:row-start-1 l:row-span-5 l:col-start-4 l:col-span-2 row-span-3 row-start-3 flex justify-center">
+            <div className="tb:row-start-4 tb:row-span-4 l:row-start-1 l:row-span-5 l:col-start-4 l:col-span-2 row-span-3 row-start-3 flex justify-center pt-4">
               <div className="tb:h-[490px] tb:w-[240px] h-[345px] w-[170px]">
                 <IphoneMockUp url="/assets/images/location.png">
                   {null}
@@ -33,7 +33,7 @@ export default function Home() {
             <div className="tb:flex l:justify-start l:items-end hidden justify-center p-1">
               <Link
                 href={"/#about"}
-                className="text-text-primary bg-card flex items-center justify-center gap-2 rounded-full px-3 py-[4px]"
+                className="text-text-primary bg-card inline-flex h-[fit-content] items-center justify-center gap-2 rounded-full px-3 py-[4px]"
               >
                 <span className="icon-[grommet-icons--link-down]">
                   keyboard_arrow_down
