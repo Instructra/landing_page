@@ -109,8 +109,8 @@ export default function Home() {
         <MainContainer>
           <div className="l:flex-row l:gap-20 flex flex-col items-end gap-16">
             <div className="flex flex-col gap-4">
-              <h3 className="pb-4 text-xl">About Instructor</h3>
-              <p className="l:min-w-[480px] text-2xl font-medium">
+              <h3 className="pb-4 text-3xl font-medium">About Instructra</h3>
+              <p className="l:min-w-[480px]">
                 Instructra was created to simplify and modernise how driving
                 education is delivered.
               </p>
