@@ -23,14 +23,14 @@ export default function Home() {
               </p>
             </div>
             <HomeCallToAction />
-            <div className="tb:row-start-4 tb:row-span-4 l:row-start-1 l:row-span-5 l:col-start-4 l:col-span-2 row-span-3 row-start-3 flex justify-center pt-4">
+            <div className="tb:row-start-4 tb:row-span-4 l:row-start-1 l:row-span-5 l:col-start-4 l:col-span-2 l:pt-0 row-span-3 row-start-3 flex justify-center pt-4">
               <div className="tb:h-[490px] tb:w-[240px] h-[345px] w-[170px]">
                 <IphoneMockUp url="/assets/images/location.png">
                   {null}
                 </IphoneMockUp>
               </div>
             </div>
-            <div className="tb:flex l:justify-start l:items-end hidden justify-center p-1">
+            <div className="tb:flex l:justify-start l:items-end col-span-full hidden justify-center p-1">
               <Link
                 href={"/#about"}
                 className="text-text-primary bg-card inline-flex h-[fit-content] items-center justify-center gap-2 rounded-full px-3 py-[4px]"
