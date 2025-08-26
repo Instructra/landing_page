@@ -19,12 +19,12 @@ export function WaitListDialog() {
   }
   return (
     <div className="fixed inset-0 z-70 flex items-center justify-center bg-white/10 backdrop-blur-sm">
-      <div className="bg-dialog-bg tb:w-[704px] tb:p-12 relative flex w-[80%] flex-col gap-8 rounded-2xl p-12 shadow-lg">
+      <div className="bg-dialog-bg tb:w-[704px] tb:p-12 relative flex w-[80%] flex-col gap-8 rounded-2xl p-8 shadow-lg">
         {/* header */}
         <div className="">
           <div className="flex justify-between">
             {waitListState.dialogStage == WaitListStages.SELECTION && (
-              <h2 className="text-2xl">Join the wait list</h2>
+              <h2 className="tb:text-2xl text-xl">Join the wait list</h2>
             )}
             {waitListState.dialogStage == WaitListStages.EMAIL_COLLECTION && (
               <Logo></Logo>
@@ -47,7 +47,7 @@ export function WaitListDialog() {
 }
 function UserTypeSelector(waitListDialogStore: WaitListStore) {
   return (
-    <div className="tb:flex-row flex w-full flex-col justify-center gap-4">
+    <div className="tb:flex-row tb:gap-4 flex w-full flex-col justify-center gap-2">
       {/* Instructor */}
       <div
         className="tb:w-[312px] hover:border-primary flex w-full flex-col gap-8 rounded-3xl bg-white px-3 py-6 transition-all duration-300 ease-in-out hover:border-2"
@@ -55,7 +55,7 @@ function UserTypeSelector(waitListDialogStore: WaitListStore) {
           waitListDialogStore.nextStage(SelectedUserType.INSTRUCTOR, undefined)
         }
       >
-        <div className="tb:h-[160px] relative h-[80px] w-full">
+        <div className="tb:h-[140px] relative h-[70px] w-full">
           <Image
             src="/assets/images/instructor_join.png"
             alt="instructor join image"
@@ -75,7 +75,7 @@ function UserTypeSelector(waitListDialogStore: WaitListStore) {
           waitListDialogStore.nextStage(SelectedUserType.LEARNER, undefined)
         }
       >
-        <div className="tb:h-[160px] relative h-[80px] w-full">
+        <div className="tb:h-[140px] relative h-[70px] w-full">
           <Image
             src="/assets/images/learner_join.png"
             alt="learner join image"
