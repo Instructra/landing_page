@@ -98,7 +98,7 @@ export default function Home() {
                 <div className="flex flex-col gap-3">
                   <h2 className="text-2xl">Visual driving progress tracker</h2>
                   <p>
-                    Track each learner’s milestones and personalize lessons
+                    Track each learner’s milestones and personalise lessons
                     based on real-time progress updates.
                   </p>
                 </div>
@@ -109,9 +109,9 @@ export default function Home() {
         <MainContainer>
           <div className="l:flex-row l:gap-20 flex flex-col items-end gap-16">
             <div className="flex flex-col gap-4">
-              <h3 className="pb-4 text-xl">About Instructor</h3>
-              <p className="l:min-w-[480px] text-2xl font-medium">
-                Instructra was created to simplify and modernize how driving
+              <h3 className="pb-4 text-3xl font-medium">About Instructra</h3>
+              <p className="l:min-w-[480px]">
+                Instructra was created to simplify and modernise how driving
                 education is delivered.
               </p>
               <p className="line- text-sm font-normal">
@@ -126,7 +126,7 @@ export default function Home() {
                 To empower the next generation of drivers by seamlessly
                 connecting learners with trusted driving instructors through a
                 smart, accessible, and transparent platform, making driving
-                education more efficient, personalized, and reliable for all.
+                education more efficient, personalised, and reliable for all.
               </p>
             </div>
           </div>
@@ -278,7 +278,7 @@ export default function Home() {
                     </h3>
                     <p className="text-text-secondary">
                       Stay on top of your learning journey. Track completed
-                      lessons, upcoming bookings, and skill milestones—all in
+                      lessons, upcoming bookings, and skill milestones all in
                       one place, so you always know how far you’ve come.
                     </p>
                   </div>
