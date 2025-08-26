@@ -11,7 +11,7 @@ export default function Home() {
     <main>
       <section id="home" className="z-1 flex flex-col items-center bg-white">
         <MainContainer>
-          <div className="l:grid-cols-5 tb:auto-rows-auto l:grid-rows-5 z-1 grid grid-cols-1 gap-6">
+          <div className="l:grid-cols-5 z-1 grid auto-rows-auto grid-cols-1 gap-6">
             {/* top */}
             <div className="tb:items-center tb:max-w-full tb:justify-center tb:row-span-2 tb:row-start-1 l:col-span-3 l:col-start-1 l:row-span-3 l:items-start row-span-1 flex h-[fit-content] max-w-[620px] flex-col gap-4">
               <h1 className="tb:text-center l:text-left l:text-7xl ll:text-8xl tb:text-7xl tb:w-[620px] text-[44px]/12">
