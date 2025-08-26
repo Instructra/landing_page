@@ -9,6 +9,10 @@ import { GoogleAuth } from "google-auth-library";
 
 const RESEND_API_KEY = process.env.RESEND;
 
+const EMAIL_FROM = process.env.EMAIL_FROM ?? "";
+
+const SEND_TO_EMAILS = process.env.SEND_TO_EMAILS ?? "info@instructra.com";
+
 
 const RECAPTCHA_MIN_SCORE = 0.5;
 
@@ -47,6 +51,7 @@ async function verifyRecaptchaEnterprise(
 
     const credentials = getGoogleCredentials();
     console.log(credentials.project_id);
+
 
     // Create an OAuth2 client from service account
     const auth = new GoogleAuth({
@@ -140,11 +145,12 @@ export async function SendEmail(
     try {
         const resend = new Resend(RESEND_API_KEY);
 
+
         const { error } = await resend.emails.send({
-            // Use a verified domain as "from". Put user email in reply_to.
-            from: emailProp.email,
-            to: ["abdulbasit@instructra.com"],
-            subject: "New Contact Form Submission",
+            from: EMAIL_FROM,
+            to: SEND_TO_EMAILS?.split(",").map(email => email.trim()),
+            subject: `New Contact Form Submission. Sender: ${emailProp.email}`,
+            replyTo: emailProp.email,
             react: EmailTemplate(emailProp),
         });
 

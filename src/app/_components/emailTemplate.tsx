@@ -16,7 +16,7 @@ export function EmailTemplate({
 }: EmailTemplateProps) {
   return (
     <div>
-      <h1>Greetings from {senderName}!</h1>
+      <h1>Contact form submitted by {senderName}</h1>
       <p>📧 email: {email} </p>
       <p>💬 Message: {message}</p>
       <p>👤 User type: {userType}</p>

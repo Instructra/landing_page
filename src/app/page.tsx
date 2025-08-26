@@ -91,7 +91,7 @@ export default function Home() {
               {/* progress */}
               <div className="bg-card tb:w-[340px] ll:w-[384px] l:w-[330px] relative flex h-[500px] w-[300px] flex-col items-center justify-start overflow-clip rounded-3xl p-8">
                 <div className="absolute top-[50%] right-[50%] h-[480px] w-[250px] translate-x-1/2">
-                  <IphoneMockUp url="/assets/images/dairy.jpeg">
+                  <IphoneMockUp url="/assets/images/diary.png">
                     {null}
                   </IphoneMockUp>
                 </div>
@@ -148,7 +148,7 @@ export default function Home() {
               </h2>
               <PlayVideoButton
                 text="Watch how it works"
-        url="https://hncbsyyhcafzhkqlolkd.supabase.co/storage/v1/object/public/landingpage/_9301.mp4"
+                url="https://hncbsyyhcafzhkqlolkd.supabase.co/storage/v1/object/public/landingpage/_9301.mp4"
               />
             </div>
 
@@ -295,7 +295,7 @@ export default function Home() {
                   {/* diary phone */}
                   <div className="ml:left-[40px] tb:left-[168px] l:left-[200px] absolute top-[110px] left-[4px]">
                     <div className="l:h-[495px] l:w-[244px] h-[340px] w-[170px]">
-                      <IphoneMockUp url="/assets/images/diary.jpg">
+                      <IphoneMockUp url="/assets/images/diary.png">
                         {null}
                       </IphoneMockUp>
                     </div>
