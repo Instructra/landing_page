@@ -3,13 +3,14 @@
 import Link from "next/link";
 import { useRef, useEffect } from "react";
 import { useYieldContext } from "~/contexts/YieldContext";
-import { JoinWaitListButton } from "./JoinWaitListButton";
 import { useNavLinks } from "../_services/NavigatorManager";
 import { Logo } from "./Logo";
+import { useWaitListStore } from "~/store/WaitListStore";
 
 export default function Header() {
   const headerRef = useRef<HTMLDivElement>(null);
   const navRef = useRef<HTMLElement>(null);
+  const toggleDialog = useWaitListStore((state) => state).toggleDialog;
 
   const {
     setHeaderHeight,
@@ -98,8 +99,12 @@ export default function Header() {
             </Link>
           ))}
         </div>
-
-        <JoinWaitListButton />
+        <button
+          className="l:inline bg-primary hidden rounded-4xl px-6 py-3 text-white"
+          onClick={toggleDialog}
+        >
+          Join the wait list
+        </button>
 
         <button className="l:hidden group" onClick={() => toggleSideNav()}>
           <div className="grid justify-items-center gap-1">

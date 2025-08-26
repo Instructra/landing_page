@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useYieldContext } from "~/contexts/YieldContext";
 import { useNavLinks } from "../_services/NavigatorManager";
+import { JoinWaitListButton } from "./JoinWaitListButton";
 export default function SideNav() {
   const { headerHeight, isSideNavOpen, closeSideNav } = useYieldContext();
   const { links, setActive } = useNavLinks([
@@ -35,9 +36,7 @@ export default function SideNav() {
             </Link>
           ))}
         </div>
-        <button className="bg-primary rounded-4xl px-6 py-3 text-white">
-          Join the wait list
-        </button>
+        <JoinWaitListButton />
       </div>
     </aside>
   );

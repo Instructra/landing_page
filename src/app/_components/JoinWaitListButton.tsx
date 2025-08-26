@@ -6,7 +6,7 @@ export function JoinWaitListButton() {
 
   return (
     <button
-      className="l:inline bg-primary hidden rounded-4xl px-6 py-3 text-white"
+      className="bg-primary rounded-4xl px-6 py-3 text-white"
       onClick={toggleDialog}
     >
       Join the wait list
