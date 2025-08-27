@@ -9,7 +9,7 @@ export function JoinWaitListButton() {
       className="bg-primary rounded-4xl px-6 py-3 text-white"
       onClick={toggleDialog}
     >
-      Join the wait list
+      Join the waiting list
     </button>
   );
 }

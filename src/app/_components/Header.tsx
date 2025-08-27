@@ -133,7 +133,7 @@ export default function Header() {
           className="l:inline bg-primary hidden rounded-4xl px-6 py-3 text-white"
           onClick={toggleDialog}
         >
-          Join the wait list
+          Join the waiting list
         </button>
 
         <button className="l:hidden group" onClick={() => toggleSideNav()}>

@@ -24,7 +24,7 @@ export function WaitListDialog() {
         <div className="">
           <div className="flex justify-between">
             {waitListState.dialogStage == WaitListStages.SELECTION && (
-              <h2 className="tb:text-2xl text-xl">Join the wait list</h2>
+              <h2 className="tb:text-2xl text-xl">Join the waiting list</h2>
             )}
             {waitListState.dialogStage == WaitListStages.EMAIL_COLLECTION && (
               <Logo></Logo>
