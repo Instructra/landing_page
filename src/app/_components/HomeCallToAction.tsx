@@ -12,7 +12,7 @@ export default function HomeCallToAction() {
         className="bg-primary rounded-4xl px-6 py-3 text-white"
         onClick={toggleDialog}
       >
-        Join the wait list
+        Join the waiting list
       </button>
       <PlayVideoButton
         url="https://hncbsyyhcafzhkqlolkd.supabase.co/storage/v1/object/public/landingpage/9301_3.mp4"
