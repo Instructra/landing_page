@@ -30,7 +30,7 @@ export default function Home() {
                 </IphoneMockUp>
               </div>
             </div>
-            <div className="tb:flex l:justify-start l:items-end col-span-full hidden justify-center p-1">
+            <div className="l:justify-start l:items-end col-span-full flex justify-center p-1">
               <Link
                 href={"/#about"}
                 className="text-text-primary bg-card inline-flex h-[fit-content] items-center justify-center gap-2 rounded-full px-3 py-[4px]"
