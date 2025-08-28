@@ -47,13 +47,42 @@ export default function Home() {
 
       <section
         id="about"
-        className="flex flex-col items-center justify-center gap-8 pb-32"
+        className="flex flex-col items-center justify-center gap-10 pb-32"
       >
         <MainContainer>
-          <div className="z-1 flex flex-col items-center gap-6">
-            <h2 className="w-72 text-center text-3xl font-semibold">
-              What makes Instructra different
+          <div className="l:gap-16 flex flex-col items-start gap-8">
+            <h2 className="w-72 text-center text-4xl font-semibold">
+              About Instructra
             </h2>
+            <div className="flex flex-col gap-4">
+              <p className="l:min-w-[480px]">
+                Instructra was created to simplify and modernise how driving
+                education is delivered.
+              </p>
+              <p className="line- text-sm font-normal">
+                Imaging a world where learning to drive is stress-free,
+                transparent, and accessible.
+              </p>
+            </div>
+            {/* our mission */}
+            <div className="flex flex-col gap-4">
+              <p className="text-2xl font-medium">Our Mission</p>
+              <p>
+                To empower the next generation of drivers by seamlessly
+                connecting learners with trusted driving instructors through a
+                smart, accessible, and transparent platform, making driving
+                education more efficient, personalised, and reliable for all.
+              </p>
+            </div>
+          </div>
+        </MainContainer>
+        {/* Who Instructra is for */}
+        <Slider />
+        <MainContainer>
+          <div className="z-1 flex flex-col items-start gap-6">
+            <p className="text-2xl font-medium">
+              What makes Instructra different
+            </p>
             <div className="tb:flex-row tb:flex-wrap tb:justify-start flex flex-col justify-center gap-6">
               {/* cards */}
               {/* location */}
@@ -106,33 +135,6 @@ export default function Home() {
             </div>
           </div>
         </MainContainer>
-        <MainContainer>
-          <div className="l:flex-row l:gap-20 flex flex-col items-end gap-16">
-            <div className="flex flex-col gap-4">
-              <h3 className="pb-4 text-3xl font-medium">About Instructra</h3>
-              <p className="l:min-w-[480px]">
-                Instructra was created to simplify and modernise how driving
-                education is delivered.
-              </p>
-              <p className="line- text-sm font-normal">
-                A world where learning to drive is stress-free, transparent, and
-                accessible.
-              </p>
-            </div>
-            {/* our mission */}
-            <div className="flex flex-col gap-4">
-              <p className="text-2xl font-medium">Our Mission</p>
-              <p>
-                To empower the next generation of drivers by seamlessly
-                connecting learners with trusted driving instructors through a
-                smart, accessible, and transparent platform, making driving
-                education more efficient, personalised, and reliable for all.
-              </p>
-            </div>
-          </div>
-        </MainContainer>
-        {/* Who Instructra is for */}
-        <Slider />
       </section>
 
       <section
