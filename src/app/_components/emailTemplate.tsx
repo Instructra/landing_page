@@ -15,11 +15,119 @@ export function EmailTemplate({
   userType,
 }: EmailTemplateProps) {
   return (
-    <div>
-      <h1>Contact form submitted by {senderName}</h1>
-      <p>📧 email: {email} </p>
-      <p>💬 Message: {message}</p>
-      <p>👤 User type: {userType}</p>
-    </div>
+    <html lang="en">
+      <head>
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Instructra Notification</title>
+      </head>
+      <body
+        style={{
+          fontFamily: "Arial, sans-serif",
+          backgroundColor: "#f6f7f9",
+          margin: 0,
+          padding: 0,
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          minHeight: "100vh",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: "600px",
+            backgroundColor: "white",
+            borderRadius: "10px",
+            padding: "40px",
+            boxShadow: "0 4px 6px rgba(0, 0, 0, 0.05)",
+          }}
+        >
+          {/* Logo */}
+          <div style={{ textAlign: "center", marginBottom: "30px" }}>
+            <span
+              style={{
+                color: "#4a7bff",
+                fontSize: "32px",
+                fontWeight: "bold",
+              }}
+            >
+              INSTRUCTRA
+            </span>
+          </div>
+
+          {/* Content */}
+          <div style={{ borderTop: "1px solid #eee", paddingTop: "30px" }}>
+            <h1
+              style={{
+                fontSize: "22px",
+                fontWeight: "bold",
+                marginBottom: "20px",
+              }}
+            >
+              Contact form submitted by {senderName}
+            </h1>
+
+            <p
+              style={{ fontSize: "16px", color: "#333", marginBottom: "12px" }}
+            >
+              📧 Email: {email}
+            </p>
+            <p
+              style={{ fontSize: "16px", color: "#333", marginBottom: "12px" }}
+            >
+              💬 Message: {message}
+            </p>
+            <p
+              style={{ fontSize: "16px", color: "#333", marginBottom: "12px" }}
+            >
+              👤 User type: {userType}
+            </p>
+
+            {/* Footer */}
+            <div style={{ marginTop: "50px", color: "#555" }}>
+              <p style={{ fontSize: "14px", margin: "5px 0" }}>Warm Regards,</p>
+              <p style={{ fontSize: "14px", margin: "5px 0" }}>
+                The Instructra Team.
+              </p>
+            </div>
+
+            <div
+              style={{ borderTop: "1px solid #eee", margin: "30px 0" }}
+            ></div>
+
+            <p style={{ fontSize: "14px", color: "#333", lineHeight: 1.6 }}>
+              P.S. Here’s some more information about{" "}
+              <a
+                href="https://instructra.com/about"
+                style={{ color: "#4a7bff", textDecoration: "none" }}
+              >
+                what Instructra is
+              </a>
+              , and if you have further questions, our friendly support team is
+              on standby at{" "}
+              <a
+                href="mailto:help@instructra.com"
+                style={{ color: "#4a7bff", textDecoration: "none" }}
+              >
+                help@instructra.com
+              </a>
+              .
+            </p>
+          </div>
+
+          {/* Copyright */}
+          <div
+            style={{
+              textAlign: "center",
+              fontSize: "14px",
+              color: "#888",
+              marginTop: "30px",
+            }}
+          >
+            © 2024 Instructra LTD.
+          </div>
+        </div>
+      </body>
+    </html>
   );
 }
