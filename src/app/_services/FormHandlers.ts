@@ -1,24 +1,37 @@
 "use server";
 
-import { Resend, } from "resend";
-import { type FormState, FormSubmissionStatus } from "../_enums/FormEnums";
+import { Resend } from "resend";
 import { GoogleAuth } from "google-auth-library";
-import { ContactConfirmationTemplate, type ContactConfirmationProps } from "../_components/ContactConfirmationTemplate";
-import { WaitlistConfirmationTemplate, type WaitlistConfirmationProps } from "../_components/WaitlistConfirmationTemplate";
+import {
+    type FormState,
+    FormSubmissionStatus,
+} from "../_enums/FormEnums";
+import {
+    ContactConfirmationTemplate,
+    type ContactConfirmationProps,
+} from "../_components/ContactConfirmationTemplate";
+import {
+    WaitlistConfirmationTemplate,
+} from "../_components/WaitlistConfirmationTemplate";
 import { SelectedUserType } from "~/store/WaitListStore";
-import { EmailTemplate, type EmailTemplateProps } from "../_components/emailTemplate";
+import {
+    EmailTemplate,
+    type EmailTemplateProps,
+} from "../_components/emailTemplate";
 
-
-
+// -----------------------------------------------------------------------------
+// Environment Variables
+// -----------------------------------------------------------------------------
 const RESEND_API_KEY = process.env.RESEND;
-
 const EMAIL_FROM = process.env.EMAIL_FROM ?? "";
-
-const SEND_TO_EMAILS = process.env.SEND_TO_EMAILS ?? "info@instructra.com";
-
-
+const SEND_TO_EMAILS = (process.env.SEND_TO_EMAILS ?? "info@instructra.com")
+    .split(",")
+    .map((email) => email.trim());
 const RECAPTCHA_MIN_SCORE = 0.5;
 
+// -----------------------------------------------------------------------------
+// Google Service Account
+// -----------------------------------------------------------------------------
 interface GoogleServiceAccount {
     type: "service_account";
     project_id: string;
@@ -35,9 +48,7 @@ interface GoogleServiceAccount {
 
 function getGoogleCredentials(): GoogleServiceAccount {
     const base64 = process.env.GOOGLE_SERVICE_ACCOUNT_BASE64;
-    if (!base64) {
-        throw new Error("Missing GOOGLE_SERVICE_ACCOUNT_BASE64");
-    }
+    if (!base64) throw new Error("Missing GOOGLE_SERVICE_ACCOUNT_BASE64");
 
     const jsonString = Buffer.from(base64, "base64").toString("utf8");
     return JSON.parse(jsonString) as GoogleServiceAccount;
@@ -51,12 +62,8 @@ async function verifyRecaptchaEnterprise(
     userIp?: string,
     userAgent?: string
 ) {
-
     const credentials = getGoogleCredentials();
-    console.log(credentials.project_id);
 
-
-    // Create an OAuth2 client from service account
     const auth = new GoogleAuth({
         credentials,
         scopes: "https://www.googleapis.com/auth/cloud-platform",
@@ -65,42 +72,43 @@ async function verifyRecaptchaEnterprise(
 
     const url = `https://recaptchaenterprise.googleapis.com/v1/projects/${projectId}/assessments`;
     const payload = {
-        event: {
-            token,
-            siteKey,
-            expectedAction,
-            userIpAddress: userIp,
-            userAgent,
-        },
+        event: { token, siteKey, expectedAction, userIpAddress: userIp, userAgent },
     };
 
-    const res = await client.request({
-        url,
-        method: "POST",
-        data: payload,
-    });
-
+    const res = await client.request({ url, method: "POST", data: payload });
     return res.data as {
-        tokenProperties?: {
-            valid: boolean;
-            action?: string;
-            createTime?: string;
-        };
-        riskAnalysis?: {
-            score?: number;
-            reasons?: string[];
-        };
+        tokenProperties?: { valid: boolean; action?: string; createTime?: string };
+        riskAnalysis?: { score?: number; reasons?: string[] };
         event?: unknown;
     };
 }
 
+// -----------------------------------------------------------------------------
+// Helpers
+// -----------------------------------------------------------------------------
+function isRecaptchaValid(
+    verify: Awaited<ReturnType<typeof verifyRecaptchaEnterprise>>,
+    action: string
+): boolean {
+    return (
+        verify.tokenProperties?.valid === true &&
+        (verify.riskAnalysis?.score ?? 0) >= RECAPTCHA_MIN_SCORE &&
+        (!verify.tokenProperties?.action ||
+            verify.tokenProperties?.action === action)
+    );
+}
 
+function createResendClient() {
+    return new Resend(RESEND_API_KEY);
+}
 
+// -----------------------------------------------------------------------------
+// Send Email
+// -----------------------------------------------------------------------------
 export async function SendEmail(
     _prevState: FormState,
-    formData: FormData,
+    formData: FormData
 ): Promise<FormState> {
-
     const emailProp: EmailTemplateProps = {
         email: formData.get("email") as string,
         senderName: formData.get("name") as string,
@@ -116,7 +124,6 @@ export async function SendEmail(
         return { status: FormSubmissionStatus.FAILED, message: "Security check failed. Try again." };
     }
 
-    // 1) verify reCAPTCHA v3
     try {
         const verify = await verifyRecaptchaEnterprise(
             process.env.PROJECT_ID!,
@@ -124,58 +131,38 @@ export async function SendEmail(
             process.env.RECAPTCHA_SITE_KEY!,
             "contact_form"
         );
-
-        const ok =
-            verify.tokenProperties?.valid === true &&
-            (verify.riskAnalysis?.score ?? 0) >= Number(RECAPTCHA_MIN_SCORE) &&
-            (!verify.tokenProperties?.action || verify.tokenProperties?.action === "contact_form");
-
-        if (!ok) {
+        if (!isRecaptchaValid(verify, "contact_form")) {
             console.error("reCAPTCHA failed", verify);
-            return {
-                status: FormSubmissionStatus.FAILED,
-                message: "reCAPTCHA verification failed. Please retry.",
-            };
+            return { status: FormSubmissionStatus.FAILED, message: "reCAPTCHA verification failed. Please retry." };
         }
     } catch (e) {
         console.error("reCAPTCHA error", e);
-        return {
-            status: FormSubmissionStatus.FAILED,
-            message: "Security service unavailable. Please try again.",
-        };
+        return { status: FormSubmissionStatus.FAILED, message: "Security service unavailable. Please try again." };
     }
-    // 2) send with Resend
+
     try {
-        const resend = new Resend(RESEND_API_KEY);
-
-
+        const resend = createResendClient();
         const { error } = await resend.emails.send({
             from: EMAIL_FROM,
-            to: SEND_TO_EMAILS?.split(",").map(email => email.trim()),
+            to: SEND_TO_EMAILS,
             subject: `New Contact Form Submission. Sender: ${emailProp.email}`,
             replyTo: emailProp.email,
             react: EmailTemplate(emailProp),
         });
-        const confirmationProp: ContactConfirmationProps = {
-            senderName: emailProp.senderName,
+
+        if (error) {
+            console.error("Resend error", error);
+            return { status: FormSubmissionStatus.FAILED, message: "Failed to send. Please try again." };
         }
+
+        const confirmationProp: ContactConfirmationProps = { senderName: emailProp.senderName };
         await resend.emails.send({
             from: "Instructra <info@instructra.com>",
             to: emailProp.email,
             subject: `We’ve received your message ✅`,
             replyTo: emailProp.email,
             react: ContactConfirmationTemplate(confirmationProp),
-
         });
-        if (error) {
-            console.error("Resend error", error);
-            return {
-                status: FormSubmissionStatus.FAILED,
-                message: "Failed to send. Please try again.",
-            };
-        }
-
-
 
         return { status: FormSubmissionStatus.SUCCESS, message: "Message sent successfully!" };
     } catch (err) {
@@ -184,32 +171,33 @@ export async function SendEmail(
     }
 }
 
+// -----------------------------------------------------------------------------
+// Join Wait List
+// -----------------------------------------------------------------------------
 interface JoinWaitListProps {
-    token: string,
-    email: string,
-    name: string,
-    waitListOption: SelectedUserType,
+    token: string;
+    email: string;
+    name: string;
+    waitListOption: SelectedUserType;
 }
+
 export async function JoinWaitList(
     _prevState: FormState,
-    formData: FormData,
+    formData: FormData
 ): Promise<FormState> {
     const waitListProp: JoinWaitListProps = {
         token: formData.get("recaptcha") as string,
         email: formData.get("email") as string,
         name: formData.get("name") as string,
-        waitListOption: formData.get('waitListOption') as SelectedUserType
-    }
-    console.log("token: " + waitListProp.token + " email: " + waitListProp.email)
-    if (!waitListProp.email) {
+        waitListOption: formData.get("waitListOption") as SelectedUserType,
+    };
+
+    if (!waitListProp.email || !waitListProp.name) {
         return { status: FormSubmissionStatus.FAILED, message: "All fields are required." };
     }
     if (!waitListProp.token) {
-        console.log("token: " + waitListProp.token)
-
         return { status: FormSubmissionStatus.FAILED, message: "Security check failed. Try again." };
     }
-
 
     try {
         const verify = await verifyRecaptchaEnterprise(
@@ -218,84 +206,47 @@ export async function JoinWaitList(
             process.env.RECAPTCHA_SITE_KEY!,
             "wait_list_form"
         );
-
-        const ok =
-            verify.tokenProperties?.valid === true &&
-            (verify.riskAnalysis?.score ?? 0) >= Number(RECAPTCHA_MIN_SCORE) &&
-            (!verify.tokenProperties?.action || verify.tokenProperties?.action === "wait_list_form");
-
-        if (!ok) {
+        if (!isRecaptchaValid(verify, "wait_list_form")) {
             console.error("reCAPTCHA failed", verify);
-            return {
-                status: FormSubmissionStatus.FAILED,
-                message: "reCAPTCHA verification failed. Please retry.",
-            };
+            return { status: FormSubmissionStatus.FAILED, message: "reCAPTCHA verification failed. Please retry." };
         }
     } catch (e) {
         console.error("reCAPTCHA error", e);
-        return {
-            status: FormSubmissionStatus.FAILED,
-            message: "Security service unavailable. Please try again.",
-        };
+        return { status: FormSubmissionStatus.FAILED, message: "Security service unavailable. Please try again." };
     }
 
-    // add to wait list
     try {
-        const resend = new Resend(RESEND_API_KEY);
+        const resend = createResendClient();
 
-        const waitListConfirmationProp: WaitlistConfirmationProps = {
-            senderName: waitListProp.name
-        }
+        const [firstName, ...rest] = waitListProp.name.split(" ");
+        const lastName = rest.length ? rest.at(-1) : "";
 
-        const nameSplit = waitListConfirmationProp.senderName.split(" ");
-
-        const firstName = nameSplit.at(0);
-        const lastName = nameSplit.at(-1);
-
-        const waitlistConfirmationProps: WaitlistConfirmationProps = {
-            senderName: waitListProp.name,
-        }
-
-        let audienceId: string;
-        switch (waitListProp.waitListOption) {
-            case SelectedUserType.INSTRUCTOR:
-
-                audienceId = "6cf52504-9820-4074-85eb-50cb4aab9ec8"
-                break;
-            case SelectedUserType.LEARNER:
-                audienceId = "306cd090-ea0e-47d3-b20c-4136d32284b4"
-                break;
-            default:
-                audienceId = '306cd090-ea0e-47d3-b20c-4136d32284b4'
-                break;
-        }
+        const audienceId =
+            waitListProp.waitListOption === SelectedUserType.INSTRUCTOR
+                ? "6cf52504-9820-4074-85eb-50cb4aab9ec8"
+                : "306cd090-ea0e-47d3-b20c-4136d32284b4";
 
         const { error } = await resend.contacts.create({
             email: waitListProp.email,
-            firstName: firstName,
-            lastName: lastName,
+            firstName,
+            lastName,
             unsubscribed: false,
-            audienceId: audienceId,
-        });
-        await resend.emails.send({
-            from: "Instructra <noreply@instructra.com>",
-            to: waitListProp.email,
-            subject: `Successfully added to waiting list`,
-
-            react: WaitlistConfirmationTemplate(waitlistConfirmationProps),
+            audienceId,
         });
 
         if (error) {
             console.error("Resend error", error);
-            return {
-                status: FormSubmissionStatus.FAILED,
-                message: error.message,
-            };
+            return { status: FormSubmissionStatus.FAILED, message: error.message };
         }
+
+        await resend.emails.send({
+            from: "Instructra <noreply@instructra.com>",
+            to: waitListProp.email,
+            subject: `Successfully added to waiting list`,
+            react: WaitlistConfirmationTemplate({ senderName: waitListProp.name }),
+        });
+
         return { status: FormSubmissionStatus.SUCCESS, message: "You have been successfully added to the wait list" };
-
-
-
     } catch (err) {
         console.error("Unexpected send error", err);
         return { status: FormSubmissionStatus.FAILED, message: "Unexpected error. Please try again." };
