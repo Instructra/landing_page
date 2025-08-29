@@ -56,8 +56,20 @@ export default function Home() {
             </h2>
             <div className="flex flex-col gap-4">
               <p className="l:min-w-[480px]">
-                Instructra was created to simplify and modernise how driving
-                education is delivered.
+                Instructra is a modern platform that connects driving
+                instructors and learners in a better, more comfortable way. Our
+                system is designed to make lesson planning easier by giving
+                learners a simple way to locate reliable teachers and giving
+                instructors the resources they need to easily manage their
+                calendars. With streamlined booking and real-time availability
+                all in one place, Instructra takes the hassle out of scheduling.
+                Our mission is to make learning to drive clear, accessible, and
+                empowering for everyone removing barriers so instructors can
+                focus on teaching and learners can focus on building confidence.
+                At its core, Instructra is about more than just driving
+                instruction; it&apos;s about creating opportunities, boosting
+                self-esteem, and facilitating the most seamless transition to
+                independence
               </p>
               <p className="line- text-sm font-normal">
                 Imaging a world where learning to drive is stress-free,
@@ -323,7 +335,7 @@ export default function Home() {
                 </h2>
                 <p className="text-text-secondary tb:w-[530] tb:text-center tb:text-[20px]/7 l:text-start text-sm font-light">
                   Be among the first to experience the future of driving
-                  lessons, join the waitlist to reserve your spot today!
+                  lessons, join the waiting list to reserve your spot today!
                 </p>
               </div>
               <div className="tb:flex-row tb:justify-center l:justify-start l:items-center flex flex-col gap-6">

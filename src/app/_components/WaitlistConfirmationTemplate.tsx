@@ -1,4 +1,5 @@
 import * as React from "react";
+import { LogoPng } from "./Logo";
 
 export interface WaitlistConfirmationProps {
   senderName: string;
@@ -35,11 +36,7 @@ export function WaitlistConfirmationTemplate({
           }}
         >
           <div style={{ textAlign: "center", marginBottom: "30px" }}>
-            <span
-              style={{ color: "#4a7bff", fontSize: "32px", fontWeight: "bold" }}
-            >
-              INSTRUCTRA
-            </span>
+            <LogoPng />
           </div>
 
           <div style={{ borderTop: "1px solid #eee", paddingTop: "30px" }}>
@@ -53,9 +50,9 @@ export function WaitlistConfirmationTemplate({
               Hi {senderName},
             </h1>
             <p style={{ fontSize: "16px", color: "#333", lineHeight: 1.6 }}>
-              🎉 Thanks for joining the Instructra waitlist! You’re officially
-              on board, and we’ll keep you updated as soon as we launch.
-              Exciting things are coming your way.
+              Thanks for joining the Instructra waiting list! You’re
+              officially on board, and we’ll keep you updated as soon as we
+              launch. Exciting things are coming your way.
             </p>
             <p style={{ fontSize: "16px", color: "#333", lineHeight: 1.6 }}>
               Stay tuned!

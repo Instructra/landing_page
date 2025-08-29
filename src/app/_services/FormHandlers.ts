@@ -159,7 +159,7 @@ export async function SendEmail(
         await resend.emails.send({
             from: "Instructra <info@instructra.com>",
             to: emailProp.email,
-            subject: `We’ve received your message ✅`,
+            subject: `We’ve received your message`,
             replyTo: emailProp.email,
             react: ContactConfirmationTemplate(confirmationProp),
         });

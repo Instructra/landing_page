@@ -1,4 +1,5 @@
 import * as React from "react";
+import { LogoPng } from "./Logo";
 
 export interface EmailTemplateProps {
   senderName: string;
@@ -43,15 +44,7 @@ export function EmailTemplate({
         >
           {/* Logo */}
           <div style={{ textAlign: "center", marginBottom: "30px" }}>
-            <span
-              style={{
-                color: "#4a7bff",
-                fontSize: "32px",
-                fontWeight: "bold",
-              }}
-            >
-              INSTRUCTRA
-            </span>
+            <LogoPng />
           </div>
 
           {/* Content */}
