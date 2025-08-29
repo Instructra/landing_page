@@ -90,7 +90,7 @@ export function EmailTemplate({
             <p style={{ fontSize: "14px", color: "#333", lineHeight: 1.6 }}>
               P.S. Here’s some more information about{" "}
               <a
-                href="https://instructra.com/about"
+                href="https://www.instructra.com"
                 style={{ color: "#4a7bff", textDecoration: "none" }}
               >
                 what Instructra is
@@ -98,10 +98,10 @@ export function EmailTemplate({
               , and if you have further questions, our friendly support team is
               on standby at{" "}
               <a
-                href="mailto:help@instructra.com"
+                href="mailto:info@instructra.com"
                 style={{ color: "#4a7bff", textDecoration: "none" }}
               >
-                help@instructra.com
+                info@instructra.com
               </a>
               .
             </p>

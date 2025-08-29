@@ -50,9 +50,9 @@ export function WaitlistConfirmationTemplate({
               Hi {senderName},
             </h1>
             <p style={{ fontSize: "16px", color: "#333", lineHeight: 1.6 }}>
-              Thanks for joining the Instructra waiting list! You’re
-              officially on board, and we’ll keep you updated as soon as we
-              launch. Exciting things are coming your way.
+              Thanks for joining the Instructra waiting list! You’re officially
+              on board, and we’ll keep you updated as soon as we launch.
+              Exciting things are coming your way.
             </p>
             <p style={{ fontSize: "16px", color: "#333", lineHeight: 1.6 }}>
               Stay tuned!
@@ -70,17 +70,17 @@ export function WaitlistConfirmationTemplate({
             <p style={{ fontSize: "14px", color: "#333", lineHeight: 1.6 }}>
               Learn more about{" "}
               <a
-                href="https://instructra.com/about"
+                href="https://instructra.com"
                 style={{ color: "#4a7bff", textDecoration: "none" }}
               >
                 what Instructra is
               </a>
               . Questions? Contact us at{" "}
               <a
-                href="mailto:help@instructra.com"
+                href="mailto:info@instructra.com"
                 style={{ color: "#4a7bff", textDecoration: "none" }}
               >
-                help@instructra.com
+                info@instructra.com
               </a>
               .
             </p>
