@@ -1,4 +1,5 @@
 import * as React from "react";
+import { LogoPng } from "./Logo";
 
 export interface ContactConfirmationProps {
   senderName: string;
@@ -35,11 +36,7 @@ export function ContactConfirmationTemplate({
           }}
         >
           <div style={{ textAlign: "center", marginBottom: "30px" }}>
-            <span
-              style={{ color: "#4a7bff", fontSize: "32px", fontWeight: "bold" }}
-            >
-              INSTRUCTRA
-            </span>
+            <LogoPng />
           </div>
 
           <div style={{ borderTop: "1px solid #eee", paddingTop: "30px" }}>
