@@ -104,7 +104,7 @@ export default function Home() {
             <p className="text-2xl font-medium">
               What makes Instructra different
             </p>
-            <div className="tb:flex-row tb:flex-wrap tb:justify-start flex flex-col justify-center gap-6">
+            <div className="tb:flex-row tb:flex-wrap tb:justify-start flex w-full flex-col items-center justify-center gap-6">
               {/* cards */}
               {/* location */}
               <div className="bg-card tb:w-[340px] ll:w-[384px] l:w-[330px] relative flex h-[500px] w-[300px] flex-col items-center justify-start overflow-clip rounded-3xl p-8">

@@ -1,6 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
 import * as React from "react";
-import Image from "next/image";
 
 export interface WaitlistConfirmationProps {
   senderName: string;
