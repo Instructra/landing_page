@@ -4,7 +4,9 @@ export interface WaitlistConfirmationProps {
   senderName: string;
 }
 
-export function WaitlistConfirmationTemplate({ senderName }: WaitlistConfirmationProps) {
+export function WaitlistConfirmationTemplate({
+  senderName,
+}: WaitlistConfirmationProps) {
   return (
     <html lang="en">
       <head>
@@ -26,7 +28,6 @@ export function WaitlistConfirmationTemplate({ senderName }: WaitlistConfirmatio
       >
         <div
           style={{
-            maxWidth: "600px",
             backgroundColor: "white",
             borderRadius: "10px",
             padding: "40px",
@@ -52,9 +53,9 @@ export function WaitlistConfirmationTemplate({ senderName }: WaitlistConfirmatio
               Hi {senderName},
             </h1>
             <p style={{ fontSize: "16px", color: "#333", lineHeight: 1.6 }}>
-              🎉 Thanks for joining the Instructra waitlist!  
-              You’re officially on board, and we’ll keep you updated as soon as
-              we launch. Exciting things are coming your way.
+              🎉 Thanks for joining the Instructra waitlist! You’re officially
+              on board, and we’ll keep you updated as soon as we launch.
+              Exciting things are coming your way.
             </p>
             <p style={{ fontSize: "16px", color: "#333", lineHeight: 1.6 }}>
               Stay tuned!

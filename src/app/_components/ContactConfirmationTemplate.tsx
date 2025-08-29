@@ -4,7 +4,7 @@ export interface ContactConfirmationProps {
   senderName: string;
 }
 
-export function   ContactConfirmationTemplate({
+export function ContactConfirmationTemplate({
   senderName,
 }: ContactConfirmationProps) {
   return (
@@ -28,7 +28,6 @@ export function   ContactConfirmationTemplate({
       >
         <div
           style={{
-            maxWidth: "600px",
             backgroundColor: "white",
             borderRadius: "10px",
             padding: "40px",

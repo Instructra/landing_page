@@ -35,7 +35,6 @@ export function EmailTemplate({
       >
         <div
           style={{
-            maxWidth: "600px",
             backgroundColor: "white",
             borderRadius: "10px",
             padding: "40px",
