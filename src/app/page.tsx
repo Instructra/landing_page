@@ -51,10 +51,10 @@ export default function Home() {
       >
         <MainContainer>
           <div className="l:gap-16 flex flex-col items-start gap-8">
-            <h2 className="w-72 text-center text-4xl font-semibold">
-              About Instructra
-            </h2>
             <div className="flex flex-col gap-5">
+              <h2 className="w-72 text-center text-4xl font-semibold">
+                About Instructra
+              </h2>
               <p className="l:min-w-[480px]">
                 Instructra is a modern platform that connects driving
                 instructors and learners in a better, more comfortable way. Our
@@ -100,7 +100,7 @@ export default function Home() {
         {/* Who Instructra is for */}
         <Slider />
         <MainContainer>
-          <div className="z-1 flex flex-col items-start gap-6">
+          <div className="z-1 flex flex-col items-start gap-8">
             <p className="text-2xl font-medium">
               What makes Instructra different
             </p>
