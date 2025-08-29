@@ -50,7 +50,7 @@ export function WaitlistConfirmationTemplate({
               Hi {senderName},
             </h1>
             <p style={{ fontSize: "16px", color: "#333", lineHeight: 1.6 }}>
-              🎉 Thanks for joining the Instructra waiting list! You’re
+              Thanks for joining the Instructra waiting list! You’re
               officially on board, and we’ll keep you updated as soon as we
               launch. Exciting things are coming your way.
             </p>

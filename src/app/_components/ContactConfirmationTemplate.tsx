@@ -50,8 +50,8 @@ export function ContactConfirmationTemplate({
               Hi {senderName},
             </h1>
             <p style={{ fontSize: "16px", color: "#333", lineHeight: 1.6 }}>
-              ✅ We’ve received your message! Our team will review it and get
-              back to you as soon as possible.
+              We’ve received your message! Our team will review it and get back
+              to you as soon as possible.
             </p>
             <p style={{ fontSize: "16px", color: "#333", lineHeight: 1.6 }}>
               Thanks for reaching out to Instructra.

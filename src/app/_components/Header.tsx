@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRef, useEffect } from "react";
 import { useYieldContext } from "~/contexts/YieldContext";
 import { useNavLinks } from "../_services/NavigatorManager";
-import { Logo, LogoPng } from "./Logo";
+import { LogoPng } from "./Logo";
 import { useWaitListStore } from "~/store/WaitListStore";
 
 export default function Header() {
