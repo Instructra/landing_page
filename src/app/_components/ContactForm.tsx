@@ -10,11 +10,12 @@ import {
   required,
   minLength,
   emailFormat,
+  twoWords,
 } from "../_services/FormValidator";
 export function ContactForm() {
   const { setValue, touched, setFieldTouched, errors, isFormValid } =
     useFormValidation({
-      name: { value: "", rules: [required(), minLength(2)] },
+      name: { value: "", rules: [required(), minLength(2), twoWords()] },
       email: { value: "", rules: [required(), emailFormat()] },
       message: { value: "", rules: [required(), minLength(10)] },
       userType: { value: "", rules: [required("Please select a user type")] },

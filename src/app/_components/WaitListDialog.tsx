@@ -21,7 +21,7 @@ export function WaitListDialog() {
     <div className="fixed inset-0 z-70 flex items-center justify-center bg-white/10 backdrop-blur-sm">
       <div className="bg-dialog-bg tb:w-[704px] tb:p-12 relative flex w-[80%] flex-col gap-8 rounded-2xl p-8 shadow-lg">
         {/* header */}
-        <div className="">
+        <div className="z-1">
           <div className="flex justify-between">
             {waitListState.dialogStage == WaitListStages.SELECTION && (
               <h2 className="tb:text-2xl text-xl">Join the waiting list</h2>

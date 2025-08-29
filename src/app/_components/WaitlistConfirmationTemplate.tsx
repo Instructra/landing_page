@@ -1,25 +1,18 @@
 import * as React from "react";
 
-export interface EmailTemplateProps {
+export interface WaitlistConfirmationProps {
   senderName: string;
-  email: string;
-  message: string;
-  userType: string;
-  token: string;
 }
 
-export function EmailTemplate({
+export function WaitlistConfirmationTemplate({
   senderName,
-  email,
-  message,
-  userType,
-}: EmailTemplateProps) {
+}: WaitlistConfirmationProps) {
   return (
     <html lang="en">
       <head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Instructra Notification</title>
+        <title>Waitlist Confirmation</title>
       </head>
       <body
         style={{
@@ -41,20 +34,14 @@ export function EmailTemplate({
             boxShadow: "0 4px 6px rgba(0, 0, 0, 0.05)",
           }}
         >
-          {/* Logo */}
           <div style={{ textAlign: "center", marginBottom: "30px" }}>
             <span
-              style={{
-                color: "#4a7bff",
-                fontSize: "32px",
-                fontWeight: "bold",
-              }}
+              style={{ color: "#4a7bff", fontSize: "32px", fontWeight: "bold" }}
             >
               INSTRUCTRA
             </span>
           </div>
 
-          {/* Content */}
           <div style={{ borderTop: "1px solid #eee", paddingTop: "30px" }}>
             <h1
               style={{
@@ -63,26 +50,17 @@ export function EmailTemplate({
                 marginBottom: "20px",
               }}
             >
-              Contact form submitted by {senderName}
+              Hi {senderName},
             </h1>
-
-            <p
-              style={{ fontSize: "16px", color: "#333", marginBottom: "12px" }}
-            >
-              📧 Email: {email}
+            <p style={{ fontSize: "16px", color: "#333", lineHeight: 1.6 }}>
+              🎉 Thanks for joining the Instructra waitlist! You’re officially
+              on board, and we’ll keep you updated as soon as we launch.
+              Exciting things are coming your way.
             </p>
-            <p
-              style={{ fontSize: "16px", color: "#333", marginBottom: "12px" }}
-            >
-              💬 Message: {message}
-            </p>
-            <p
-              style={{ fontSize: "16px", color: "#333", marginBottom: "12px" }}
-            >
-              👤 User type: {userType}
+            <p style={{ fontSize: "16px", color: "#333", lineHeight: 1.6 }}>
+              Stay tuned!
             </p>
 
-            {/* Footer */}
             <div style={{ marginTop: "50px", color: "#555" }}>
               <p style={{ fontSize: "14px", margin: "5px 0" }}>Warm Regards,</p>
               <p style={{ fontSize: "14px", margin: "5px 0" }}>
@@ -90,20 +68,17 @@ export function EmailTemplate({
               </p>
             </div>
 
-            <div
-              style={{ borderTop: "1px solid #eee", margin: "30px 0" }}
-            ></div>
+            <div style={{ borderTop: "1px solid #eee", margin: "30px 0" }} />
 
             <p style={{ fontSize: "14px", color: "#333", lineHeight: 1.6 }}>
-              P.S. Here’s some more information about{" "}
+              Learn more about{" "}
               <a
                 href="https://instructra.com/about"
                 style={{ color: "#4a7bff", textDecoration: "none" }}
               >
                 what Instructra is
               </a>
-              , and if you have further questions, our friendly support team is
-              on standby at{" "}
+              . Questions? Contact us at{" "}
               <a
                 href="mailto:help@instructra.com"
                 style={{ color: "#4a7bff", textDecoration: "none" }}
@@ -114,7 +89,6 @@ export function EmailTemplate({
             </p>
           </div>
 
-          {/* Copyright */}
           <div
             style={{
               textAlign: "center",
