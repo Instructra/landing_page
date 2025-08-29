@@ -1,5 +1,6 @@
+/* eslint-disable @next/next/no-img-element */
 import * as React from "react";
-import { LogoPng } from "./Logo";
+import Image from "next/image";
 
 export interface WaitlistConfirmationProps {
   senderName: string;
@@ -36,7 +37,15 @@ export function WaitlistConfirmationTemplate({
           }}
         >
           <div style={{ textAlign: "center", marginBottom: "30px" }}>
-            <LogoPng />
+            <div
+              style={{ position: "relative", height: "14px", width: "145px" }}
+            >
+              <img
+                src="https://hncbsyyhcafzhkqlolkd.supabase.co/storage/v1/object/public/landingpage/logo.png"
+                alt="Instructra logo"
+                style={{ display: "inline", height: "100%", width: "100%" }}
+              />
+            </div>{" "}
           </div>
 
           <div style={{ borderTop: "1px solid #eee", paddingTop: "30px" }}>
