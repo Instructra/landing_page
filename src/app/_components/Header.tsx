@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRef, useEffect } from "react";
 import { useYieldContext } from "~/contexts/YieldContext";
 import { useNavLinks } from "../_services/NavigatorManager";
-import { LogoPng } from "./Logo";
+import { Logo } from "./Logo";
 import { useWaitListStore } from "~/store/WaitListStore";
 
 export default function Header() {
@@ -107,7 +107,7 @@ export default function Header() {
           href={links[0]?.href ?? ""}
           onClick={() => handleNavClick(links[0]?.id ?? "")}
         >
-          <LogoPng />
+          <Logo />
         </Link>
 
         <div className="l:flex hidden gap-4">

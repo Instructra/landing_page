@@ -54,26 +54,35 @@ export default function Home() {
             <h2 className="w-72 text-center text-4xl font-semibold">
               About Instructra
             </h2>
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-5">
               <p className="l:min-w-[480px]">
                 Instructra is a modern platform that connects driving
                 instructors and learners in a better, more comfortable way. Our
                 system is designed to make lesson planning easier by giving
                 learners a simple way to locate reliable teachers and giving
                 instructors the resources they need to easily manage their
-                calendars. With streamlined booking and real-time availability
-                all in one place, Instructra takes the hassle out of scheduling.
-                Our mission is to make learning to drive clear, accessible, and
+                calendars.
+              </p>
+              <p className="l:min-w-[480px]">
+                With streamlined booking and real-time availability all in one
+                place, Instructra takes the hassle out of scheduling. Our
+                mission is to make learning to drive clear, accessible, and
                 empowering for everyone removing barriers so instructors can
                 focus on teaching and learners can focus on building confidence.
+              </p>
+              <p className="l:min-w-[480px]">
+                Instructra is a modern platform that connects driving
+                instructors and learners in a better, more comfortable way. Our
+                system is designed to make lesson planning easier by giving
+                learners a simple way to locate reliable teachers and giving
+                instructors the resources they need to easily manage their
+                calendars.
+              </p>
+              <p className="l:min-w-[480px]">
                 At its core, Instructra is about more than just driving
                 instruction; it&apos;s about creating opportunities, boosting
                 self-esteem, and facilitating the most seamless transition to
                 independence
-              </p>
-              <p className="line- text-sm font-normal">
-                Imaging a world where learning to drive is stress-free,
-                transparent, and accessible.
               </p>
             </div>
             {/* our mission */}
