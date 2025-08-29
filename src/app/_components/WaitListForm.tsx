@@ -14,6 +14,7 @@ import {
   required,
   minLength,
   emailFormat,
+  twoWords,
 } from "../_services/FormValidator";
 
 export function WaitListForm() {
@@ -36,7 +37,7 @@ export function WaitListForm() {
 
   const { setValue, touched, setFieldTouched, errors, isFormValid } =
     useFormValidation({
-      name: { value: "", rules: [required(), minLength(2)] },
+      name: { value: "", rules: [required(), minLength(2), twoWords()] },
       email: { value: "", rules: [required(), emailFormat()] },
     });
 
@@ -56,12 +57,16 @@ export function WaitListForm() {
 
       const token = await executeRecaptcha("wait_list_form");
       formData.set("recaptcha", token);
+      formData.set(
+        "waitListOption",
+        waitListDialogStore.state.selectedUserType,
+      );
 
       startTransition(() => {
         formAction(formData);
       });
     },
-    [executeRecaptcha, formAction, isFormValid],
+    [executeRecaptcha, formAction, isFormValid, waitListDialogStore],
   );
 
   if (state.message) {

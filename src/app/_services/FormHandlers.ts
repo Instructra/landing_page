@@ -1,9 +1,12 @@
 "use server";
 
-import { Resend } from "resend";
-import { EmailTemplate, type EmailTemplateProps } from "../_components/emailTemplate";
+import { Resend, } from "resend";
+import { EmailTemplate, type EmailTemplateProps } from "../_components/EmailTemplate";
 import { type FormState, FormSubmissionStatus } from "../_enums/FormEnums";
 import { GoogleAuth } from "google-auth-library";
+import { ContactConfirmationTemplate, type ContactConfirmationProps } from "../_components/ContactConfirmationTemplate";
+import { WaitlistConfirmationTemplate, type WaitlistConfirmationProps } from "../_components/WaitlistConfirmationTemplate";
+import { SelectedUserType } from "~/store/WaitListStore";
 
 
 
@@ -153,7 +156,17 @@ export async function SendEmail(
             replyTo: emailProp.email,
             react: EmailTemplate(emailProp),
         });
+        const confirmationProp: ContactConfirmationProps = {
+            senderName: emailProp.senderName,
+        }
+        await resend.emails.send({
+            from: "Instructra <info@instructra.com>",
+            to: emailProp.email,
+            subject: `We’ve received your message ✅`,
+            replyTo: emailProp.email,
+            react: ContactConfirmationTemplate(confirmationProp),
 
+        });
         if (error) {
             console.error("Resend error", error);
             return {
@@ -161,6 +174,8 @@ export async function SendEmail(
                 message: "Failed to send. Please try again.",
             };
         }
+
+
 
         return { status: FormSubmissionStatus.SUCCESS, message: "Message sent successfully!" };
     } catch (err) {
@@ -172,21 +187,25 @@ export async function SendEmail(
 interface JoinWaitListProps {
     token: string,
     email: string,
+    name: string,
+    waitListOption: SelectedUserType,
 }
 export async function JoinWaitList(
     _prevState: FormState,
     formData: FormData,
 ): Promise<FormState> {
-    const waitListPros: JoinWaitListProps = {
+    const waitListProp: JoinWaitListProps = {
         token: formData.get("recaptcha") as string,
         email: formData.get("email") as string,
+        name: formData.get("name") as string,
+        waitListOption: formData.get('waitListOption') as SelectedUserType
     }
-    console.log("token: " + waitListPros.token + " email: " + waitListPros.email)
-    if (!waitListPros.email) {
+    console.log("token: " + waitListProp.token + " email: " + waitListProp.email)
+    if (!waitListProp.email) {
         return { status: FormSubmissionStatus.FAILED, message: "All fields are required." };
     }
-    if (!waitListPros.token) {
-        console.log("token: " + waitListPros.token)
+    if (!waitListProp.token) {
+        console.log("token: " + waitListProp.token)
 
         return { status: FormSubmissionStatus.FAILED, message: "Security check failed. Try again." };
     }
@@ -195,7 +214,7 @@ export async function JoinWaitList(
     try {
         const verify = await verifyRecaptchaEnterprise(
             process.env.PROJECT_ID!,
-            waitListPros.token,
+            waitListProp.token,
             process.env.RECAPTCHA_SITE_KEY!,
             "wait_list_form"
         );
@@ -224,13 +243,48 @@ export async function JoinWaitList(
     try {
         const resend = new Resend(RESEND_API_KEY);
 
+        const waitListConfirmationProp: WaitlistConfirmationProps = {
+            senderName: waitListProp.name
+        }
+
+        const nameSplit = waitListConfirmationProp.senderName.split(" ");
+
+        const firstName = nameSplit.at(0);
+        const lastName = nameSplit.at(-1);
+
+        const waitlistConfirmationProps: WaitlistConfirmationProps = {
+            senderName: waitListProp.name,
+        }
+
+        let audienceId: string;
+        switch (waitListProp.waitListOption) {
+            case SelectedUserType.INSTRUCTOR:
+
+                audienceId = "6cf52504-9820-4074-85eb-50cb4aab9ec8"
+                break;
+            case SelectedUserType.LEARNER:
+                audienceId = "306cd090-ea0e-47d3-b20c-4136d32284b4"
+                break;
+            default:
+                audienceId = '306cd090-ea0e-47d3-b20c-4136d32284b4'
+                break;
+        }
+
         const { error } = await resend.contacts.create({
-            email: waitListPros.email,
-            firstName: 'Steve',
-            lastName: 'Wozniak',
+            email: waitListProp.email,
+            firstName: firstName,
+            lastName: lastName,
             unsubscribed: false,
-            audienceId: '145e28c9-3db7-4a19-90bc-b6688212f0f2',
+            audienceId: audienceId,
         });
+        await resend.emails.send({
+            from: "Instructra <noreply@instructra.com>",
+            to: waitListProp.email,
+            subject: `Successfully added to waiting list`,
+
+            react: WaitlistConfirmationTemplate(waitlistConfirmationProps),
+        });
+
         if (error) {
             console.error("Resend error", error);
             return {
