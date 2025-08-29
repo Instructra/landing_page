@@ -9,6 +9,13 @@ type FieldConfig = {
 
 type FormConfig<T extends string> = Record<T, FieldConfig>;
 
+export function twoWords() {
+    return (value: string) => {
+        if (!value) return "Name is required";
+        const parts = value.trim().split(/\s+/);
+        return parts.length >= 2 ? null : "Please enter first and last name";
+    };
+}
 export function useFormValidation<T extends string>(config: FormConfig<T>) {
     const [values, setValues] = useState(
         Object.fromEntries(Object.keys(config).map((k) => [k, config[k as T].value])) as Record<T, string>
