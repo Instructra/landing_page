@@ -58,7 +58,7 @@ export function LogoPng() {
   return (
     <div style={{ position: "relative", height: "14px", width: "145px" }}>
       <Image
-        src="/assets/images/logo.png"
+        src="https://hncbsyyhcafzhkqlolkd.supabase.co/storage/v1/object/public/landingpage/logo.png"
         alt="Instructra logo"
         fill
         style={{ display: "inline", height: "100%", width: "100%" }}

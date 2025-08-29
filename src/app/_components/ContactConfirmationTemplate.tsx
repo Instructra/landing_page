@@ -1,5 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
 import * as React from "react";
-import { LogoPng } from "./Logo";
 
 export interface ContactConfirmationProps {
   senderName: string;
@@ -36,7 +36,15 @@ export function ContactConfirmationTemplate({
           }}
         >
           <div style={{ textAlign: "center", marginBottom: "30px" }}>
-            <LogoPng />
+            <div
+              style={{ position: "relative", height: "14px", width: "145px" }}
+            >
+              <img
+                src="https://hncbsyyhcafzhkqlolkd.supabase.co/storage/v1/object/public/landingpage/logo.png"
+                alt="Instructra logo"
+                style={{ display: "inline", height: "100%", width: "100%" }}
+              />
+            </div>
           </div>
 
           <div style={{ borderTop: "1px solid #eee", paddingTop: "30px" }}>
@@ -69,17 +77,17 @@ export function ContactConfirmationTemplate({
             <p style={{ fontSize: "14px", color: "#333", lineHeight: 1.6 }}>
               Learn more about{" "}
               <a
-                href="https://instructra.com/about"
+                href="https://instructra.com"
                 style={{ color: "#4a7bff", textDecoration: "none" }}
               >
                 what Instructra is
               </a>
               . Questions? Contact us at{" "}
               <a
-                href="mailto:help@instructra.com"
+                href="mailto:info@instructra.com"
                 style={{ color: "#4a7bff", textDecoration: "none" }}
               >
-                help@instructra.com
+                info@instructra.com
               </a>
               .
             </p>
