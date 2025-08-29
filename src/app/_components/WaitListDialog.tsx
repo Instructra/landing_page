@@ -65,7 +65,7 @@ function UserTypeSelector(waitListDialogStore: WaitListStore) {
         </div>
         <div>
           <p className="text-xl">Join as an Instructor</p>
-          <p>Join the waitlist as an instructor</p>
+          <p>Join the waiting list as an instructor</p>
         </div>
       </div>
       {/* Learner */}
@@ -85,7 +85,7 @@ function UserTypeSelector(waitListDialogStore: WaitListStore) {
         </div>
         <div>
           <p className="text-xl">Join as an Learner</p>
-          <p>Join the waitlist as an Learner</p>
+          <p>Join the waiting list as an Learner</p>
         </div>
       </div>
     </div>
@@ -98,8 +98,8 @@ function SubmissionForm(waitListDialogStore: WaitListStore) {
       <h2 className="tb:text-3xl tb:w-[246px] text-2xl font-medium">
         {waitListDialogStore.state.selectedUserType ===
         SelectedUserType.INSTRUCTOR
-          ? "Join the waitlist as an Instructor"
-          : "Join the waitlist as a Learner"}
+          ? "Join the waiting list as an Instructor"
+          : "Join the waiting list as a Learner"}
       </h2>
       <p className="text-text-secondary text-sm font-[400]">
         Fill the form below to join our early access.
