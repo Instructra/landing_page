@@ -1,12 +1,12 @@
 "use server";
 
 import { Resend, } from "resend";
-import { EmailTemplate, type EmailTemplateProps } from "../_components/EmailTemplate";
 import { type FormState, FormSubmissionStatus } from "../_enums/FormEnums";
 import { GoogleAuth } from "google-auth-library";
 import { ContactConfirmationTemplate, type ContactConfirmationProps } from "../_components/ContactConfirmationTemplate";
 import { WaitlistConfirmationTemplate, type WaitlistConfirmationProps } from "../_components/WaitlistConfirmationTemplate";
 import { SelectedUserType } from "~/store/WaitListStore";
+import { EmailTemplate, type EmailTemplateProps } from "../_components/emailTemplate";
 
 
 
