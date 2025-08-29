@@ -72,7 +72,7 @@ export function WaitListForm() {
   if (state.message) {
     return (
       <div className="flex flex-col items-center">
-        <div className="absolute bottom-0 h-[60%] w-full overflow-clip rounded-2xl">
+        <div className="absolute bottom-0 h-full w-full overflow-clip rounded-2xl">
           <Confetti className="h-full w-full" />
         </div>
         <span className="icon-[bitcoin-icons--verify-filled] text-success-500 text-7xl"></span>
