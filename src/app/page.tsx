@@ -14,7 +14,7 @@ export default function Home() {
           <div className="l:grid-cols-5 z-1 grid auto-rows-auto grid-cols-1 gap-6">
             {/* top */}
             <div className="tb:items-center tb:max-w-full tb:justify-center tb:row-span-2 tb:row-start-1 l:col-span-3 l:col-start-1 l:row-span-3 l:items-start row-span-1 flex h-[fit-content] max-w-[620px] flex-col gap-4">
-              <h1 className="tb:text-center l:text-left l:text-7xl ll:text-8xl tb:text-7xl tb:w-[620px] text-[44px]/12">
+              <h1 className="tb:text-center l:text-left l:text-7xl ll:text-8xl tb:text-7xl tb:w-[620px] animate-typing text-[44px]/12">
                 Book driving lessons instantly
               </h1>
               <p className="tb:text-center l:text-start max-w-[400px]">
@@ -33,7 +33,7 @@ export default function Home() {
             <div className="l:justify-start l:items-end col-span-full flex justify-center p-1">
               <Link
                 href={"/#about"}
-                className="text-text-primary bg-card inline-flex h-[fit-content] items-center justify-center gap-2 rounded-full px-3 py-[4px]"
+                className="text-text-primary bg-card inline-flex h-[fit-content] animate-bounce items-center justify-center gap-2 rounded-full px-3 py-[4px]"
               >
                 <span className="icon-[grommet-icons--link-down]">
                   keyboard_arrow_down
@@ -69,14 +69,6 @@ export default function Home() {
                 mission is to make learning to drive clear, accessible, and
                 empowering for everyone removing barriers so instructors can
                 focus on teaching and learners can focus on building confidence.
-              </p>
-              <p className="l:min-w-[480px]">
-                Instructra is a modern platform that connects driving
-                instructors and learners in a better, more comfortable way. Our
-                system is designed to make lesson planning easier by giving
-                learners a simple way to locate reliable teachers and giving
-                instructors the resources they need to easily manage their
-                calendars.
               </p>
               <p className="l:min-w-[480px]">
                 At its core, Instructra is about more than just driving
