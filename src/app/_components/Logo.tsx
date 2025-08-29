@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export function Logo() {
   return (
     <svg
@@ -49,5 +51,18 @@ export function Logo() {
         fill="#2575F5"
       />
     </svg>
+  );
+}
+
+export function LogoPng() {
+  return (
+    <div style={{ position: "relative", height: "14px", width: "145px" }}>
+      <Image
+        src="/assets/images/logo.png"
+        alt="Instructra logo"
+        fill
+        style={{ display: "inline", height: "100%", width: "100%" }}
+      />
+    </div>
   );
 }
