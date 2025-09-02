@@ -57,8 +57,8 @@ export default function Home() {
               </h2>
               <p className="l:min-w-[480px]">
                 Instructra is a modern platform that connects driving
-                instructors and learners in a better, more comfortable way. Our
-                system is designed to make lesson planning easier by giving
+                instructors and learners with more efficiency and convenience.
+                Our system is designed to make lesson planning easier by giving
                 learners a simple way to locate reliable teachers and giving
                 instructors the resources they need to easily manage their
                 calendars.
@@ -67,14 +67,14 @@ export default function Home() {
                 With streamlined booking and real-time availability all in one
                 place, Instructra takes the hassle out of scheduling. Our
                 mission is to make learning to drive clear, accessible, and
-                empowering for everyone removing barriers so instructors can
+                empowering for everyone - removing barriers so instructors can
                 focus on teaching and learners can focus on building confidence.
               </p>
               <p className="l:min-w-[480px]">
                 At its core, Instructra is about more than just driving
                 instruction; it&apos;s about creating opportunities, boosting
                 self-esteem, and facilitating the most seamless transition to
-                independence
+                independence on the road.
               </p>
             </div>
             {/* our mission */}
@@ -83,8 +83,9 @@ export default function Home() {
               <p>
                 To empower the next generation of drivers by seamlessly
                 connecting learners with trusted driving instructors through a
-                smart, accessible, and transparent platform, making driving
-                education more efficient, personalised, and reliable for all.
+                smart, accessible, and transparent platform. Instructra is here
+                to make driving education more efficient, personalised and
+                reliable for all.
               </p>
             </div>
           </div>
@@ -94,7 +95,7 @@ export default function Home() {
         <MainContainer>
           <div className="z-1 flex flex-col items-start gap-8">
             <p className="text-2xl font-medium">
-              What makes Instructra different
+              What makes Instructra different?
             </p>
             <div className="tb:flex-row tb:flex-wrap tb:justify-start flex w-full flex-col items-center justify-center gap-6">
               {/* cards */}
@@ -159,7 +160,7 @@ export default function Home() {
             {/* section heading */}
             <div className="tb:flex-row tb:justify-between flex w-full flex-col justify-center gap-8">
               <h2 className="text-center text-4xl font-normal text-white">
-                How it works
+                How it works?
               </h2>
               <PlayVideoButton
                 text="Watch how it works"
@@ -185,7 +186,7 @@ export default function Home() {
                     </h3>
                     <p className="text-text-secondary">
                       Quickly find certified driving instructors near you. Just
-                      enter your location, and we’ll show you trusted
+                      enter your location and we’ll show you trusted
                       professionals available in your area, ready to help you
                       hit the road confidently.
                     </p>
@@ -260,8 +261,8 @@ export default function Home() {
                       Book and take lessons
                     </h3>
                     <p className="text-text-secondary">
-                      Share your schedule and let learners book only when
-                      you&apos;re actually available.
+                      Share your schedule so learners can book lessons at times
+                      that work for you.
                     </p>
                   </div>
                 </div>
