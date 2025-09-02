@@ -39,6 +39,7 @@ export function WaitListForm() {
     useFormValidation({
       name: { value: "", rules: [required(), minLength(2), twoWords()] },
       email: { value: "", rules: [required(), emailFormat()] },
+      city: { value: "", rules: [required(), minLength(2)] },
     });
 
   const waitListDialogStore = useWaitListStore((state) => state);
@@ -131,6 +132,19 @@ export function WaitListForm() {
         {touched.email && errors.email && (
           <div className="flex justify-center">{ErrorLabel(errors.email)}</div>
         )}
+      </div>
+
+      <div className="flex flex-col gap-3">
+        <input
+          name="city"
+          type="text"
+          placeholder="location (city)"
+          onChange={(e) => setValue("city", e.target.value)}
+          onBlur={() => setFieldTouched("city")}
+          className={`w-full rounded-full bg-white p-4 ${
+            touched.city && errors.city ? "border-error-600 border" : ""
+          }`}
+        />
       </div>
 
       <br />

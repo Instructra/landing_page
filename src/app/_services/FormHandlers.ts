@@ -18,6 +18,7 @@ import {
     EmailTemplate,
     type EmailTemplateProps,
 } from "../_components/emailTemplate";
+import { WaitlistUserAddedTemplate, type WaitlistUserAddedTemplateProp } from "../_components/WaitlistUserAddedTemplate";
 
 // -----------------------------------------------------------------------------
 // Environment Variables
@@ -178,6 +179,7 @@ interface JoinWaitListProps {
     token: string;
     email: string;
     name: string;
+    city: string;
     waitListOption: SelectedUserType;
 }
 
@@ -189,6 +191,7 @@ export async function JoinWaitList(
         token: formData.get("recaptcha") as string,
         email: formData.get("email") as string,
         name: formData.get("name") as string,
+        city: formData.get("city") as string,
         waitListOption: formData.get("waitListOption") as SelectedUserType,
     };
 
@@ -245,6 +248,22 @@ export async function JoinWaitList(
             subject: `Successfully added to waiting list`,
             react: WaitlistConfirmationTemplate({ senderName: waitListProp.name }),
         });
+
+        if (waitListProp.city) {
+            const waitlistUserAddedTemplateProp: WaitlistUserAddedTemplateProp = {
+                name: waitListProp.name,
+                email: waitListProp.email,
+                city: waitListProp.city,
+                waitListType: waitListProp.waitListOption,
+            };
+
+            await resend.emails.send({
+                from: "CTO <abdulbasit@instructra.com>",
+                to: SEND_TO_EMAILS,
+                subject: "New waiting list joiner",
+                react: WaitlistUserAddedTemplate(waitlistUserAddedTemplateProp)
+            });
+        }
 
         return { status: FormSubmissionStatus.SUCCESS, message: "You have been successfully added to the wait list" };
     } catch (err) {
