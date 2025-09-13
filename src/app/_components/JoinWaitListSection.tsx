@@ -60,7 +60,7 @@ function JoinWaitlistSection() {
               "Sign up for early access to our driving lessons booking app and be the first to experience real-time booking, verified instructors, and progress tracking.",
             availability: "https://schema.org/PreOrder",
             eligibleRegion: "Worldwide",
-            url: "https://instructra.com/",
+            url: "https://www.instructra.com/",
           }),
         }}
       />

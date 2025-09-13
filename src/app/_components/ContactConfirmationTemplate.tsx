@@ -77,7 +77,7 @@ export function ContactConfirmationTemplate({
             <p style={{ fontSize: "14px", color: "#333", lineHeight: 1.6 }}>
               Learn more about{" "}
               <a
-                href="https://instructra.com"
+                href="https://www.instructra.com"
                 style={{ color: "#4a7bff", textDecoration: "none" }}
               >
                 what Instructra is
