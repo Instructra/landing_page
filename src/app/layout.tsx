@@ -13,9 +13,42 @@ import CaptchaProvider from "./_providers/CaptachaProvider";
 import { WaitListDialog } from "./_components/WaitListDialog";
 
 export const metadata: Metadata = {
-  title: "Instructra",
-  description: "Instructra driving lessons booking app website ",
-  icons: [{ rel: "icon", url: "/favicon.ico" }],
+  title: "Instructra – Book Driving Lessons Instantly",
+  description:
+    "Instructra is a smarter, simpler way to book driving lessons. Real-time scheduling with trusted instructors near you.",
+  keywords: [
+    "driving lessons",
+    "book driving instructors",
+    "learn driving",
+    "driving school app",
+  ],
+  openGraph: {
+    title: "Instructra – Book Driving Lessons Instantly",
+    description:
+      "Smarter, simpler driving lessons, powered by real-time bookings and verified instructors.",
+    url: "https://www.instructra.com/",
+    siteName: "Instructra",
+    images: [
+      {
+        url: "/assets/images/og_image.png",
+        width: 520,
+        height: 234,
+        alt: "Instructra driving lesson booking",
+      },
+    ],
+    locale: "en_GB",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Instructra – Book Driving Lessons Instantly",
+    description:
+      "Book driving lessons instantly with verified instructors near you.",
+    images: ["/assets/images/og_image.png"],
+  },
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 const geist = Geist({
