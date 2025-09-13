@@ -24,7 +24,7 @@ export function WaitListDialog() {
         <div className="z-1">
           <div className="flex justify-between">
             {waitListState.dialogStage == WaitListStages.SELECTION && (
-              <h2 className="tb:text-2xl text-xl">Join the waiting list</h2>
+              <h2 className="tb:text-2xl text-xl">join the waitlist</h2>
             )}
             {waitListState.dialogStage == WaitListStages.EMAIL_COLLECTION && (
               <Logo></Logo>
@@ -65,7 +65,7 @@ function UserTypeSelector(waitListDialogStore: WaitListStore) {
         </div>
         <div>
           <p className="text-xl">Join as an Instructor</p>
-          <p>Join the waiting list as an instructor</p>
+          <p>join the waitlist as an instructor</p>
         </div>
       </div>
       {/* Learner */}
@@ -85,7 +85,7 @@ function UserTypeSelector(waitListDialogStore: WaitListStore) {
         </div>
         <div>
           <p className="text-xl">Join as an Learner</p>
-          <p>Join the waiting list as an Learner</p>
+          <p>join the waitlist as an Learner</p>
         </div>
       </div>
     </div>
@@ -98,8 +98,8 @@ function SubmissionForm(waitListDialogStore: WaitListStore) {
       <h2 className="tb:text-3xl tb:w-[246px] text-2xl font-medium">
         {waitListDialogStore.state.selectedUserType ===
         SelectedUserType.INSTRUCTOR
-          ? "Join the waiting list as an Instructor"
-          : "Join the waiting list as a Learner"}
+          ? "join the waitlist as an Instructor"
+          : "join the waitlist as a Learner"}
       </h2>
       <p className="text-text-secondary text-sm font-[400]">
         Fill the form below to join our early access.
