@@ -10,5 +10,5 @@ export const APP_STORE_LEARNER_URL = "https://apps.apple.com/gb/app/instructra/i
 export const APP_STORE_BUSINESS_URL = "https://apps.apple.com/gb/app/instructra-business/id6743958778";
 
 // Android — replace before launch
-export const PLAY_STORE_LEARNER_URL = "[PLAY_STORE_LEARNER_URL]";
-export const PLAY_STORE_BUSINESS_URL = "[PLAY_STORE_BUSINESS_URL]";
+export const PLAY_STORE_LEARNER_URL = "https://play.google.com/store/apps/details?id=com.instructra.instructra_learner_app";
+export const PLAY_STORE_BUSINESS_URL = "https://play.google.com/store/apps/details?id=com.instructra.driving_school_app";
