@@ -1,0 +1,24 @@
+# Instructra
+
+Instructra is a UK-based platform for booking and managing driving lessons.
+It consists of two mobile apps:
+- Instructra (learner app): find instructors, book lessons, message, track progress
+- Instructra Business (instructor app): manage bookings, availability, and grow your diary
+
+This is the marketing website built with React (Vite + Tailwind CSS).
+
+## Key routes
+- / — Homepage (dual-mode: learner / instructor)
+- /learners — Learner features and download
+- /instructors — Instructor features and download
+- /pricing — Business app pricing plans
+- /how-it-works — Step-by-step guide
+- /book-a-demo — Demo request form
+- /about — About the company
+- /contact — Contact form
+- /driving-schools — Coming soon page
+- /privacy — Privacy policy
+- /terms — Terms of service
+
+## Contact
+info@instructra.com

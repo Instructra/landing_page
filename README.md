@@ -1,78 +1,132 @@
-# Instructra landing page
+# Instructra Marketing Site
 
-This project is the landing page for the Instructra app.
+Dual-audience marketing website for [Instructra](https://www.instructra.com) — a UK platform for booking and managing driving lessons.
 
-## 🚀 Tech Stack
+**Stack:** React 18 · Vite · TypeScript · Tailwind CSS · shadcn/ui
 
-This project uses the following stack:
+---
 
-- ### Next.js – React framework for building web applications
+## Getting Started
 
-- ### Vercel – Hosting and deployment platform
+```bash
+npm install
+npm run dev          # Dev server
+npm run build        # Production build
+npm run preview      # Preview production build locally
+```
 
-- ### Resend – Email service provider
+---
 
-- ### Tailwind CSS – Utility-first CSS framework
+## Deployment
 
-- ### Zod – TypeScript-first schema validation
+The build outputs a static `dist/` folder. Deploy anywhere that serves static files:
 
-- ### next-recaptcha-v3 -  Google reCAPTCHA v3 integration
+- **Vercel** — connect the repo, framework preset "Vite", done.
+- **Netlify** — build command `npm run build`, publish directory `dist`.
+- **Manual** — run `npm run build` and upload `dist/`.
 
-- ### zustand -  state management solution
+### Environment Variables
 
-## 🛠️ Getting Started
+| Variable | Purpose | Default |
+|----------|---------|---------|
+| `VITE_SITE_URL` | Base URL for canonical links, OG tags, sitemap | `window.location.origin` |
+| `VITE_NO_INDEX` | Set `true` on preview/staging to add `noindex` robots tag | – |
 
-1. ### Clone and install dependencies
+See `.env.example` for reference.
 
-    ```bash
-    git clone https://github.com/Instructra/landing_page.git
-    cd instructra-landing
-    npm install
-    ```
+```bash
+# Production
+VITE_SITE_URL=https://www.instructra.com npm run build
 
-1. ### Install Vercel CLI (if not already installed)
+# Staging / preview
+VITE_NO_INDEX=true npm run build
+```
 
-    ```bash
-    npm install -g vercel@latest
-    ```
+---
 
-1. ### Pull environment variables
+## Configuration (Single Source of Truth)
 
-    - Mac/Linux:
+All editable constants live in three config files:
 
-    ```bash
-    vercel env pull && cp .env.local .env
-    
-    ```
+### `src/config/site.ts` — URLs & contact info
 
-    - Windows (CMD):
+| Key | Value |
+|-----|-------|
+| `CONTACT_EMAIL` | `info@instructra.com` |
+| `APP_STORE_LEARNER_URL` | iOS learner app link (configured) |
+| `APP_STORE_BUSINESS_URL` | iOS business app link (configured) |
+| `PLAY_STORE_LEARNER_URL` | **Placeholder — replace before launch** |
+| `PLAY_STORE_BUSINESS_URL` | **Placeholder — replace before launch** |
 
-    ```cmd
-    copy /Y .env.local .env
-    ```
+### `src/config/media.ts` — Video URLs
 
-    - Windows (PowerShell):
+Set `iframeUrl` (YouTube/Vimeo embed) or `mp4Url` (direct file) and an optional `poster` for each entry. The `VideoEmbed` component reads only from this config.
 
-    ```powershell
-    Copy-Item .env.local .env -Force
-    ```
+### `src/config/assets.ts` — Images & screenshots
 
-1. Start the development server
+All app screenshots, feature images, and the brand logo are imported here. To swap an image:
 
-    ```bash
-    npm run dev
-    ```
+1. Drop your file into `src/assets/`
+2. Update the import in `assets.ts`
+3. Done — changes propagate everywhere
 
-    and The app will be available at:
+| Asset | Recommended size |
+|-------|-----------------|
+| Brand logo (`brandmark`) | 512×512 px, .png/.svg |
+| Learner screenshots | 750×1624 px, .webp |
+| Instructor screenshots | 750×1624 px, .png/.webp |
+| Feature images | 1200×900 px (4:3), .webp |
 
-    ```bash
-    http://localhost:3000
-    ```
+---
 
-- ### ⚠️ *Notes:*
+## Routes
 
-  - To test reCAPTCHA or submit forms, you must use:
+| Route | Page | Audience |
+|-------|------|----------|
+| `/` | Home | Dual (learner / instructor toggle) |
+| `/learners` | Learners | Learner |
+| `/instructors` | Instructors | Instructor |
+| `/pricing` | Pricing | Instructor |
+| `/how-it-works` | How It Works | Dual |
+| `/book-a-demo` | Book a Demo | Instructor |
+| `/about` | About | Neutral |
+| `/contact` | Contact | Neutral |
+| `/driving-schools` | Driving Schools | Coming soon |
+| `/privacy` | Privacy Policy | Legal |
+| `/terms` | Terms of Service | Legal |
 
-  ```bash
-  http://127.0.0.1:3000
-  ```
+---
+
+## Audience System
+
+The site has a dual-mode experience via `src/contexts/AudienceContext.tsx`:
+
+- **Learner mode** — download the learner app, explore features
+- **Instructor mode** — download the business app, see pricing, book a demo
+
+Priority: user override (persisted in localStorage) → route-based default → learner fallback.
+
+---
+
+## SEO
+
+Each page uses `<Seo>` which handles `<title>`, `<meta>`, canonical URLs, OG/Twitter tags, and JSON-LD.
+
+Static files to update before production:
+- `public/sitemap.xml` — set absolute `<loc>` URLs
+- `public/robots.txt` — update sitemap URL if needed
+- `public/og-image.png` — replace with real OG image
+
+---
+
+## Later Polish
+
+- [ ] Replace `public/og-image.png` with a branded OG image
+- [ ] Replace `public/favicon.ico` with the Instructra favicon
+- [ ] Fill in Google Play Store URLs in `src/config/site.ts`
+- [ ] Add real video URLs to `src/config/media.ts`
+- [ ] Add social media links to footer and JSON-LD `sameAs`
+
+---
+
+Hope this makes your launch smoother and the next iteration easy. Wishing you a clean deploy and lots of bookings. — Nathan
