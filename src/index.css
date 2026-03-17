@@ -1,0 +1,222 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 220 40% 13%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 40% 13%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 40% 13%;
+
+    --primary: 210 100% 52%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 20% 96%;
+    --secondary-foreground: 220 40% 13%;
+
+    --muted: 220 20% 96%;
+    --muted-foreground: 220 10% 46%;
+
+    --accent: 210 100% 52%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 15% 90%;
+    --input: 220 15% 90%;
+    --ring: 210 100% 52%;
+
+    --radius: 0.75rem;
+
+    --navy: 220 40% 13%;
+    --navy-light: 220 30% 20%;
+    --navy-foreground: 220 20% 96%;
+    --accent-blue: 210 100% 52%;
+    --accent-blue-light: 210 100% 60%;
+    --surface: 220 20% 98%;
+
+    --shadow-sm: 0 1px 2px 0 hsl(220 40% 13% / 0.05);
+    --shadow-md: 0 4px 12px -2px hsl(220 40% 13% / 0.08);
+    --shadow-lg: 0 10px 30px -6px hsl(220 40% 13% / 0.12);
+    --shadow-xl: 0 20px 50px -12px hsl(220 40% 13% / 0.18);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 220 40% 8%;
+    --foreground: 220 20% 96%;
+    --card: 220 35% 12%;
+    --card-foreground: 220 20% 96%;
+    --popover: 220 35% 12%;
+    --popover-foreground: 220 20% 96%;
+    --primary: 210 100% 56%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 30% 18%;
+    --secondary-foreground: 220 20% 96%;
+    --muted: 220 30% 18%;
+    --muted-foreground: 220 15% 60%;
+    --accent: 210 100% 56%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 30% 20%;
+    --input: 220 30% 20%;
+    --ring: 210 100% 56%;
+    --navy: 220 40% 8%;
+    --navy-light: 220 30% 15%;
+    --navy-foreground: 220 20% 96%;
+    --accent-blue: 210 100% 56%;
+    --accent-blue-light: 210 100% 64%;
+    --surface: 220 30% 12%;
+    --shadow-sm: 0 1px 2px 0 hsl(0 0% 0% / 0.2);
+    --shadow-md: 0 4px 12px -2px hsl(0 0% 0% / 0.3);
+    --shadow-lg: 0 10px 30px -6px hsl(0 0% 0% / 0.4);
+    --shadow-xl: 0 20px 50px -12px hsl(0 0% 0% / 0.5);
+    --sidebar-background: 220 40% 8%;
+    --sidebar-foreground: 220 20% 96%;
+    --sidebar-primary: 210 100% 56%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 30% 15%;
+    --sidebar-accent-foreground: 220 20% 96%;
+    --sidebar-border: 220 30% 18%;
+    --sidebar-ring: 210 100% 56%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Robust focus-visible — AA compliant ring */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+
+  /* Minimum touch targets on mobile */
+  @media (pointer: coarse) {
+    button, a, [role="button"], input, select, textarea {
+      min-height: 44px;
+    }
+  }
+}
+
+/* Scroll reveal */
+@keyframes reveal-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes reveal-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes reveal-scale {
+  from { opacity: 0; transform: scale(0.97); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes scroll-hint {
+  0%, 100% { opacity: 0.6; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(6px); }
+}
+
+@layer utilities {
+  .animate-reveal-up {
+    animation: reveal-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .animate-reveal-fade {
+    animation: reveal-fade 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .animate-reveal-scale {
+    animation: reveal-scale 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .animate-scroll-hint {
+    animation: scroll-hint 2s ease-in-out infinite;
+  }
+  .animation-delay-80 { animation-delay: 80ms; }
+  .animation-delay-100 { animation-delay: 100ms; }
+  .animation-delay-160 { animation-delay: 160ms; }
+  .animation-delay-200 { animation-delay: 200ms; }
+  .animation-delay-240 { animation-delay: 240ms; }
+  .animation-delay-300 { animation-delay: 300ms; }
+  .animation-delay-320 { animation-delay: 320ms; }
+  .animation-delay-400 { animation-delay: 400ms; }
+  .animation-delay-480 { animation-delay: 480ms; }
+  .animation-delay-560 { animation-delay: 560ms; }
+  .animation-delay-640 { animation-delay: 640ms; }
+}
+
+
+/* Pulse ring for stats */
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.6); opacity: 0; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+/* Wizard slide animations */
+@keyframes wizard-slide-in {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes wizard-slide-in-reverse {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* Success ring animation */
+@keyframes success-ring {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* Noise overlay for hero sections */
+.noise-overlay {
+  position: relative;
+}
+.noise-overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 128px 128px;
+  pointer-events: none;
+}
+
+/* Reduced motion — kill all animations & transitions */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Prevent layout shift from scrollbar */
+html {
+  scrollbar-gutter: stable;
+}
