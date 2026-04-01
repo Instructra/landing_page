@@ -31,3 +31,4 @@ git@github.com:*
 *.sln
 *.sw?
 .vercel
+.env*.local
