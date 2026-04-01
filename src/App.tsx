@@ -1,13 +1,13 @@
-import { lazy, Suspense } from "react";
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { ThemeProvider } from "next-themes";
-import { AudienceProvider } from "@/contexts/AudienceContext";
 import Layout from "@/components/Layout";
+import { Toaster as Sonner } from "@/components/ui/sonner";
+import { Toaster } from "@/components/ui/toaster";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { AudienceProvider } from "@/contexts/AudienceContext";
 import Home from "@/pages/Home";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ThemeProvider } from "next-themes";
+import { lazy, Suspense } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 // Lazy-loaded routes to reduce initial JS bundle
 const Learners = lazy(() => import("@/pages/Learners"));
@@ -48,7 +48,7 @@ const App = () => (
                 <Route path="/book-a-demo" element={<BookADemo />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/contact" element={<Contact />} />
-                <Route path="/privacy" element={<Privacy />} />
+                <Route path="/privacy-policy" element={<Privacy />} />
                 <Route path="/terms" element={<Terms />} />
               </Route>
               <Route path="*" element={<NotFound />} />
