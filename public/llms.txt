@@ -17,7 +17,7 @@ This is the marketing website built with React (Vite + Tailwind CSS).
 - /about — About the company
 - /contact — Contact form
 - /driving-schools — Coming soon page
-- /privacy — Privacy policy
+- /privacy-policy — Privacy policy
 - /terms — Terms of service
 
 ## Contact

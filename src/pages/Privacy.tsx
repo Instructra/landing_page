@@ -17,7 +17,7 @@ export default function Privacy() {
 
   return (
     <>
-      <Seo title="Privacy Policy | Instructra" description="How Instructra collects, uses, and protects your personal data." path="/privacy" />
+      <Seo title="Privacy Policy | Instructra" description="How Instructra collects, uses, and protects your personal data." path="/privacy-policy" />
       <section className="container py-16 md:py-24">
       <div className="mx-auto max-w-2xl">
         <h1 className="text-display-lg">Privacy Policy</h1>

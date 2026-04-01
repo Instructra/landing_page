@@ -1,8 +1,8 @@
-import { Link } from "react-router-dom";
-import StoreBadges from "./StoreBadges";
-import { useAudience } from "@/contexts/AudienceContext";
 import { brandmark as brandmarkLogo } from "@/config/assets";
 import { CONTACT_EMAIL } from "@/config/site";
+import { useAudience } from "@/contexts/AudienceContext";
+import { Link } from "react-router-dom";
+import StoreBadges from "./StoreBadges";
 
 const linkGroups = [
   {
@@ -20,7 +20,7 @@ const linkGroups = [
     links: [
       { to: "/about", label: "About" },
       { to: "/contact", label: "Contact" },
-      { to: "/privacy", label: "Privacy" },
+      { to: "/privacy-policy", label: "Privacy" },
       { to: "/terms", label: "Terms" },
     ],
   },
