@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 import {
   APP_STORE_LEARNER_URL,
@@ -12,9 +12,9 @@ function getOS(): "ios" | "android" | "other" {
   return "other";
 }
 
-// Intent URL without a hard-coded package so it works for all flavors (dev,
-// staging, prod). Android resolves the correct app from its App Links
-// verification records. Falls back to Play Store if no app is found.
+// No hard-coded package — Android resolves the correct installed flavor
+// (dev / staging / prod) from its App Links verification records.
+// Falls back to Play Store if no matching app is found.
 function buildAndroidIntentUrl(userId: string): string {
   return (
     `intent://www.instructra.com/instructor/${userId}` +
@@ -27,24 +27,16 @@ const InstructorRedirect = () => {
   const { userId } = useParams<{ userId: string }>();
   const attempted = useRef(false);
   const os = getOS();
-  const [showFallback, setShowFallback] = useState(false);
 
   useEffect(() => {
     if (attempted.current || !userId) return;
     attempted.current = true;
 
-    if (os === "android") {
-      // Try to open the app via intent URL. Works in Chrome and most stock
-      // browsers. In-app browsers (WhatsApp, Telegram, etc.) may ignore it —
-      // the fallback "Open in App" button handles that case.
-      window.location.href = buildAndroidIntentUrl(userId);
-
-      // Show the manual fallback button after a short delay in case the intent
-      // URL was silently ignored (e.g., sandboxed in-app browser).
-      setTimeout(() => setShowFallback(true), 1500);
-    } else if (os === "ios") {
-      // iOS: if this page loaded, Universal Links didn't intercept (app not
-      // installed). Send straight to App Store.
+    // iOS only: if this page loaded, Universal Links didn't intercept the URL
+    // which means the app is not installed — send straight to App Store.
+    // Android: never auto-navigate via intent:// — it loops in browsers that
+    // don't support the scheme. Show buttons instead.
+    if (os === "ios") {
       window.location.href = APP_STORE_LEARNER_URL;
     }
   }, [userId, os]);
@@ -62,13 +54,11 @@ const InstructorRedirect = () => {
 
       <h1 className="mb-2 text-2xl font-bold">View instructor profile</h1>
       <p className="mb-8 text-muted-foreground">
-        {os === "other"
-          ? "Get the Instructra app to view this instructor's profile."
-          : "Open the Instructra app to view this instructor's profile."}
+        Open the Instructra app to view this instructor's profile.
       </p>
 
       <div className="flex flex-col gap-3 sm:flex-row">
-        {os === "android" && showFallback && (
+        {os === "android" && (
           <a
             href={buildAndroidIntentUrl(userId ?? "")}
             className="inline-flex items-center justify-center rounded-xl bg-foreground px-6 py-3 text-sm font-medium text-background transition-opacity hover:opacity-80"
@@ -85,6 +75,7 @@ const InstructorRedirect = () => {
             Download on the App Store
           </a>
         )}
+
         {os !== "ios" && (
           <a
             href={PLAY_STORE_LEARNER_URL}
