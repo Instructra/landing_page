@@ -23,7 +23,7 @@ const InstructorRedirect = () => {
     const os = getOS();
     if (os === "other") return;
 
-    const deepLink = `https://instructra.app/instructor/${userId}`;
+    const deepLink = `https://www.instructra.com/instructor/${userId}`;
     const storeUrl =
       os === "ios" ? APP_STORE_LEARNER_URL : PLAY_STORE_LEARNER_URL;
 
