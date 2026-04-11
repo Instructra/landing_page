@@ -1,4 +1,3 @@
-import { useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 import {
   APP_STORE_LEARNER_URL,
@@ -12,34 +11,13 @@ function getOS(): "ios" | "android" | "other" {
   return "other";
 }
 
-// No hard-coded package — Android resolves the correct installed flavor
-// (dev / staging / prod) from its App Links verification records.
-// Falls back to Play Store if no matching app is found.
-function buildAndroidIntentUrl(userId: string): string {
-  return (
-    `intent://www.instructra.com/instructor/${userId}` +
-    `#Intent;scheme=https` +
-    `;S.browser_fallback_url=${encodeURIComponent(PLAY_STORE_LEARNER_URL)};end`
-  );
+function buildCustomSchemeUrl(userId: string): string {
+  return `instructra://instructor/${userId}`;
 }
 
 const InstructorRedirect = () => {
   const { userId } = useParams<{ userId: string }>();
-  const attempted = useRef(false);
   const os = getOS();
-
-  useEffect(() => {
-    if (attempted.current || !userId) return;
-    attempted.current = true;
-
-    // iOS only: if this page loaded, Universal Links didn't intercept the URL
-    // which means the app is not installed — send straight to App Store.
-    // Android: never auto-navigate via intent:// — it loops in browsers that
-    // don't support the scheme. Show buttons instead.
-    if (os === "ios") {
-      window.location.href = APP_STORE_LEARNER_URL;
-    }
-  }, [userId, os]);
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-background px-6 text-center">
@@ -58,9 +36,9 @@ const InstructorRedirect = () => {
       </p>
 
       <div className="flex flex-col gap-3 sm:flex-row">
-        {os === "android" && (
+        {(os === "ios" || os === "android") && (
           <a
-            href={buildAndroidIntentUrl(userId ?? "")}
+            href={buildCustomSchemeUrl(userId ?? "")}
             className="inline-flex items-center justify-center rounded-xl bg-foreground px-6 py-3 text-sm font-medium text-background transition-opacity hover:opacity-80"
           >
             Open in Instructra
@@ -70,7 +48,7 @@ const InstructorRedirect = () => {
         {os !== "android" && (
           <a
             href={APP_STORE_LEARNER_URL}
-            className="inline-flex items-center justify-center rounded-xl bg-foreground px-6 py-3 text-sm font-medium text-background transition-opacity hover:opacity-80"
+            className="inline-flex items-center justify-center rounded-xl border px-6 py-3 text-sm font-medium transition-opacity hover:opacity-80"
           >
             Download on the App Store
           </a>
@@ -79,7 +57,7 @@ const InstructorRedirect = () => {
         {os !== "ios" && (
           <a
             href={PLAY_STORE_LEARNER_URL}
-            className="inline-flex items-center justify-center rounded-xl bg-foreground px-6 py-3 text-sm font-medium text-background transition-opacity hover:opacity-80"
+            className="inline-flex items-center justify-center rounded-xl border px-6 py-3 text-sm font-medium transition-opacity hover:opacity-80"
           >
             Get it on Google Play
           </a>
