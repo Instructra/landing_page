@@ -21,13 +21,21 @@ const InstructorRedirect = () => {
     attempted.current = true;
 
     const os = getOS();
-    if (os === "other") return;
 
-    // If we're on this page the OS did not intercept the link (app not installed).
-    // Send the user straight to the relevant store.
-    const storeUrl =
-      os === "ios" ? APP_STORE_LEARNER_URL : PLAY_STORE_LEARNER_URL;
-    window.location.href = storeUrl;
+    if (os === "android") {
+      // Intent URL: opens the app if installed, falls back to Play Store if not.
+      // This handles the case where the link was opened from Chrome rather than
+      // a native app (where App Links would have intercepted it automatically).
+      const intentUrl =
+        `intent://www.instructra.com/instructor/${userId}` +
+        `#Intent;scheme=https;package=com.instructra.instructra_learner_app` +
+        `;S.browser_fallback_url=${encodeURIComponent(PLAY_STORE_LEARNER_URL)};end`;
+      window.location.href = intentUrl;
+    } else if (os === "ios") {
+      // iOS: if this page loaded, the app wasn't installed (Universal Links would
+      // have intercepted the URL before the browser opened it).
+      window.location.href = APP_STORE_LEARNER_URL;
+    }
   }, [userId]);
 
   const os = getOS();
@@ -47,7 +55,7 @@ const InstructorRedirect = () => {
       <p className="mb-8 text-muted-foreground">
         {os === "other"
           ? "Get the Instructra app to view this instructor's profile."
-          : "Redirecting you to the app store…"}
+          : "Opening the app…"}
       </p>
 
       <div className="flex flex-col gap-3 sm:flex-row">
