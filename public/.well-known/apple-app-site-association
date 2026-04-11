@@ -1,0 +1,19 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "QWW9Z87NSR.com.instructra.instructraLearnerApp",
+        "paths": ["/instructor/*"]
+      },
+      {
+        "appID": "QWW9Z87NSR.com.instructra.instructraLearnerApp.staging",
+        "paths": ["/instructor/*"]
+      },
+      {
+        "appID": "QWW9Z87NSR.com.instructra.instructraLearnerApp.dev",
+        "paths": ["/instructor/*"]
+      }
+    ]
+  }
+}

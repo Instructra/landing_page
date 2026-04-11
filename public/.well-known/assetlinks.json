@@ -1,0 +1,38 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.instructra.instructra_learner_app",
+      "sha256_cert_fingerprints": [
+        "cc:f3:9a:5b:99:33:c7:97:f2:e3:06:5a:c3:82:70:f3:a4:38:10:84:10:b9:f4:ce:cd:e8:cc:81:da:52:6c:67"
+      ]
+    }
+  },
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.instructra.instructra_learner_app.staging",
+      "sha256_cert_fingerprints": [
+        "a3:8e:bf:6c:a2:33:e0:40:0f:2b:be:04:0f:d7:5a:d8:c8:c9:d0:52:fc:8e:eb:db:36:f5:62:8c:2d:90:75:2e"
+      ]
+    }
+  },
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.instructra.instructra_learner_app.dev",
+      "sha256_cert_fingerprints": [
+        "d7:9c:d6:f1:a6:35:10:8f:f1:14:00:75:30:7d:b7:07:0d:64:a4:44:78:99:ee:c2:e9:d0:09:77:e9:7b:78:f2"
+      ]
+    }
+  }
+]

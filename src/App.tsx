@@ -21,6 +21,7 @@ const Contact = lazy(() => import("@/pages/Contact"));
 const Privacy = lazy(() => import("@/pages/Privacy"));
 const Terms = lazy(() => import("@/pages/Terms"));
 const NotFound = lazy(() => import("@/pages/NotFound"));
+const InstructorRedirect = lazy(() => import("@/pages/InstructorRedirect"));
 
 const queryClient = new QueryClient();
 
@@ -51,6 +52,7 @@ const App = () => (
                 <Route path="/privacy-policy" element={<Privacy />} />
                 <Route path="/terms" element={<Terms />} />
               </Route>
+              <Route path="/instructor/:userId" element={<InstructorRedirect />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>
