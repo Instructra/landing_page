@@ -20,32 +20,30 @@ const InstructorRedirect = () => {
   const { userId } = useParams<{ userId: string }>();
   const os = getOS();
   const isMobile = os === "ios" || os === "android";
-  const [showFallback, setShowFallback] = useState(!isMobile);
+  const storeUrl = os === "ios" ? APP_STORE_LEARNER_URL : PLAY_STORE_LEARNER_URL;
+  const [showDesktopFallback, setShowDesktopFallback] = useState(!isMobile);
 
   useEffect(() => {
     if (!isMobile || !userId) {
-      setShowFallback(true);
+      setShowDesktopFallback(true);
       return;
     }
 
-    // Attempt to open the app automatically
+    // Step 1: attempt to open the installed app.
     window.location.href = buildCustomSchemeUrl(userId);
 
-    // If the app is not installed the browser stays on this page,
-    // so reveal the store links after a short grace period.
-    const timer = setTimeout(() => setShowFallback(true), 1500);
+    // Step 2: after 1.5 s redirect to the appropriate store.
+    // - App installed  → user is already in the app; redirect is invisible to them.
+    // - App not installed → browser navigates to the store URL; iOS/Android opens the store app.
+    // NOTE: we intentionally do NOT use a visibilitychange listener here — iOS Safari fires it
+    // for the "cannot open URL" system alert even when the app is not installed, which would
+    // cancel this timer prematurely and leave the user with no way to reach the store.
+    const timer = setTimeout(() => {
+      window.location.replace(storeUrl);
+    }, 1500);
 
-    const handleVisibilityChange = () => {
-      // Page became hidden → app opened successfully; cancel the fallback.
-      if (document.hidden) clearTimeout(timer);
-    };
-    document.addEventListener("visibilitychange", handleVisibilityChange);
-
-    return () => {
-      clearTimeout(timer);
-      document.removeEventListener("visibilitychange", handleVisibilityChange);
-    };
-  }, [userId, isMobile]);
+    return () => clearTimeout(timer);
+  }, [userId, isMobile, storeUrl]);
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-background px-6 text-center">
@@ -60,39 +58,44 @@ const InstructorRedirect = () => {
 
       <h1 className="mb-2 text-2xl font-bold">View instructor profile</h1>
       <p className="mb-8 text-muted-foreground">
-        {isMobile && !showFallback
-          ? "Opening Instructra…"
+        {isMobile
+          ? "Opening Instructra… If not installed, you'll be redirected to the store."
           : "Open the Instructra app to view this instructor's profile."}
       </p>
 
-      {showFallback && (
+      {/* Mobile: show a manual escape hatch during the 1.5 s window */}
+      {isMobile && (
         <div className="flex flex-col gap-3 sm:flex-row">
-          {isMobile && (
-            <a
-              href={buildCustomSchemeUrl(userId ?? "")}
-              className="inline-flex items-center justify-center rounded-xl bg-foreground px-6 py-3 text-sm font-medium text-background transition-opacity hover:opacity-80"
-            >
-              Open in Instructra
-            </a>
-          )}
+          <a
+            href={buildCustomSchemeUrl(userId ?? "")}
+            className="inline-flex items-center justify-center rounded-xl bg-foreground px-6 py-3 text-sm font-medium text-background transition-opacity hover:opacity-80"
+          >
+            Open in Instructra
+          </a>
+          <a
+            href={storeUrl}
+            className="inline-flex items-center justify-center rounded-xl border px-6 py-3 text-sm font-medium transition-opacity hover:opacity-80"
+          >
+            {os === "ios" ? "Download on the App Store" : "Get it on Google Play"}
+          </a>
+        </div>
+      )}
 
-          {os !== "android" && (
-            <a
-              href={APP_STORE_LEARNER_URL}
-              className="inline-flex items-center justify-center rounded-xl border px-6 py-3 text-sm font-medium transition-opacity hover:opacity-80"
-            >
-              Download on the App Store
-            </a>
-          )}
-
-          {os !== "ios" && (
-            <a
-              href={PLAY_STORE_LEARNER_URL}
-              className="inline-flex items-center justify-center rounded-xl border px-6 py-3 text-sm font-medium transition-opacity hover:opacity-80"
-            >
-              Get it on Google Play
-            </a>
-          )}
+      {/* Desktop: show both store links */}
+      {showDesktopFallback && (
+        <div className="flex flex-col gap-3 sm:flex-row">
+          <a
+            href={APP_STORE_LEARNER_URL}
+            className="inline-flex items-center justify-center rounded-xl border px-6 py-3 text-sm font-medium transition-opacity hover:opacity-80"
+          >
+            Download on the App Store
+          </a>
+          <a
+            href={PLAY_STORE_LEARNER_URL}
+            className="inline-flex items-center justify-center rounded-xl border px-6 py-3 text-sm font-medium transition-opacity hover:opacity-80"
+          >
+            Get it on Google Play
+          </a>
         </div>
       )}
     </div>
