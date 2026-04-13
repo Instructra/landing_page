@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import {
   APP_STORE_LEARNER_URL,
@@ -18,6 +19,33 @@ function buildCustomSchemeUrl(userId: string): string {
 const InstructorRedirect = () => {
   const { userId } = useParams<{ userId: string }>();
   const os = getOS();
+  const isMobile = os === "ios" || os === "android";
+  const [showFallback, setShowFallback] = useState(!isMobile);
+
+  useEffect(() => {
+    if (!isMobile || !userId) {
+      setShowFallback(true);
+      return;
+    }
+
+    // Attempt to open the app automatically
+    window.location.href = buildCustomSchemeUrl(userId);
+
+    // If the app is not installed the browser stays on this page,
+    // so reveal the store links after a short grace period.
+    const timer = setTimeout(() => setShowFallback(true), 1500);
+
+    const handleVisibilityChange = () => {
+      // Page became hidden → app opened successfully; cancel the fallback.
+      if (document.hidden) clearTimeout(timer);
+    };
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
+    return () => {
+      clearTimeout(timer);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
+  }, [userId, isMobile]);
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-background px-6 text-center">
@@ -32,37 +60,41 @@ const InstructorRedirect = () => {
 
       <h1 className="mb-2 text-2xl font-bold">View instructor profile</h1>
       <p className="mb-8 text-muted-foreground">
-        Open the Instructra app to view this instructor's profile.
+        {isMobile && !showFallback
+          ? "Opening Instructra…"
+          : "Open the Instructra app to view this instructor's profile."}
       </p>
 
-      <div className="flex flex-col gap-3 sm:flex-row">
-        {(os === "ios" || os === "android") && (
-          <a
-            href={buildCustomSchemeUrl(userId ?? "")}
-            className="inline-flex items-center justify-center rounded-xl bg-foreground px-6 py-3 text-sm font-medium text-background transition-opacity hover:opacity-80"
-          >
-            Open in Instructra
-          </a>
-        )}
+      {showFallback && (
+        <div className="flex flex-col gap-3 sm:flex-row">
+          {isMobile && (
+            <a
+              href={buildCustomSchemeUrl(userId ?? "")}
+              className="inline-flex items-center justify-center rounded-xl bg-foreground px-6 py-3 text-sm font-medium text-background transition-opacity hover:opacity-80"
+            >
+              Open in Instructra
+            </a>
+          )}
 
-        {os !== "android" && (
-          <a
-            href={APP_STORE_LEARNER_URL}
-            className="inline-flex items-center justify-center rounded-xl border px-6 py-3 text-sm font-medium transition-opacity hover:opacity-80"
-          >
-            Download on the App Store
-          </a>
-        )}
+          {os !== "android" && (
+            <a
+              href={APP_STORE_LEARNER_URL}
+              className="inline-flex items-center justify-center rounded-xl border px-6 py-3 text-sm font-medium transition-opacity hover:opacity-80"
+            >
+              Download on the App Store
+            </a>
+          )}
 
-        {os !== "ios" && (
-          <a
-            href={PLAY_STORE_LEARNER_URL}
-            className="inline-flex items-center justify-center rounded-xl border px-6 py-3 text-sm font-medium transition-opacity hover:opacity-80"
-          >
-            Get it on Google Play
-          </a>
-        )}
-      </div>
+          {os !== "ios" && (
+            <a
+              href={PLAY_STORE_LEARNER_URL}
+              className="inline-flex items-center justify-center rounded-xl border px-6 py-3 text-sm font-medium transition-opacity hover:opacity-80"
+            >
+              Get it on Google Play
+            </a>
+          )}
+        </div>
+      )}
     </div>
   );
 };
