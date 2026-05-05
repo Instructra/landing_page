@@ -31,7 +31,8 @@ const content = {
   instructor: {
     title: "Your entire business, in your pocket.",
     subtitle: "Bookings, messaging, cancellations, student progress — everything you need to run your diary, without the admin.",
-    socialProof: "Trusted by 500+ driving instructors across the UK",
+    socialProof: "",
+    // socialProof: "Trusted by 500+ driving instructors across the UK",
     trustChips: ["No commission", "Cancel anytime", "Full diary control", "In-app messaging"],
     secondaryLabel: "Download Business app →",
     secondaryLink: "",
