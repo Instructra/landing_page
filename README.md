@@ -121,8 +121,6 @@ Static files to update before production:
 
 ## Later Polish
 
-- [ ] Replace `public/og-image.png` with a branded OG image
-- [ ] Replace `public/favicon.ico` with the Instructra favicon
 - [ ] Fill in Google Play Store URLs in `src/config/site.ts`
 - [ ] Add real video URLs to `src/config/media.ts`
 - [ ] Add social media links to footer and JSON-LD `sameAs`
